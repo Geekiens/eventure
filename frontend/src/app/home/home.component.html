@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+<div>
+    <button (click)="startTimer()" mat-raised-button color="primary">Test starten</button>
+
+    <countdown [config]="{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}"
+               (finished)="onFinished()"
+               (start)="onTimerStarted()"
+               (notify)="notified($event)">
+               $!m!:$!s!
+    </countdown>
+</div>
+
+  <app-inbox></app-inbox>
+
+
+    <mat-card-content>
+      <mat-card-title translate></mat-card-title>
+      <mat-card-subtitle>
+        <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
+        <q [hidden]="isLoading">{{quote}}</q>
+      </mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,47 @@
+[
+  {
+    "label": "Unwichtig",
+    "value": "Kategorie 1",
+    "color": "#bf1b1b"
+  },
+  {
+    "label": "Wichtig",
+    "value": "Kategorie 2",
+    "color": "#31B404"
+  },
+  {
+    "label": "Kunde",
+    "value": "Kategorie 3",
+    "color": "#3968af"
+  },
+  {
+    "label": "Email",
+    "value": "Kategorie 4",
+    "color": "#2EFEF7"
+  },
+  {
+    "label": "Privat",
+    "value": "Kategorie 5",
+    "color": "#FF00FF"
+  },
+  {
+    "label": "label 6",
+    "value": "Kategorie 6",
+    "color": "#FFFF00"
+  },
+  {
+    "label": "label 7",
+    "value": "Kategorie 7",
+    "color": "#000000"
+  },
+  {
+    "label": "label 8",
+    "value": "Kategorie 8",
+    "color": "#0000FF"
+  },
+  {
+    "label": "label 9",
+    "value": "Kategorie 9",
+    "color": "#bf1b1b"
+  }
+]

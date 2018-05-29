@@ -1,0 +1,1010 @@
+[
+  {
+    "title": "Termin Meier",
+    "start": "2018-04-04",
+    "end": "2018-04-04",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Termin Termin Meier 2",
+    "start": "2018-04-18",
+    "end": "2018-04-18",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Termin Termin Meier 6",
+    "start": "2018-04-04",
+    "end": "2018-04-04",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Termin Termin Meier 3",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Termin Termin Meier 4",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Termin Termin Meier 5",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Fälliger Termin Meier",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-05-28",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Anderer fälliger Termin",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-05-01",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Sehr fällig",
+    "start": "2017-04-15",
+    "end": "2017-04-15",
+    "faelligkeit": "2017-03-18",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "1234-ABC",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Peter Meier"
+  },
+  {
+    "title": "Fälliger Termin 1",
+    "start": "2018-04-04",
+    "end": "2018-04-04",
+    "faelligkeit": "2018-04-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "369258147",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Fälliger Termin 2",
+    "start": "2018-04-02",
+    "end": "2018-04-03",
+    "faelligkeit": "2018-03-09",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "369258147",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Fälliger Termin 3",
+    "start": "2018-04-07",
+    "end": "2018-04-07",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Erster Termin",
+    "start": "2018-04-01",
+    "end": "2018-04-01",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "369258147",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Zweiter Termin",
+    "start": "2018-04-01",
+    "end": "2018-04-01",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "369258147",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Wichtiger Termin",
+    "start": "2018-04-04",
+    "end": "2018-04-04",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "1",
+        "label": "Wichtig",
+        "value": "Kategorie 1",
+        "color": "#bf1b1b",
+        "isTypePersonal": true,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "369258147",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Treffen 1",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "258147369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Treffen 2",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "258147369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Treffen 3",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "258147369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Treffen 4",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "258147369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Treffen 5",
+    "start": "2018-04-15",
+    "end": "2018-04-15",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "258147369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Serientermin",
+    "start": "2018-04-12",
+    "end": "2018-04-12",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      },
+      {
+        "id": "4",
+        "label": "Email",
+        "value": "Kategorie 4",
+        "color": "#2EFEF7",
+        "isTypePersonal": true,
+        "isTypeSubject": true
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "258147369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Serientermin",
+    "start": "2018-04-19",
+    "end": "2018-04-19",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      },
+      {
+        "id": "4",
+        "label": "Email",
+        "value": "Kategorie 4",
+        "color": "#2EFEF7",
+        "isTypePersonal": true,
+        "isTypeSubject": true
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Serientermin",
+    "start": "2018-04-26",
+    "end": "2018-04-26",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      },
+      {
+        "id": "4",
+        "label": "Email",
+        "value": "Kategorie 4",
+        "color": "#2EFEF7",
+        "isTypePersonal": true,
+        "isTypeSubject": true
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Test Termin",
+    "start": "2018-02-16",
+    "end": "2018-02-16",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Test Termin 2",
+    "start": "2018-05-16",
+    "end": "2018-05-16",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Test Termin 3",
+    "start": "2018-05-20",
+    "end": "2018-05-20",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Test Termin 4",
+    "start": "2018-06-20",
+    "end": "2018-06-20",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  },
+  {
+    "title": "Konferenz",
+    "start": "2018-05-30",
+    "end": "2018-06-01",
+    "faelligkeit": "2018-08-08",
+    "faelligkeitsHistorie": [],
+    "terminArt": "Fachobjekt",
+    "allDay": true,
+    "beschreibung": "Kollegen über neues Vorgehen informieren. Hier stehen Details zum Termin.",
+    "terminTypen": [
+      {
+        "id": "3",
+        "label": "Kunde",
+        "value": "Kategorie 3",
+        "color": "#3968af",
+        "isTypePersonal": false,
+        "isTypeSubject": true
+      },
+      {
+        "id": "2",
+        "label": "Serientermin",
+        "value": "Kategorie 2",
+        "color": "#31B404",
+        "isTypePersonal": true,
+        "isTypeSubject": false
+      }
+    ],
+    "terminStatus": "offen",
+    "fachobjektTyp": "Versicherungsnummer",
+    "fachobjektKennzeichen": "147258369",
+    "ersteller": "Hans Müller",
+    "erstellDatum": "2018-01-01",
+    "erinnerung": "ohne",
+    "kontaktReferenz": "Kontaktperson",
+    "kalenderVon": "Hans Müller"
+  }
+]

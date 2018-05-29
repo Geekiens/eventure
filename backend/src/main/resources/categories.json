@@ -1,0 +1,88 @@
+[
+  {
+    "label": "Wichtig",
+    "value": "Kategorie 1",
+    "color": "#bf1b1b",
+    "isTypePersonal": true,
+    "isTypeSubject": true,
+    "aktivVon": "2018-01-01",
+    "aktivBis": "",
+    "position": 1
+
+
+  },
+  {
+    "label": "Serientermin",
+    "value": "Kategorie 2",
+    "color": "#31B404",
+    "isTypePersonal": true,
+    "isTypeSubject": false,
+    "aktivVon": "2018-01-01",
+    "aktivBis": "",
+    "position": 2
+
+  },
+  {
+    "label": "Kunde",
+    "value": "Kategorie 3",
+    "color": "#3968af",
+    "isTypePersonal": false,
+    "isTypeSubject": true,
+    "aktivBis": "",
+    "position": 3
+  },
+  {
+    "label": "Email",
+    "value": "Kategorie 4",
+    "color": "#2EFEF7",
+    "isTypePersonal": true,
+    "isTypeSubject": true,
+    "aktivBis": "",
+    "position": 4
+  },
+  {
+    "label": "Post",
+    "value": "Kategorie 5",
+    "color": "#FF00FF",
+    "isTypePersonal": true,
+    "isTypeSubject": true,
+    "aktivBis": "",
+    "position": 5
+  },
+  {
+    "label": "Prüfen",
+    "value": "Kategorie 6",
+    "color": "#FFFF00",
+    "isTypePersonal": false,
+    "isTypeSubject": true,
+    "aktivBis": "",
+    "position": 6
+  },
+  {
+    "label": "Abteilung",
+    "value": "Kategorie 7",
+    "color": "#000000",
+    "isTypePersonal": true,
+    "isTypeSubject": false,
+    "aktivBis": "",
+    "position": 7
+  },
+  {
+    "label": "Optional",
+    "value": "Kategorie 8",
+    "color": "#0000FF",
+    "isTypePersonal": true,
+    "isTypeSubject": false,
+    "aktivBis": "",
+    "position": 8
+  },
+  {
+    "label": "Großkunde",
+    "value": "Kategorie 9",
+    "color": "#bf1b1b",
+    "isTypePersonal": false,
+    "isTypeSubject": true,
+    "aktivBis": "",
+    "position": 9
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "label": "Wichtig",
+    "value": "Kategorie 1",
+    "color": "#bf1b1b",
+    "isTypePersonal": true,
+    "isTypeSubject": true
+  },
+  {
+    "label": "Serientermin",
+    "value": "Kategorie 2",
+    "color": "#31B404",
+    "isTypePersonal": true,
+    "isTypeSubject": false
+  },
+  {
+    "label": "Kunde",
+    "value": "Kategorie 3",
+    "color": "#3968af",
+    "isTypePersonal": false,
+    "isTypeSubject": true
+  },
+  {
+    "label": "Email",
+    "value": "Kategorie 4",
+    "color": "#2EFEF7",
+    "isTypePersonal": true,
+    "isTypeSubject": true
+  },
+  {
+    "label": "Post",
+    "value": "Kategorie 5",
+    "color": "#FF00FF",
+    "isTypePersonal": true,
+    "isTypeSubject": true
+  },
+  {
+    "label": "Prüfen",
+    "value": "Kategorie 6",
+    "color": "#FFFF00",
+    "isTypePersonal": false,
+    "isTypeSubject": true
+  },
+  {
+    "label": "Abteilung",
+    "value": "Kategorie 7",
+    "color": "#000000",
+    "isTypePersonal": true,
+    "isTypeSubject": false
+  },
+  {
+    "label": "Optional",
+    "value": "Kategorie 8",
+    "color": "#0000FF",
+    "isTypePersonal": true,
+    "isTypeSubject": false
+  },
+  {
+    "label": "Großkunde",
+    "value": "Kategorie 9",
+    "color": "#bf1b1b",
+    "isTypePersonal": false,
+    "isTypeSubject": true
+  }
+]

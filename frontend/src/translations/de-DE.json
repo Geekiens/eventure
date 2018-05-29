@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "Assessement Center",
+  "About": "Über",
+  "Hello world !": "Test",
+  "Home": "Home",
+  "Logged in as": "Eingeloggt als",
+  "Login": "Einloggen",
+  "Logout": "Ausloggen",
+  "Password": "Passwort",
+  "Password is required": "Passwort wird benötigt",
+  "Username": "Benutzername",
+  "Username is required": "Benutzername wird benötigt",
+  "Username or password incorrect.": "Benutzername oder Passwort falsch",
+  "Remember me": "Erinnere dich an mich",
+  "Version": "Version"
+}

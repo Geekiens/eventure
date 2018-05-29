@@ -1,0 +1,21 @@
+{
+  "generator-ngx-rocket": {
+    "version": "5.0.0",
+    "props": {
+      "location": "path",
+      "appName": "assessement",
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "material",
+      "layout": "simple",
+      "auth": true,
+      "lazy": true,
+      "angulartics": false,
+      "projectName": "assessement",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}

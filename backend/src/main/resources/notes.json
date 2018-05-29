@@ -1,0 +1,271 @@
+[
+    {
+        "ersteller" : "Hans Müller",
+        "notizId" : "1",
+        "fachobjektKennzeichen" : "369258147",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Besprechung",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Besprechung der neuen Informationen",
+        "notizTypen" : [
+          {
+            "id": "1",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+
+          }
+        ],
+        "notizStatus" : "überfällig",
+        "erstellDatum" : "2018-02-24",
+        "faelligkeit" : "2018-03-07",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "2",
+        "fachobjektKennzeichen":"369258147",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Präsentation",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Kollegen neues Vorgehen vorstellen",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "offen",
+        "erstellDatum" : "2018-04-03",
+        "faelligkeit" : "2018-05-03",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "3",
+        "fachobjektKennzeichen":"369258147",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Information zum Versicherungsteilnehmer",
+        "notizTypen" : [
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          },
+          {
+            "id": "4",
+            "label": "Email",
+            "value": "Kategorie 4",
+            "color": "#2EFEF7"
+          }
+        ],
+        "notizStatus" : "überfällig",
+        "erstellDatum" : "2018-04-05",
+        "faelligkeit" : "2018-04-21",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "9",
+        "fachobjektKennzeichen":"369258147",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Information zum Versicherungsteilnehmer",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "überfällig",
+        "erstellDatum" : "2018-04-05",
+        "faelligkeit" : "2018-04-21",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "10",
+        "fachobjektKennzeichen":"369258147",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Information zum Versicherungsteilnehmer",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "erledigt",
+        "erstellDatum" : "2018-04-05",
+        "faelligkeit" : "2018-06-21",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "4",
+        "fachobjektKennzeichen":"147258369",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Besprechung der neuen Informationen",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "offen",
+        "erstellDatum" : "2018-02-24",
+        "faelligkeit" : "2018-06-07",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "5",
+        "fachobjektKennzeichen":"147258369",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Besprechung der neuen Informationen",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "offen",
+        "erstellDatum" : "2018-02-24",
+        "faelligkeit" : "2018-06-07",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "6",
+        "fachobjektKennzeichen":"258147369",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Besprechung der neuen Informationen",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          },
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "offen",
+        "erstellDatum" : "2018-02-24",
+        "faelligkeit" : "2018-06-07",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "7",
+        "fachobjektKennzeichen":"258147369",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Besprechung der neuen Informationen",
+        "notizTypen" : [
+          {
+            "id": "3",
+            "label": "Kunde",
+            "value": "Kategorie 3",
+            "color": "#3968af"
+          }
+        ],
+        "notizStatus" : "offen",
+        "erstellDatum" : "2018-02-24",
+        "faelligkeit" : "2018-06-07",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      },
+      {
+        "ersteller" : "Hans Müller",
+        "notizId" : "8",
+        "fachobjektKennzeichen":"258147369",
+        "fachobjektTyp" : "Demo-Typ",
+        "terminArt" : "Information",
+        "kontaktReferenz" : "Demo-Referenz",
+        "title" : "Besprechung der neuen Informationen",
+        "notizTypen" : [
+          {
+            "id": "2",
+            "label": "Serientermin",
+            "value": "Kategorie 2",
+            "color": "#31B404"
+          }
+        ],
+        "notizStatus" : "offen",
+        "erstellDatum" : "2018-02-24",
+        "faelligkeit" : "2018-07-07",
+        "erinnerung" : "ohne",
+        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+      }
+]
