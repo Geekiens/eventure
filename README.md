@@ -9,7 +9,7 @@ Eventure TU Dortmund Gruppe 9 Assessment Center
 4. **git clone** https://github.com/Geekiens/eventure.git ausführen
 
 
-## Ausführen des Projekts
+## Ausführen des Projekts (Frontend)
 1. In der Kommandozeile in der frontend Ordner navigieren (cd).
 2. **npm install** ausführen (Läd alle Dependencies)
 3. **npm start**
