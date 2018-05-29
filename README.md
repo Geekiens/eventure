@@ -15,6 +15,8 @@ Eventure TU Dortmund Gruppe 9 Assessment Center
 3. **npm start**
 4. localhost:4200 öffnen (optimiert für Chrome)
 
+Wichtig: Es muss node.js und npm installiert sein.
+
 
 
 
