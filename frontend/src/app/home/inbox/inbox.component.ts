@@ -57,6 +57,22 @@ export class InboxComponent implements OnInit {
           priortaet: 'normal',
           erscheintDirekt: true,
         },
+        {
+          absender: 'Max Mustermann',
+          titel: 'Bewerbung2',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit ',
+          absendeDatum: '2018-05-30',
+          priortaet: 'normal',
+          erscheintDirekt: true,
+        },
+        {
+          absender: 'Max Mustermann',
+          titel: 'Bewerbung3',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit ',
+          absendeDatum: '2018-05-30',
+          priortaet: 'normal',
+          erscheintDirekt: true,
+        },
       ]
   }
 }
