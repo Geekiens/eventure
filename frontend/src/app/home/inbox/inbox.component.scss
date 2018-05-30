@@ -1,24 +1,37 @@
 .inboxWrapper{
     width: calc(100% - 3px);
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
     background: #eeeeee;
     border: 3px solid #857970;
     border-radius: 10px;
-    max-height: 75vh;
+    height: 75vh;
+
+  
+}
+
+.detailWrapper{
+    //margin-left: calc(30% - 3px)
+    width: 50%;
+    margin-top: 15px;
+    padding: 10px;
+    height: 70vh;
+    overflow: hidden;
+    display:inline-block;
   
 }
 
 .inboxElementWrapper{
-    width: calc(30% - 3px);
+    margin-top: 10px;
+    width: 30%;
     padding: 10px;
     height: 70vh;
-    overflow-y: scroll;
+    overflow: hidden;
+    display:inline-block;
 }
 
 .mailElement{
     margin-top:5px;
-
     width: calc(100% - 3px);
 }
 

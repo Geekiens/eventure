@@ -1,19 +1,19 @@
-<div class="inboxWrapper">
+<div style="text-align: left;" class="inboxWrapper">
 
-        <div style="text-align: left;" class="inboxElementWrapper">
+      <div style="float:left;" class="inboxElementWrapper">
                 <div *ngFor="let email of emails" class="mailElement"
-                     (click)="eventClicked(appointment)">
+                     (click)="emailClicked(email)">
                      <mat-card>
                          
-                  <div class="top-row">
+                  <div class="">
                     <div class="text-div">
                       {{email.absender}}
                     </div>
                     <div style="text-align: right">
-                            {{email.absendeDatum}}
+                      {{email.absendeDatum}}
                     </div>
                   </div>
-                  <div class="bottom-row">
+                  <div class="">
                     <div class="text-div">
                     {{email.titel}}
                     </div>
@@ -23,6 +23,31 @@
                   </div>
                 </mat-card>
                 </div>
+      </div>
+
+      <div  class="detailWrapper">
+            <mat-card style="height: 65vh;">
+              <mat-card-content>
+                <mat-card-title> 
+                    <span style="display: inline-block; width: 70%; ">Von: {{selectedEmail.absender}}</span>
+                      <span>{{selectedEmail.absendeDatum}}</span>  <br>
+                      {{selectedEmail.titel}}            
+                </mat-card-title>
+                <mat-card-subtitle>
+                  Antworten
+               
+                </mat-card-subtitle>
+              </mat-card-content>
+              <div class="">
+                <div style="height:40vh; overflow-y: scroll;"class="">
+                  {{selectedEmail.text}}
+                </div>
               </div>
+              
+            </mat-card>
+      </div>
+
+
+
 
 </div>
