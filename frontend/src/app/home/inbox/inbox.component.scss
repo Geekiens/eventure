@@ -1,0 +1,22 @@
+.inboxElementWrapper{
+    width: calc(100% - 3px);
+    padding: 10px;
+    margin-top: 10px;
+    background: #eeeeee;
+    border: 3px solid #857970;
+    border-radius: 10px;
+}
+
+.mailElement{
+    margin-top:5px;
+
+    width: calc(30% - 3px);
+}
+
+.text-div {
+    display: inline-block;
+    overflow: hidden;
+    height: 1.4em;
+    line-height: 1.4em;
+    padding-right: 15px;
+  }

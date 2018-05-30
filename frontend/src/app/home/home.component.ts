@@ -16,11 +16,13 @@ export class HomeComponent implements OnInit {
 
   quote: string;
   isLoading: boolean;
+  showInbox = false;
 
   constructor(private quoteService: QuoteService, private notificationsService: NotificationsService) { }
 
   startTimer() {
     this.counter.begin();
+    this.showInbox = true;
   }
 
   reminderForLeftTime(timeLeft: string) {

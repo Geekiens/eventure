@@ -1,5 +1,28 @@
 <div>
 
-    Test
+        <div style="text-align: left;" class="inboxElementWrapper">
+                <div *ngFor="let email of emails" class="mailElement"
+                     (click)="eventClicked(appointment)">
+                     <mat-card>
+                         
+                  <div class="top-row">
+                    <div class="text-div">
+                      {{email.absender}}
+                    </div>
+                    <div style="text-align: right">
+                            {{email.absendeDatum}}
+                    </div>
+                  </div>
+                  <div class="bottom-row">
+                    <div class="text-div">
+                    {{email.titel}}
+                    </div>
+                    <div style="font-size: 0.8em; color:grey;"class="text-div">
+                            {{email.text}}
+                    </div>
+                  </div>
+                </mat-card>
+                </div>
+              </div>
 
 </div>
