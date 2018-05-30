@@ -1,19 +1,19 @@
 {
   "configVersion": 1,
-  "index": "/eventure/index.html",
+  "index": "/assessment/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/eventure/0.1191ca85429781e5c5e6.js",
-        "/eventure/favicon.ico",
-        "/eventure/index.html",
-        "/eventure/main.1c6fe09128edc8f8089e.js",
-        "/eventure/polyfills.e122ce11a0bfface46c7.js",
-        "/eventure/runtime.540e336ed5c7787cff82.js",
-        "/eventure/styles.241382b79490cc30d843.css"
+        "/assessment/0.1191ca85429781e5c5e6.js",
+        "/assessment/favicon.ico",
+        "/assessment/index.html",
+        "/assessment/main.1c6fe09128edc8f8089e.js",
+        "/assessment/polyfills.e122ce11a0bfface46c7.js",
+        "/assessment/runtime.540e336ed5c7787cff82.js",
+        "/assessment/styles.241382b79490cc30d843.css"
       ],
       "patterns": []
     },
@@ -22,21 +22,21 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "/eventure/assets/ngx-rocket-logo.png"
+        "/assessment/assets/ngx-rocket-logo.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/eventure/0.1191ca85429781e5c5e6.js": "bbfa465c6f449e7587243f901e84e78e437392ce",
-    "/eventure/assets/ngx-rocket-logo.png": "0ac53fd27406fe5a36e68285315fb0012e54058e",
-    "/eventure/favicon.ico": "b65083d46bbf63692d5d2cdd69622e6d7ecae317",
-    "/eventure/index.html": "887a5a95a2860e6f77b9d9d9aa42918bd9cf4d91",
-    "/eventure/main.1c6fe09128edc8f8089e.js": "b4bffb5263ccc81dc303db6e7ed5785f3fd1d0f5",
-    "/eventure/polyfills.e122ce11a0bfface46c7.js": "2eae7edf54a88cf84ef080d0abee952969311584",
-    "/eventure/runtime.540e336ed5c7787cff82.js": "44029cea93b28f99c849a690c94e079cea10acc1",
-    "/eventure/styles.241382b79490cc30d843.css": "3a9b62537794b3dcce4370dd88718738b3b71d77"
+    "/assessment/0.1191ca85429781e5c5e6.js": "bbfa465c6f449e7587243f901e84e78e437392ce",
+    "/assessment/assets/ngx-rocket-logo.png": "0ac53fd27406fe5a36e68285315fb0012e54058e",
+    "/assessment/favicon.ico": "b65083d46bbf63692d5d2cdd69622e6d7ecae317",
+    "/assessment/index.html": "6416261288d46fc12c6a9fe5a40175a21fd7922c",
+    "/assessment/main.1c6fe09128edc8f8089e.js": "b4bffb5263ccc81dc303db6e7ed5785f3fd1d0f5",
+    "/assessment/polyfills.e122ce11a0bfface46c7.js": "2eae7edf54a88cf84ef080d0abee952969311584",
+    "/assessment/runtime.540e336ed5c7787cff82.js": "44029cea93b28f99c849a690c94e079cea10acc1",
+    "/assessment/styles.241382b79490cc30d843.css": "3a9b62537794b3dcce4370dd88718738b3b71d77"
   },
   "navigationUrls": [
     {
