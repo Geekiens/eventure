@@ -11,6 +11,19 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
 </head>
 <body>
+
+
+    <script>
+        (function(){
+          var redirect = sessionStorage.redirect;
+          delete sessionStorage.redirect;
+          if (redirect && redirect != location.href) {
+            history.replaceState(null, null, redirect);
+          }
+        })();
+      </script>
+
+
   <!--[if lt IE 10]>
   <p>
     You are using an <strong>outdated</strong> browser.
