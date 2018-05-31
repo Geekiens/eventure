@@ -34,6 +34,11 @@ export class HomeComponent implements OnInit {
       clickToClose: true
     });
   }
+  stopTest() {
+    this.showInbox = false;
+    this.testCompleted = true;
+    this.counter.stop();
+  }
 
   notified(event: any) {
     console.log(event / 1000 );
