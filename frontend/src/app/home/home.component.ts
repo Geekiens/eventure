@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   quote: string;
   isLoading: boolean;
   showInbox = false;
+  testCompleted = false;
 
   constructor(private quoteService: QuoteService, private notificationsService: NotificationsService) { }
 
@@ -55,6 +56,8 @@ export class HomeComponent implements OnInit {
     });
   }
   onFinished() {
+    this.testCompleted = true;
+    this.showInbox = false;
     this.notificationsService.success('Test beendet', 'Sie erhalten in kürze ihr Feedback', {
       timeOut: 10000,
       showProgressBar: false,
