@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card>
 <div>
-    <button [disabled]="showInbox" (click)="startTimer()" mat-raised-button color="primary">Test starten</button>
+    <button style="margin-right:15px" [disabled]="showInbox" (click)="startTimer()" mat-raised-button color="primary">Test starten</button>
 
     <countdown [config]="{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}"
                (finished)="onFinished()"
@@ -9,6 +9,8 @@
                (notify)="notified($event)">
                $!m!:$!s!
     </countdown>
+    <button style="margin-left:15px"  *ngIf="showInbox" (click)="stopTest()" mat-raised-button color="warn">Test abschließen</button>
+
 </div>
 
   <div style="margin-top:20px; font-size: 2em;" *ngIf="testCompleted">Der Test ist abgeschlossen. <br><br>
