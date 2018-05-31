@@ -1,8 +1,21 @@
-<div style="text-align: left;" class="inboxWrapper">
+<div style="text-align: left" class="inboxWrapper">
 
-      <div style="float:left;" class="inboxElementWrapper">
+  <div style="float:left;" class="selectBoxWrapper">
+
+      <mat-card style="height:68vh">
+          <mat-card-title> 
+              Posteingang
+              <br>
+              Postausgang
+              <br>
+              Gelöscht
+          </mat-card-title>
+     
+    </mat-card>
+    </div>
+      <div id="bindCSSMail" style="float: left;" class="inboxElementWrapper">
                 <div *ngFor="let email of emails" class="mailElement"
-                     (click)="emailClicked(email)">
+                (click)="emailClicked(email)">
                      <mat-card>
                          
                   <div class="">
@@ -26,7 +39,7 @@
       </div>
 
       <div  class="detailWrapper">
-            <mat-card style="height: 65vh;">
+            <mat-card *ngIf="showMailText" style="height: 68vh;">
               <mat-card-content>
                 <mat-card-title> 
                     <span style="display: inline-block; width: 70%; ">Von: {{selectedEmail.absender}}</span>
@@ -34,17 +47,50 @@
                       {{selectedEmail.titel}}            
                 </mat-card-title>
                 <mat-card-subtitle>
-                  Antworten
+                  <div style="font-size: 1.2em">
+                    <span (click)="antwortenClicked()">Antworten</span>                  
+                    <span style="margin-left: 20px;" (click)="weiterleitenClicked()">Weiterleiten</span>
+                    <span style="margin-left: 20px;" (click)="loeschenClicked()">Löschen</span>
+                  </div>
+
                
                 </mat-card-subtitle>
               </mat-card-content>
-              <div class="">
-                <div style="height:40vh; overflow-y: scroll;"class="">
+              <div style="margin-bottom: 20px;">
+                <div style="height:25vh; overflow-y: scroll;"class="">
                   {{selectedEmail.text}}
                 </div>
               </div>
+
+              <hr style="">
+
               
+
+              <mat-tab-group *ngIf="hasAnswers && showAnswer" style="margin-top:5px;" class="demo-tab-group">
+
+                  <mat-tab *ngFor="let antwort of selectedEmail.antworten" label="{{antwort.titel}}">
+                    <div style="overflow-y: scroll; height:17vh; margin-top:5px;" [innerHTML]="antwort.text" class="demo-tab-content">
+                    </div>
+                    <button  (click)="startTimer()" mat-raised-button color="primary">Senden</button>
+                  
+                  </mat-tab>
+
+
+              </mat-tab-group>
+
+                <div style="height:22vh; margin-top:5px;">
+                  <mat-form-field *ngIf="!hasAnswers && showAnswer" style="width: 100%;">
+                      <textarea matInput matTextareaAutosize [matAutosizeMaxRows]=10 placeholder="Bitte beantworten Sie diese Mail"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <button *ngIf="showAnswer" (click)="startTimer()" mat-raised-button color="primary">Senden</button>
+
+
             </mat-card>
+
+
+           
       </div>
 
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
 
@@ -7,19 +8,28 @@ import { NotificationsService } from 'angular2-notifications';
 
 
 @Component({
+  encapsulation: ViewEncapsulation.None,
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.scss']
 })
 export class InboxComponent implements OnInit {
-
+  showMailText = false;
   emails: Email[];
   selectedEmail: Email = null;
+  hasAnswers = false;
+  showAnswer = false;
 
   constructor(private notificationsService: NotificationsService) { }
 
   emailClicked(email: Email) {
+    this.showAnswer = false;
     this.selectedEmail = email;
+    this.showMailText = true;
+    this.hasAnswers = this.selectedEmail.antworten.length > 0;
+  }
+  antwortenClicked() {
+    this.showAnswer = true;
   }
 
   ngOnInit() {
@@ -70,6 +80,7 @@ export class InboxComponent implements OnInit {
           absendeDatum: '2018-05-30',
           priortaet: 'normal',
           erscheintDirekt: true,
+          antworten: [],
         },
         {
           absender: 'Peter Müller',
@@ -79,6 +90,31 @@ export class InboxComponent implements OnInit {
           absendeDatum: '2018-05-30',
           priortaet: 'normal',
           erscheintDirekt: true,
+          antworten: [
+            {
+              titel: 'Erlaubnis',
+              text: `Hallo Herr Mustermann, <br> <br>
+                     hiermit bestätige ich Ihren Urlaubsantrag.<br><br>
+                     Viele Grüße<br>
+                     X`,
+              folgeMail: {
+                           absender: 'Max Mustermann',
+                           titel: 'Bewerbung4',
+                           text: ``,
+                           absendeDatum: '2018-05-30',
+                           priortaet: 'normal',
+                           erscheintDirekt: true,
+                           antworten: [{
+                                titel: 'Erlaubnis',
+                                text: 'Lorem ipsum 3',
+                           }],
+                         }
+            },
+            {
+              titel: 'Ablehnen',
+              text: 'Lorem ipsum  <br> test',
+            }
+        ],
         },
         {
           absender: 'Franz Meier',
@@ -88,6 +124,7 @@ export class InboxComponent implements OnInit {
           absendeDatum: '2018-05-30',
           priortaet: 'normal',
           erscheintDirekt: true,
+          antworten: [],
         },
         {
           absender: 'Max Mustermann',
@@ -97,6 +134,7 @@ export class InboxComponent implements OnInit {
           absendeDatum: '2018-05-30',
           priortaet: 'normal',
           erscheintDirekt: true,
+          antworten: [],
         },
         {
           absender: 'Max Mustermann',
@@ -106,6 +144,7 @@ export class InboxComponent implements OnInit {
           absendeDatum: '2018-05-30',
           priortaet: 'normal',
           erscheintDirekt: true,
+          antworten: [],
         },
         {
           absender: 'Max Mustermann',
@@ -115,8 +154,19 @@ export class InboxComponent implements OnInit {
           absendeDatum: '2018-05-30',
           priortaet: 'normal',
           erscheintDirekt: true,
+          antworten: [],
         },
-      ]
+        {
+          absender: 'Max Mustermann',
+          titel: 'Bewerbung4',
+          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
+          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
+          absendeDatum: '2018-05-30',
+          priortaet: 'normal',
+          erscheintDirekt: true,
+          antworten: [],
+        }
+      ];
   }
 }
 
@@ -128,5 +178,11 @@ export interface Email {
   priortaet?: string;
   erscheintDirekt: boolean;
   erscheintNachMS?: number;
+  antworten: Antwort[];
+}
+export interface Antwort {
+  titel: string;
+  text: string;
+  folgeMail?: Email;
 }
 
