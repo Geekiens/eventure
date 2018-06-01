@@ -35,6 +35,6 @@ public interface CreateTestApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> createTest(@ApiParam(value = "Test, der hinzugefügt wird"  )  @Valid @RequestBody Test test);
+    ResponseEntity<Test> createTest(@ApiParam(value = "Test, der hinzugefügt wird"  )  @Valid @RequestBody Test test);
 
 }

@@ -35,6 +35,6 @@ public interface CreateBewerberApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> createBewerber(@ApiParam(value = "Bewerber, der hinzugefügt wird"  )  @Valid @RequestBody Bewerber test);
+    ResponseEntity<Bewerber> createBewerber(@ApiParam(value = "Bewerber, der hinzugefügt wird"  )  @Valid @RequestBody Bewerber bewerber);
 
 }

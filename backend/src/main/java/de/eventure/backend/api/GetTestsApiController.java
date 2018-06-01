@@ -2,9 +2,12 @@ package de.eventure.backend.api;
 
 import de.eventure.backend.model.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.eventure.backend.repositories.TestRepository;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,9 @@ public class GetTestsApiController implements GetTestsApi {
 
     private static final Logger log = LoggerFactory.getLogger(GetTestsApiController.class);
 
+    @Autowired
+    private TestRepository testRepository;
+
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -40,15 +46,17 @@ public class GetTestsApiController implements GetTestsApi {
     public ResponseEntity<List<Test>> getTest() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<List<Test>>(objectMapper.readValue("[ {  \"emails\" : [ {    \"titel\" : \"titel\",    \"absender\" : \"absender\",    \"erscheintDirekt\" : true,    \"erscheintNachMS\" : 6,    \"text\" : \"text\",    \"prioritaet\" : \"prioritaet\",    \"id\" : 5.962133916683182377482808078639209270477294921875,    \"absendeDatum\" : \"absendeDatum\",    \"antworten\" : [ {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    }, {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    } ],    \"aktiv\" : true  }, {    \"titel\" : \"titel\",    \"absender\" : \"absender\",    \"erscheintDirekt\" : true,    \"erscheintNachMS\" : 6,    \"text\" : \"text\",    \"prioritaet\" : \"prioritaet\",    \"id\" : 5.962133916683182377482808078639209270477294921875,    \"absendeDatum\" : \"absendeDatum\",    \"antworten\" : [ {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    }, {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    } ],    \"aktiv\" : true  } ],  \"testFuer\" : \"testFuer\",  \"titel\" : \"titel\",  \"id\" : 5.63737665663332876420099637471139430999755859375,  \"zeit\" : 0,  \"aktiv\" : true}, {  \"emails\" : [ {    \"titel\" : \"titel\",    \"absender\" : \"absender\",    \"erscheintDirekt\" : true,    \"erscheintNachMS\" : 6,    \"text\" : \"text\",    \"prioritaet\" : \"prioritaet\",    \"id\" : 5.962133916683182377482808078639209270477294921875,    \"absendeDatum\" : \"absendeDatum\",    \"antworten\" : [ {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    }, {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    } ],    \"aktiv\" : true  }, {    \"titel\" : \"titel\",    \"absender\" : \"absender\",    \"erscheintDirekt\" : true,    \"erscheintNachMS\" : 6,    \"text\" : \"text\",    \"prioritaet\" : \"prioritaet\",    \"id\" : 5.962133916683182377482808078639209270477294921875,    \"absendeDatum\" : \"absendeDatum\",    \"antworten\" : [ {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    }, {      \"titel\" : \"titel\",      \"folgeMail\" : null,      \"text\" : \"text\",      \"id\" : 1.46581298050294517310021547018550336360931396484375    } ],    \"aktiv\" : true  } ],  \"testFuer\" : \"testFuer\",  \"titel\" : \"titel\",  \"id\" : 5.63737665663332876420099637471139430999755859375,  \"zeit\" : 0,  \"aktiv\" : true} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<Test>>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            HttpHeaders headers = new HttpHeaders();
+            //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "Content-Type");
+            //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS");
+            //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body((List<Test>) testRepository.findAll());
         }
 
-        return new ResponseEntity<List<Test>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<Test>>(HttpStatus.BAD_REQUEST);
     }
 
 }

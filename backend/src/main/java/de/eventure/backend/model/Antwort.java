@@ -87,7 +87,7 @@ public class Antwort   {
    * Get id
    * @return id
   **/
-   @ApiModelProperty(example = "23L", required = true, value = "")
+   @ApiModelProperty(required = true, value = "")
    @NotNull
 
   @Valid

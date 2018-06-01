@@ -35,6 +35,6 @@ public interface CreatePruefungApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> createPruefung(@ApiParam(value = "Pruefung, die hinzugefügt wird"  )  @Valid @RequestBody Pruefung test);
+    ResponseEntity<Pruefung> createPruefung(@ApiParam(value = "Pruefung, die hinzugefügt wird"  )  @Valid @RequestBody Pruefung pruefung);
 
 }

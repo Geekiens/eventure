@@ -35,6 +35,6 @@ public interface UpdatePruefungApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> updatePruefung(@ApiParam(value = "Pruefung, die bearbeitet wird"  )  @Valid @RequestBody Pruefung test);
+    ResponseEntity<Pruefung> updatePruefung(@ApiParam(value = "Pruefung, die bearbeitet wird"  )  @Valid @RequestBody Pruefung pruefung);
 
 }

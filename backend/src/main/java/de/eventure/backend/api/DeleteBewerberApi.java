@@ -35,6 +35,6 @@ public interface DeleteBewerberApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> deleteBewerber(@ApiParam(value = "ID des zu löschenden Bewerbers"  )  @Valid @RequestBody BigDecimal id);
+    ResponseEntity<Void> deleteBewerber(@ApiParam(value = "ID des zu löschenden Bewerbers"  )  @Valid @RequestBody Long id);
 
 }

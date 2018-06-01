@@ -31,8 +31,8 @@ public class Bewerber   {
   @JsonProperty("benutzername")
   private String benutzername = null;
 
-  @JsonProperty("passowrt")
-  private String passowrt = null;
+  @JsonProperty("passwort")
+  private String passwort = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -42,13 +42,13 @@ public class Bewerber   {
 
   @JsonProperty("beworbenFuer")
   private String beworbenFuer = null;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "Pruefung", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerber_id"), inverseJoinColumns = @JoinColumn(name = "pruefung_id"))
+/*
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "Pruefungen_Bewerber", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerber_id"), inverseJoinColumns = @JoinColumn(name = "pruefung_id"))
     @JsonProperty("pruefungen")
   @Valid
   private List<Pruefung> pruefungen = null;
-
+*/
 
   public Bewerber benutzername(String benutzername) {
     this.benutzername = benutzername;
@@ -71,24 +71,24 @@ public class Bewerber   {
     this.benutzername = benutzername;
   }
 
-  public Bewerber passowrt(String passowrt) {
-    this.passowrt = passowrt;
+  public Bewerber passwort (String passwort) {
+    this.passwort = passwort;
     return this;
   }
 
    /**
-   * Get passowrt
-   * @return passowrt
+   * Get passwort
+   * @return passwort
   **/
   @ApiModelProperty(example = "", value = "")
 
 
-  public String getPassowrt() {
-    return passowrt;
+  public String getpasswort() {
+    return passwort;
   }
 
-  public void setPassowrt(String passowrt) {
-    this.passowrt = passowrt;
+  public void setpasswort(String passwort) {
+    this.passwort = passwort;
   }
 
   public Bewerber name(String name) {
@@ -169,6 +169,7 @@ public class Bewerber   {
     this.beworbenFuer = beworbenFuer;
   }
 
+  /*
   public Bewerber pruefungen(List<Pruefung> pruefungen) {
     this.pruefungen = pruefungen;
     return this;
@@ -181,11 +182,12 @@ public class Bewerber   {
     this.pruefungen.add(pruefungenItem);
     return this;
   }
-
+*/
    /**
    * Get pruefungen
    * @return pruefungen
   **/
+  /*
   @ApiModelProperty(value = "")
 
   @Valid
@@ -197,7 +199,7 @@ public class Bewerber   {
   public void setPruefungen(List<Pruefung> pruefungen) {
     this.pruefungen = pruefungen;
   }
-
+*/
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -209,17 +211,17 @@ public class Bewerber   {
     }
     Bewerber bewerber = (Bewerber) o;
     return Objects.equals(this.benutzername, bewerber.benutzername) &&
-        Objects.equals(this.passowrt, bewerber.passowrt) &&
+        Objects.equals(this.passwort, bewerber.passwort) &&
         Objects.equals(this.name, bewerber.name) &&
             Objects.equals(this.id, bewerber.id) &&
             Objects.equals(this.mailAdresse, bewerber.mailAdresse) &&
-        Objects.equals(this.beworbenFuer, bewerber.beworbenFuer) &&
-        Objects.equals(this.pruefungen, bewerber.pruefungen);
+        Objects.equals(this.beworbenFuer, bewerber.beworbenFuer);
+       // Objects.equals(this.pruefungen, bewerber.pruefungen);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(benutzername, passowrt, name, mailAdresse, beworbenFuer, pruefungen);
+    return Objects.hash(benutzername, passwort, name, mailAdresse, beworbenFuer);
   }
 
   @Override
@@ -228,11 +230,10 @@ public class Bewerber   {
     sb.append("class Bewerber {\n");
     
     sb.append("    benutzername: ").append(toIndentedString(benutzername)).append("\n");
-    sb.append("    passowrt: ").append(toIndentedString(passowrt)).append("\n");
+    sb.append("    passwort: ").append(toIndentedString(passwort)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    mailAdresse: ").append(toIndentedString(mailAdresse)).append("\n");
     sb.append("    beworbenFuer: ").append(toIndentedString(beworbenFuer)).append("\n");
-    sb.append("    pruefungen: ").append(toIndentedString(pruefungen)).append("\n");
     sb.append("}");
     return sb.toString();
   }

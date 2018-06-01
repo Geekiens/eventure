@@ -34,7 +34,7 @@ public class Ergebnis   {
   private Integer verbleibendeZeit = null;
 
   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "bewerberReaktion", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "ergebnis_videoPfad"))
+  @JoinTable(name = "bewerberReaktion", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "ergebnis_id"))
   @JsonProperty("bewerberReaktionen")
   private BewerberReaktionen bewerberReaktionen = null;
 

@@ -33,6 +33,6 @@ public interface GetAbgeschlossenePruefungenFuerBewerberApi {
     @RequestMapping(value = "/getAbgeschlossenePruefungenFuerBewerber",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Pruefung>> getAbgeschlossenePruefungenFuerBewerber(@ApiParam(value = "Benutzername des Bewerbers") @Valid @RequestParam(value = "benutzername", required = false) String benutzername);
+    ResponseEntity<List<Pruefung>> getAbgeschlossenePruefungenFuerBewerber(@ApiParam(value = "Benutzername des Bewerbers") @Valid @RequestParam(value = "id", required = false) Long id);
 
 }

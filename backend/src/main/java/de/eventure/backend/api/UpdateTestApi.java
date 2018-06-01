@@ -35,6 +35,6 @@ public interface UpdateTestApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateTest(@ApiParam(value = "Test, der bearbeitet wird"  )  @Valid @RequestBody Test test);
+    ResponseEntity<Test> updateTest(@ApiParam(value = "Test, der bearbeitet wird"  )  @Valid @RequestBody Test test);
 
 }

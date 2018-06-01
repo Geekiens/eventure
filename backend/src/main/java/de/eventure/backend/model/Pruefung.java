@@ -23,17 +23,17 @@ import javax.validation.constraints.*;
 @Entity
 public class Pruefung   {
   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "test", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "test_id"))
+  @JoinTable(name = "pruefung_test", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "test_id"))
   @JsonProperty("test")
   private Test test = null;
 
   @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "bewerber", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "bewerber_id"))
-  @JsonProperty("bewerber")
+  @JoinTable(name = "Prueflinge", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "bewerber_id"))
+  @JsonProperty("Bewerber")
   private Bewerber bewerber = null;
 
   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "ergebnis", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "ergebnis_id"))
+  @JoinTable(name = "Ergebnisse", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "ergebnis_id"))
   @JsonProperty("Ergebnis")
   private Ergebnis ergebnis = null;
 

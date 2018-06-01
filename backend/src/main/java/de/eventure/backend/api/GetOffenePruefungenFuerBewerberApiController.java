@@ -1,10 +1,15 @@
 package de.eventure.backend.api;
 
+import de.eventure.backend.model.Bewerber;
 import de.eventure.backend.model.Pruefung;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.eventure.backend.repositories.BewerberRepository;
+import de.eventure.backend.repositories.PruefungRepository;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +32,12 @@ public class GetOffenePruefungenFuerBewerberApiController implements GetOffenePr
 
     private static final Logger log = LoggerFactory.getLogger(GetOffenePruefungenFuerBewerberApiController.class);
 
+    @Autowired
+    private PruefungRepository pruefungRepository;
+
+    @Autowired
+    private BewerberRepository bewerberRepository;
+
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -37,18 +48,20 @@ public class GetOffenePruefungenFuerBewerberApiController implements GetOffenePr
         this.request = request;
     }
 
-    public ResponseEntity<List<Pruefung>> getOffenePruefungenFuerBewerber(@ApiParam(value = "Benutzername des Bewerbers") @Valid @RequestParam(value = "benutzername", required = false) String benutzername) {
+    public ResponseEntity<List<Pruefung>> getOffenePruefungenFuerBewerber(@ApiParam(value = "ID des Bewerbers") @Valid @RequestParam(value = "id", required = false) Long id) {
         String accept = request.getHeader("Accept");
+        Bewerber bewerber = bewerberRepository.findOne(id);
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<List<Pruefung>>(objectMapper.readValue("[ {  \"bewerber\" : {    \"name\" : \"\",    \"mailAdresse\" : \"\",    \"benutzername\" : \"\",    \"passowrt\" : \"\",    \"beworbenFuer\" : \"\",    \"pruefungen\" : [ null, null ]  },  \"test\" : {    \"emails\" : [ {      \"titel\" : \"titel\",      \"absender\" : \"absender\",      \"erscheintDirekt\" : true,      \"erscheintNachMS\" : 6,      \"text\" : \"text\",      \"prioritaet\" : \"prioritaet\",      \"id\" : 5.962133916683182377482808078639209270477294921875,      \"absendeDatum\" : \"absendeDatum\",      \"antworten\" : [ {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      }, {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      } ],      \"aktiv\" : true    }, {      \"titel\" : \"titel\",      \"absender\" : \"absender\",      \"erscheintDirekt\" : true,      \"erscheintNachMS\" : 6,      \"text\" : \"text\",      \"prioritaet\" : \"prioritaet\",      \"id\" : 5.962133916683182377482808078639209270477294921875,      \"absendeDatum\" : \"absendeDatum\",      \"antworten\" : [ {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      }, {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      } ],      \"aktiv\" : true    } ],    \"testFuer\" : \"testFuer\",    \"titel\" : \"titel\",    \"id\" : 5.63737665663332876420099637471139430999755859375,    \"zeit\" : 0,    \"aktiv\" : true  },  \"Ergebnis\" : {    \"videoPfad\" : \"videoPfad\",    \"verbleibendeZeit\" : 2,    \"bewerberReaktionen\" : {      \"reaktionsArt\" : \"reaktionsArt\",      \"text\" : \"text\",      \"email\" : {        \"titel\" : \"titel\",        \"absender\" : \"absender\",        \"erscheintDirekt\" : true,        \"erscheintNachMS\" : 6,        \"text\" : \"text\",        \"prioritaet\" : \"prioritaet\",        \"id\" : 5.962133916683182377482808078639209270477294921875,        \"absendeDatum\" : \"absendeDatum\",        \"antworten\" : [ {          \"titel\" : \"titel\",          \"folgeMail\" : null,          \"text\" : \"text\",          \"id\" : 1.46581298050294517310021547018550336360931396484375        }, {          \"titel\" : \"titel\",          \"folgeMail\" : null,          \"text\" : \"text\",          \"id\" : 1.46581298050294517310021547018550336360931396484375        } ],        \"aktiv\" : true      }    }  },  \"id\" : 7.061401241503109105224211816675961017608642578125,  \"status\" : \"status\"}, {  \"bewerber\" : {    \"name\" : \"\",    \"mailAdresse\" : \"\",    \"benutzername\" : \"\",    \"passowrt\" : \"\",    \"beworbenFuer\" : \"\",    \"pruefungen\" : [ null, null ]  },  \"test\" : {    \"emails\" : [ {      \"titel\" : \"titel\",      \"absender\" : \"absender\",      \"erscheintDirekt\" : true,      \"erscheintNachMS\" : 6,      \"text\" : \"text\",      \"prioritaet\" : \"prioritaet\",      \"id\" : 5.962133916683182377482808078639209270477294921875,      \"absendeDatum\" : \"absendeDatum\",      \"antworten\" : [ {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      }, {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      } ],      \"aktiv\" : true    }, {      \"titel\" : \"titel\",      \"absender\" : \"absender\",      \"erscheintDirekt\" : true,      \"erscheintNachMS\" : 6,      \"text\" : \"text\",      \"prioritaet\" : \"prioritaet\",      \"id\" : 5.962133916683182377482808078639209270477294921875,      \"absendeDatum\" : \"absendeDatum\",      \"antworten\" : [ {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      }, {        \"titel\" : \"titel\",        \"folgeMail\" : null,        \"text\" : \"text\",        \"id\" : 1.46581298050294517310021547018550336360931396484375      } ],      \"aktiv\" : true    } ],    \"testFuer\" : \"testFuer\",    \"titel\" : \"titel\",    \"id\" : 5.63737665663332876420099637471139430999755859375,    \"zeit\" : 0,    \"aktiv\" : true  },  \"Ergebnis\" : {    \"videoPfad\" : \"videoPfad\",    \"verbleibendeZeit\" : 2,    \"bewerberReaktionen\" : {      \"reaktionsArt\" : \"reaktionsArt\",      \"text\" : \"text\",      \"email\" : {        \"titel\" : \"titel\",        \"absender\" : \"absender\",        \"erscheintDirekt\" : true,        \"erscheintNachMS\" : 6,        \"text\" : \"text\",        \"prioritaet\" : \"prioritaet\",        \"id\" : 5.962133916683182377482808078639209270477294921875,        \"absendeDatum\" : \"absendeDatum\",        \"antworten\" : [ {          \"titel\" : \"titel\",          \"folgeMail\" : null,          \"text\" : \"text\",          \"id\" : 1.46581298050294517310021547018550336360931396484375        }, {          \"titel\" : \"titel\",          \"folgeMail\" : null,          \"text\" : \"text\",          \"id\" : 1.46581298050294517310021547018550336360931396484375        } ],        \"aktiv\" : true      }    }  },  \"id\" : 7.061401241503109105224211816675961017608642578125,  \"status\" : \"status\"} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<Pruefung>>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            HttpHeaders headers = new HttpHeaders();
+            //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "Content-Type");
+            //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS");
+            //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body((List<Pruefung>) pruefungRepository.findAllByBewerberEqualsAndStatusEquals(bewerber, "offen"));
         }
 
-        return new ResponseEntity<List<Pruefung>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<Pruefung>>(HttpStatus.BAD_REQUEST);
     }
-
 }

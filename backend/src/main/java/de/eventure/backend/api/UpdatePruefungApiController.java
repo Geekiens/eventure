@@ -2,9 +2,12 @@ package de.eventure.backend.api;
 
 import de.eventure.backend.model.Pruefung;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.eventure.backend.repositories.PruefungRepository;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,10 @@ public class UpdatePruefungApiController implements UpdatePruefungApi {
 
     private static final Logger log = LoggerFactory.getLogger(UpdatePruefungApiController.class);
 
+    @Autowired
+    private PruefungRepository pruefungRepository;
+
+
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -37,9 +44,21 @@ public class UpdatePruefungApiController implements UpdatePruefungApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> updatePruefung(@ApiParam(value = "Pruefung, die bearbeitet wird"  )  @Valid @RequestBody Pruefung test) {
+    public ResponseEntity<Pruefung> updatePruefung(@ApiParam(value = "Pruefung, die bearbeitet wird"  )  @Valid @RequestBody Pruefung pruefung) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        String content = request.getHeader("Content-Type");
+        if (accept != null && accept.contains("application/json") && content != null && content.contains("application/json")) {
+            if (!pruefungRepository.exists(pruefung.getId())) {
+                return new ResponseEntity<Pruefung>(HttpStatus.CONFLICT);
+            }
+            pruefung = pruefungRepository.save(pruefung);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(pruefung);
+        }
+        return new ResponseEntity<Pruefung>(HttpStatus.BAD_REQUEST);
     }
 
 }

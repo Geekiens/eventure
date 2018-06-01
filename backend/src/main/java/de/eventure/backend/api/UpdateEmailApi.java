@@ -35,6 +35,6 @@ public interface UpdateEmailApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateEmail(@ApiParam(value = "Email, bearbeitet wurde"  )  @Valid @RequestBody Email test);
+    ResponseEntity<Email> updateEmail(@ApiParam(value = "Email, bearbeitet wurde"  )  @Valid @RequestBody Email email);
 
 }

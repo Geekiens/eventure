@@ -33,6 +33,6 @@ public interface GetOffenePruefungenFuerBewerberApi {
     @RequestMapping(value = "/getOffenePruefungenFuerBewerber",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Pruefung>> getOffenePruefungenFuerBewerber(@ApiParam(value = "Benutzername des Bewerbers") @Valid @RequestParam(value = "benutzername", required = false) String benutzername);
+    ResponseEntity<List<Pruefung>> getOffenePruefungenFuerBewerber(@ApiParam(value = "ID des Bewerbers") @Valid @RequestParam(value = "id", required = false) Long id);
 
 }

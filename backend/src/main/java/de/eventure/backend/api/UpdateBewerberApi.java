@@ -35,6 +35,6 @@ public interface UpdateBewerberApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateBewerber(@ApiParam(value = "Bewerber, der bearbeitet wird"  )  @Valid @RequestBody Bewerber test);
+    ResponseEntity<Bewerber> updateBewerber(@ApiParam(value = "Bewerber, der bearbeitet wird"  )  @Valid @RequestBody Bewerber bewerber);
 
 }
