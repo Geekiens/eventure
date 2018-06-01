@@ -35,6 +35,6 @@ public interface DeletePruefungApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> deletePruefung(@ApiParam(value = "ID der zu löschenden Prüfung"  )  @Valid @RequestBody BigDecimal id);
+    ResponseEntity<Void> deletePruefung(@ApiParam(value = "ID der zu löschenden Prüfung"  )  @Valid @RequestBody Long id);
 
 }

@@ -35,6 +35,6 @@ public interface DeleteEmailApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> deleteEmail(@ApiParam(value = "ID der zu löschenden Email"  )  @Valid @RequestBody BigDecimal id);
+    ResponseEntity<Void> deleteEmail(@ApiParam(value = "ID der zu löschenden Email"  )  @Valid @RequestBody Long id);
 
 }

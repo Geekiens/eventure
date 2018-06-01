@@ -35,6 +35,6 @@ public interface DeleteTestApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> deleteTest(@ApiParam(value = "ID des zu löschenden Test"  )  @Valid @RequestBody BigDecimal id);
+    ResponseEntity<Void> deleteTest(@ApiParam(value = "ID des zu löschenden Test"  )  @Valid @RequestBody Long id);
 
 }
