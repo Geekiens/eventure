@@ -35,6 +35,6 @@ public interface CreateEmailApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> createEmail(@ApiParam(value = "Email, die hinzugefügt wird"  )  @Valid @RequestBody Email test);
+    ResponseEntity<Email> createEmail(@ApiParam(value = "Email, die hinzugefügt wird"  )  @Valid @RequestBody Email email);
 
 }

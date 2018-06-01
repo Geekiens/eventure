@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -18,7 +20,14 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
+@Entity
 public class Bewerber   {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @JsonProperty("id")
+    private Long id = null;
+
   @JsonProperty("benutzername")
   private String benutzername = null;
 
@@ -34,9 +43,12 @@ public class Bewerber   {
   @JsonProperty("beworbenFuer")
   private String beworbenFuer = null;
 
-  @JsonProperty("pruefungen")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "Pruefung", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerber_id"), inverseJoinColumns = @JoinColumn(name = "pruefung_id"))
+    @JsonProperty("pruefungen")
   @Valid
   private List<Pruefung> pruefungen = null;
+
 
   public Bewerber benutzername(String benutzername) {
     this.benutzername = benutzername;
@@ -104,7 +116,25 @@ public class Bewerber   {
     return this;
   }
 
-   /**
+    /**
+     * Get id
+     * @return id
+     **/
+    @ApiModelProperty(value = "")
+
+    @Valid
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
+    /**
    * Get mailAdresse
    * @return mailAdresse
   **/
@@ -181,7 +211,8 @@ public class Bewerber   {
     return Objects.equals(this.benutzername, bewerber.benutzername) &&
         Objects.equals(this.passowrt, bewerber.passowrt) &&
         Objects.equals(this.name, bewerber.name) &&
-        Objects.equals(this.mailAdresse, bewerber.mailAdresse) &&
+            Objects.equals(this.id, bewerber.id) &&
+            Objects.equals(this.mailAdresse, bewerber.mailAdresse) &&
         Objects.equals(this.beworbenFuer, bewerber.beworbenFuer) &&
         Objects.equals(this.pruefungen, bewerber.pruefungen);
   }

@@ -7,6 +7,8 @@ import de.eventure.backend.model.BewerberReaktionen;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,13 +18,23 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
+@Entity
 public class Ergebnis   {
   @JsonProperty("videoPfad")
   private String videoPfad = null;
 
+
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
+  @JsonProperty("id")
+  private Long id = null;
+
+
   @JsonProperty("verbleibendeZeit")
   private Integer verbleibendeZeit = null;
 
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinTable(name = "bewerberReaktion", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "ergebnis_videoPfad"))
   @JsonProperty("bewerberReaktionen")
   private BewerberReaktionen bewerberReaktionen = null;
 
@@ -51,7 +63,26 @@ public class Ergebnis   {
     return this;
   }
 
-   /**
+  /**
+   * Get id
+   * @return id
+   **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+
+
+
+  /**
    * Get verbleibendeZeit
    * @return verbleibendeZeit
   **/
@@ -99,6 +130,7 @@ public class Ergebnis   {
     Ergebnis ergebnis = (Ergebnis) o;
     return Objects.equals(this.videoPfad, ergebnis.videoPfad) &&
         Objects.equals(this.verbleibendeZeit, ergebnis.verbleibendeZeit) &&
+            Objects.equals(this.id, ergebnis.id) &&
         Objects.equals(this.bewerberReaktionen, ergebnis.bewerberReaktionen);
   }
 

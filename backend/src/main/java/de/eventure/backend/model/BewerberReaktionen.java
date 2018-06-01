@@ -7,6 +7,8 @@ import de.eventure.backend.model.Email;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,7 +18,15 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
+@Entity
 public class BewerberReaktionen   {
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
+  @JsonProperty("id")
+  private Long id = null;
+
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinTable(name = "email_reaktionen", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerberReaktionen_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
   @JsonProperty("email")
   private Email email = null;
 
@@ -77,6 +87,26 @@ public class BewerberReaktionen   {
    * Get text
    * @return text
   **/
+
+
+  /**
+   * Get id
+   * @return id
+   **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+
+
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -100,8 +130,9 @@ public class BewerberReaktionen   {
     }
     BewerberReaktionen bewerberReaktionen = (BewerberReaktionen) o;
     return Objects.equals(this.email, bewerberReaktionen.email) &&
-        Objects.equals(this.reaktionsArt, bewerberReaktionen.reaktionsArt) &&
-        Objects.equals(this.text, bewerberReaktionen.text);
+            Objects.equals(this.id, bewerberReaktionen.id) &&
+            Objects.equals(this.reaktionsArt, bewerberReaktionen.reaktionsArt) &&
+            Objects.equals(this.text, bewerberReaktionen.text);
   }
 
   @Override

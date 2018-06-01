@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import de.eventure.backend.model.Email;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -17,6 +18,7 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
+@Entity
 public class Antwort   {
   @JsonProperty("titel")
   private String titel = null;
@@ -24,10 +26,14 @@ public class Antwort   {
   @JsonProperty("text")
   private String text = null;
 
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
   @JsonProperty("id")
-  private BigDecimal id = null;
+  private Long id = null;
 
-  @JsonProperty("folgeMail")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "folgeMail", joinColumns = @JoinColumn(referencedColumnName = "id", name = "antwort_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
+    @JsonProperty("folgeMail")
   private Email folgeMail = null;
 
   public Antwort titel(String titel) {
@@ -72,7 +78,7 @@ public class Antwort   {
     this.text = text;
   }
 
-  public Antwort id(BigDecimal id) {
+  public Antwort id(Long id) {
     this.id = id;
     return this;
   }
@@ -81,15 +87,16 @@ public class Antwort   {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(value = "")
+   @ApiModelProperty(example = "23L", required = true, value = "")
+   @NotNull
 
   @Valid
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

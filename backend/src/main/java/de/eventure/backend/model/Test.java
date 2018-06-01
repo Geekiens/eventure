@@ -6,10 +6,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import de.eventure.backend.model.Email;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -19,19 +20,25 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
+@Entity
 public class Test   {
   @JsonProperty("zeit")
   private Integer zeit = null;
 
   @JsonProperty("emails")
   @Valid
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinTable(name = "emails", joinColumns = @JoinColumn(referencedColumnName = "id", name = "test_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
+
   private List<Email> emails = new ArrayList<Email>();
 
   @JsonProperty("titel")
   private String titel = null;
 
   @JsonProperty("id")
-  private BigDecimal id = null;
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
+  private Long id = null;
 
   @JsonProperty("testFuer")
   private String testFuer = null;
@@ -108,7 +115,7 @@ public class Test   {
     this.titel = titel;
   }
 
-  public Test id(BigDecimal id) {
+  public Test id(Long id) {
     this.id = id;
     return this;
   }
@@ -121,11 +128,11 @@ public class Test   {
 
   @Valid
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

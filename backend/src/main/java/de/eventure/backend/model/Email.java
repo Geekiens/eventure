@@ -6,10 +6,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import de.eventure.backend.model.Antwort;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -19,6 +20,7 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
+@Entity
 public class Email   {
   @JsonProperty("titel")
   private String titel = null;
@@ -42,11 +44,15 @@ public class Email   {
   private Integer erscheintNachMS = null;
 
   @JsonProperty("antworten")
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinTable(name = "antworten", joinColumns = @JoinColumn(referencedColumnName = "id", name = "email_id"), inverseJoinColumns = @JoinColumn(name = "antwort_id"))
   @Valid
   private List<Antwort> antworten = null;
 
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
   @JsonProperty("id")
-  private BigDecimal id = null;
+  private Long id = null;
 
   @JsonProperty("aktiv")
   private Boolean aktiv = null;
@@ -223,7 +229,7 @@ public class Email   {
     this.antworten = antworten;
   }
 
-  public Email id(BigDecimal id) {
+  public Email id(Long id) {
     this.id = id;
     return this;
   }
@@ -232,15 +238,15 @@ public class Email   {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(value = "")
-
+   @ApiModelProperty(example = "23L", required = true, value = "")
+  @NotNull
   @Valid
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
