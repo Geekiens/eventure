@@ -1,0 +1,128 @@
+<div class="container">
+  <mat-card style="height:90vh; width:30%; float:left">
+    <h3>
+      <mat-card-title>
+
+
+        <button style=" width: 60%" (click)="toogleBewerber()" mat-raised-button color="primary">
+          <span *ngIf="showAllBewerber">Bewerber mit abgeschlossener Prüfung</span>
+          <span *ngIf="!showAllBewerber">Alle Bewerber</span>
+        </button>
+
+        <i (click)="addBewerber()" matTooltip="Neuen Bewerber anlegen"
+        [matTooltipPosition]="'above'"style="font-size: 1.8em; float: right;" class="material-icons">
+          person_add
+        </i>
+
+        <div (click)="showBewerber('BEWERBER EINFÜGEN')" style="text-align: left; margin-top: 20px;">
+          <span class="dot"></span>
+          <span style="margin-right: 20px">Bewerbername</span>
+          <span>Entwickler</span>
+          <br>
+
+          <span class="dot_yellow"></span>
+          <span style="margin-right: 20px">Bewerbername</span>
+          <span>Abteilungsleiter</span>
+          <br>
+
+          <span class="dot_red"></span>
+          <span style="margin-right: 20px">Bewerbername</span>
+          <span>Human Resource</span>
+        </div>
+
+      </mat-card-title>
+    </h3>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card>
+
+
+
+  <mat-card style="margin-left:1%; width:69%;  height:90vh;  float:right">
+    <mat-card-title style="text-align: left; font-size:1.4em">
+
+      <span style="display: inline-block; width: 20%">Name:</span>
+      <span style="display: inline-block; width: 25%">Bewerbername</span>
+
+      <span style="display: inline-block; width: 20%">Benutzername:</span>
+      <span style="display: inline-block; width: 30%">User</span>
+
+      <br>
+
+      <span style="display: inline-block; width: 20%">Angestrebte Position:</span>
+      <span style="display: inline-block; width: 25%">Position</span>
+
+      <span style="display: inline-block; width: 20%">Email:</span>
+      <span style="display: inline-block; width: 30%">max.braemer@tu-dortmund.de</span>
+
+      <br>
+
+      <span style="display: inline-block; width: 20%">Berwerbungsstatus:</span>
+      <span style="display: inline-block; width: 25%">In Bearbeitung</span>
+
+      <button style="width: 20%" (click)="generatePassword()" mat-raised-button color="primary">Neues Passwort generieren</button>
+
+
+
+
+
+
+    </mat-card-title>
+
+
+
+    <mat-card-content style="text-align: left; font-size: 1.2em">
+
+      <br>
+      <b>2</b> abgeschlossene Tests des Bewerbes müssen bewertet werden.
+
+      <br> Der Beweber hat keine offenen Tests
+      <br>
+
+
+
+      <div style="margin-top: 25px;">
+
+        <div style="margin-bottom: 20px;">
+          <span matTooltip="Neuen Test für den Bewerber freischalten"
+               [matTooltipPosition]="'after'" (click)="addTestToBewerber()">
+            <i style="font-size: 1.8em;" class="material-icons">
+                note_add
+            </i>
+
+          </span>
+        </div>
+
+        <mat-card style="width:47%; margin-right: 3%; float: left;">
+          <mat-card-title>
+            Test "Management 1"
+            <span style="float: right;" class="dot_yellow"></span>
+
+          </mat-card-title>
+          <mat-card-content style="text-align: left; font-size: 0.9em">
+            Benöigte Zeit: 20:00 von 20:00 <br>
+            Emails beantwortet: 10 <br>
+            Emails weitergeleitet 5 <br>
+            Emails gelöscht: 2 <br>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card style="width:47%; margin-right: 3%; float:left">
+          <mat-card-title>
+            Test "Management 2"
+            <span style="float: right;" class="dot_yellow"></span>
+
+          </mat-card-title>
+          <mat-card-content style="text-align: left; font-size: 0.9em">
+              Benöigte Zeit: 14:10 von 15:00 <br>
+              Emails beantwortet: 7 <br>
+              Emails weitergeleitet 8 <br>
+              Emails gelöscht: 0 <br>
+            </mat-card-content>
+ 
+        </mat-card>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

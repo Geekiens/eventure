@@ -1,0 +1,54 @@
+<div style="text-align: left">
+    <mat-horizontal-stepper [linear]="false" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form>
+                <ng-template matStepLabel>Angaben zum Bewerber</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Angestrebte Position" formControlName="firstCtrl1">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="firstCtrl2" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Benutzername" formControlName="firstCtrl3" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Weiter</button>
+                    <button mat-button (click)="saveBewerber()">Bewerber ohne Tests speichern</button>
+
+
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form>
+                <ng-template matStepLabel>Tests hinzufügen</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Zurück</button>
+                    <button mat-button matStepperNext>Weiter</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Abschließen
+            </ng-template>
+            Wollen Sie den neuen Bewerber jetzt speichern?
+            <div>
+                <button mat-button matStepperPrevious>Ja</button>
+                <button mat-button (click)="stepper.reset()">Nein</button>
+                <button mat-button matStepperPrevious>Zurück</button>
+
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+
+</div>
