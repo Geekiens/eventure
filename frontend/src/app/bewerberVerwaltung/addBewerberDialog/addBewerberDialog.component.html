@@ -4,19 +4,19 @@
             <form>
                 <ng-template matStepLabel>Angaben zum Bewerber</ng-template>
                 <mat-form-field>
-                    <input matInput placeholder="Name" formControlName="firstCtrl" required>
+                    <input matInput placeholder="Name" required>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Angestrebte Position" formControlName="firstCtrl1">
+                    <input matInput placeholder="Angestrebte Position" >
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Email" formControlName="firstCtrl2" required>
+                    <input matInput placeholder="Email"  required>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Benutzername" formControlName="firstCtrl3" required>
+                    <input matInput placeholder="Benutzername" required>
                 </mat-form-field>
                 <div>
                     <button mat-button matStepperNext>Weiter</button>
@@ -27,16 +27,23 @@
             </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
-            <form>
+                <form>
                 <ng-template matStepLabel>Tests hinzufügen</ng-template>
-                <mat-form-field>
-                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
+                <h3>Tests auswählen</h3>
+
+               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'" [(ngModel)]="checked"  >Management 1</mat-checkbox></div>
+               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked1" >Management 2</mat-checkbox></div>
+               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked2" >Entwickler 1</mat-checkbox></div>
+               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked3" >Entwickler 1</mat-checkbox></div>
+               <div style="width: 50%; float: clear;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked4" >HR 1</mat-checkbox></div>
+
+            
+
                 <div>
                     <button mat-button matStepperPrevious>Zurück</button>
                     <button mat-button matStepperNext>Weiter</button>
                 </div>
-            </form>
+                </form>
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Abschließen

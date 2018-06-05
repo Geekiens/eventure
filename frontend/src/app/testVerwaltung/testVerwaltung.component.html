@@ -1,5 +1,147 @@
 <div class="container">
-  <mat-card style="height:90vh; width:100%; float:left">
+  <mat-card style="height:90vh; margin-top: 1vw; margin-left:1vw; width:19vw; float:left">
+    <h3>
+      <span (click)="createTest()">
+        <i class="material-icons">
+            add_circle_outline
+            </i>
+            Neuen Test erstellen
+          </span>
+      <mat-card-title>
 
+        <div style="margin-top:15px;">
+        <mat-accordion >
+          <mat-expansion-panel  (opened)="openDetails()" (closed)="closeDetails()">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Management 1
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div style ="text-align:left">
+            Enthält <b>21</b> Emails <br>
+            Zeitlimit: 
+            <mat-form-field>
+              <input matInput value="20">
+            </mat-form-field>
+            <br>
+            Position: Abteilungsleiter
+
+          </div>
+
+ 
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Management 2
+              </mat-panel-title>
+              <mat-panel-description>
+
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Entwickler 1
+                </mat-panel-title>
+                <mat-panel-description>
+  
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      </mat-card-title>
+    </h3>
+    <mat-card-content>
+    </mat-card-content>
   </mat-card>
+
+
+
+
+  <div *ngIf="showDetails" id="bindCSSMail" style="float: left;" class="inboxElementWrapper">
+      <div *ngFor="let email of emails" class="mailElement"
+      (click)="emailClicked(email)">
+           <mat-card>
+               
+        <div class="">
+          <div class="text-div">
+            {{email.absender}}
+          </div>
+          <div style="text-align: right">
+            {{email.absendeDatum}}
+          </div>
+        </div>
+        <div class="">
+          <div class="text-div">
+          {{email.titel}}
+          </div>
+          <div style="font-size: 0.8em; color:grey;"class="text-div">
+                  {{email.text}}
+          </div>
+        </div>
+      </mat-card>
+      </div>
+</div>
+
+
+
+
+
+      <div *ngIf="showDetails && selectedEmail != undefined" class="detailWrapper">
+          <mat-card  style="height: 90vh;">
+            <mat-card-content>
+              <mat-card-title> 
+                  <span style="display: inline-block; width: 70%; ">Von: {{selectedEmail.absender}}</span>
+                    <span>{{selectedEmail.absendeDatum}}</span>  <br>
+                    {{selectedEmail.titel}}            
+              </mat-card-title>
+              <mat-card-subtitle>
+    
+
+             
+              </mat-card-subtitle>
+            </mat-card-content>
+            <div style="margin-bottom: 20px;">
+              <div style="height:40vh; overflow-y: scroll;"class="">
+                {{selectedEmail.text}}
+              </div>
+            </div>
+
+            <hr style="margin-top: 30px;">
+
+            
+
+            <mat-tab-group *ngIf="hasAnswers" style="margin-top:5px;" class="demo-tab-group">
+
+                <mat-tab *ngFor="let antwort of selectedEmail.antworten" label="{{antwort.titel}}">
+                  <div style="overflow-y: scroll; height:17vh; margin-top:5px;" [innerHTML]="antwort.text" class="demo-tab-content">
+                  </div>
+                
+                </mat-tab>
+
+
+            </mat-tab-group>
+
+              <div *ngIf="!hasAnswers"  style="font-size: 1.3em; height:22vh; margin-top:40px;">
+                Es stehen keine Antwortoptionen zur Auswahl. Der Bewerber muss mit einem freien Text antworten.
+              </div>
+
+              <button *ngIf="showAnswer" (click)="startTimer()" mat-raised-button color="primary">Senden</button>
+
+
+          </mat-card>
+
+
+         
+    </div>
 </div>

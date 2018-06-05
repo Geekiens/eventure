@@ -1,0 +1,167 @@
+<div style="text-align: left; width: 51vw; float:left;">
+  <div style="float:left" class="metaDiv">
+    <mat-card style="height:100%">
+      <mat-card-content>
+        <mat-card-title>
+
+          <div style="width:100%">
+            <span style="width:15%; display: inline-block;"> Titel:
+            </span>
+            <span style="width:30%; display: inline-block; margin-right:5%;">
+              <mat-form-field style="width:100%">
+                <input matInput value="">
+              </mat-form-field>
+            </span>
+
+            <span style="width:15%; display: inline-block;"> Zeit:
+            </span>
+            <span style="width:30%; display: inline-block;">
+              <mat-form-field style="width:100%">
+                <input matInput value="">
+              </mat-form-field>
+            </span>
+
+          </div>
+
+          <div style="width:100%">
+            <span style="width:15%;  display: inline-block;"> Position:
+            </span>
+            <span style="width:30%;  display: inline-block;  margin-right:5%;">
+              <mat-form-field style="width:100%">
+                <input matInput value="">
+              </mat-form-field>
+            </span>
+
+            <span style="width:15%;  display: inline-block;"> Beschreibung:
+            </span>
+            <span style="width:30%;  display: inline-block;">
+              <mat-form-field style="width:100%">
+                <input matInput value="">
+              </mat-form-field>
+            </span>
+
+          </div>
+
+
+
+
+
+        </mat-card-title>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div id="bindCSSMail" style="float: left; margin-top: 1vh;" class="">
+      <mat-card style="width:20vw">
+          <div class="text-div">
+            <b>
+            Vorhandene Emails
+            </b>
+          
+        </div>
+      </mat-card>
+      <div *ngFor="let email of emails" class="mailElement" (click)="emailClicked(email)">
+        <mat-card style="width:20vw">
+            <div class="text-div">
+             <mat-checkbox [color]="'primary'"  >{{email.titel}}</mat-checkbox>
+
+              
+            
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    
+
+    <div id="bindCSSMail" style="float: left; margin-top: 1vh;" class="">
+        <button style="width:10vw; margin-top:70px;" (click)="console.log('test')" mat-raised-button color="primary">Auswahl hinzufügen</button>    <br>
+        <button style="width:10vw; margin-top:40px;"(click)="console.log('test')" mat-raised-button color="primary">Auswahl als Vorlage</button>       <br>
+        <button style="width:10vw; margin-top:40px;"(click)="console.log('test')" mat-raised-button color="primary">Neue Email erstellen</button>     <br>  
+   
+      
+      </div>
+
+
+
+  <div id="bindCSSMail" style="float: left; margin-top: 1vh;" class="">
+      <mat-card style="width:20vw">
+          <div class="text-div">
+            <b>
+            Emails im Test
+            </b>
+          
+        </div>
+      </mat-card>
+      <div *ngFor="let email of emails" class="mailElement" (click)="emailClicked(email)">
+        <mat-card style="width:20vw">
+            <div class="text-div">
+              <span style="display: inline-block; width: 100%;">
+                  <span style="display: inline-block; width:90%">
+             {{email.titel}} 
+             </span>
+             <span style="display: inline-block; width:5%">
+                <i class="material-icons">
+                    clear
+                    </i>
+                </span>
+              </span>
+
+              
+            
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="detailWrapper">
+  <mat-card *ngIf="showMailText" style="height: 88vh;">
+    <mat-card-content>
+      <mat-card-title>
+        <span style="display: inline-block; width: 70%; ">Von: {{selectedEmail.absender}}</span>
+        <span>{{selectedEmail.absendeDatum}}</span>
+        <br> {{selectedEmail.titel}}
+      </mat-card-title>
+      <mat-card-subtitle>
+
+
+
+      </mat-card-subtitle>
+    </mat-card-content>
+    <div style="margin-bottom: 20px;">
+      <div style="height:40vh; overflow-y: scroll;" class="">
+        {{selectedEmail.text}}
+      </div>
+    </div>
+
+    <hr style="">
+
+
+
+    <mat-tab-group *ngIf="hasAnswers" style="margin-top:5px;" class="demo-tab-group">
+
+        <mat-tab *ngFor="let antwort of selectedEmail.antworten" label="{{antwort.titel}}">
+          <div style="overflow-y: scroll; height:17vh; margin-top:5px;" [innerHTML]="antwort.text" class="demo-tab-content">
+          </div>
+        
+        </mat-tab>
+
+
+    </mat-tab-group>
+
+      <div *ngIf="!hasAnswers"  style="font-size: 1.3em; height:22vh; margin-top:40px;">
+        Es stehen keine Antwortoptionen zur Auswahl. Der Bewerber muss mit einem freien Text antworten.
+      </div>
+
+
+  </mat-card>
+
+
+
+</div>

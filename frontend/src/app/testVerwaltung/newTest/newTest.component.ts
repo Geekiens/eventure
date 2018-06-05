@@ -1,41 +1,34 @@
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Component, OnInit } from "@angular/core";
+import { finalize } from 'rxjs/operators';
+import { NotificationsService } from 'angular2-notifications';
 
-import { environment } from "@env/environment";
-import { Router } from "@angular/router";
+
+
+
 
 @Component({
-  selector: "app-testVerwaltung",
-  templateUrl: "./testVerwaltung.component.html",
-  styleUrls: ["./testVerwaltung.component.scss"]
+  encapsulation: ViewEncapsulation.None,
+  selector: 'app-new-test',
+  templateUrl: './newTest.component.html',
+  styleUrls: ['./newTest.component.scss']
 })
-export class TestVerwaltungComponent implements OnInit {
-  showDetails = false;
-  emails: Email[];
-  showAnswer = false;
-  selectedEmail: Email;
+export class NewTestComponent implements OnInit {
   showMailText = false;
+  emails: Email[];
+  selectedEmail: Email = null;
   hasAnswers = false;
+  showAnswer = false;
 
-  constructor(private router: Router) {}
-  createTest() {
-    this.router.navigate(['testVerwaltung/neuerTest']);  }
-  openDetails() {
-    this.showDetails = true;
-  }
-  closeDetails() {
-    this.showDetails = false;
-  }
+  constructor(private notificationsService: NotificationsService) { }
 
   emailClicked(email: Email) {
-    this.showAnswer = false;
-    this.selectedEmail = email;
-    this.showMailText = true;
-    this.hasAnswers = this.selectedEmail.antworten.length > 0;
+      this.showAnswer = true;
+      this.selectedEmail = email;
+      this.showMailText = true;
+      this.hasAnswers = this.selectedEmail.antworten.length > 0;
   }
-  antwortenClicked() {
-    this.showAnswer = true;
-  }
+
 
   ngOnInit() {
      this.emails = this.getEmails();

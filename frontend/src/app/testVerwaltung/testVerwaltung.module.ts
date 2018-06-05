@@ -6,6 +6,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@app/material.module';
 import { TestVerwaltungRoutingModule } from './testVerwaltung-routing.module';
 import { TestVerwaltungComponent } from './testVerwaltung.component';
+import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component';
+
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { TestVerwaltungComponent } from './testVerwaltung.component';
   ],
   declarations: [
     TestVerwaltungComponent,
+    NewTestComponent
   ],
 
 })
