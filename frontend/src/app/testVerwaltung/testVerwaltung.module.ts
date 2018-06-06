@@ -7,12 +7,16 @@ import { MaterialModule } from '@app/material.module';
 import { TestVerwaltungRoutingModule } from './testVerwaltung-routing.module';
 import { TestVerwaltungComponent } from './testVerwaltung.component';
 import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component';
+import { AddEmailDialogComponent } from './newTest/addEmailDialog/addEmailDialog.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     TranslateModule,
     FlexLayoutModule,
     MaterialModule,
@@ -20,8 +24,11 @@ import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component'
   ],
   declarations: [
     TestVerwaltungComponent,
-    NewTestComponent
+    NewTestComponent,
+    AddEmailDialogComponent
   ],
+  entryComponents: [AddEmailDialogComponent],
+
 
 })
 export class TestVerwaltungModule { }

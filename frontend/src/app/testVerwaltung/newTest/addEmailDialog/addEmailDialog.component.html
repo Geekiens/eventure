@@ -1,0 +1,87 @@
+<div style="text-align: left">
+    <mat-horizontal-stepper [linear]="false" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form>
+                <div style="float: left; width: 50%">
+                    <ng-template matStepLabel>Angaben zur Email</ng-template>
+                    <mat-form-field style="width:90%;">
+                        <input matInput placeholder="Titel" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field style="width:90%;">
+                        <input matInput placeholder="Absender" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field style="width:90%;">
+                        <input matInput placeholder="Absendedatum (Tage vor Test)" required>
+                    </mat-form-field>
+                    <br>
+                </div>
+                <div style="float: left; width: 50%">
+                    <mat-form-field style="width:99%;">
+                        <textarea matInput matTextareaAutosize [matAutosizeMaxRows]=9 [matAutosizeMinRows]=9 placeholder="Text der Email"></textarea>
+                    </mat-form-field>
+                </div>
+                <div style=" clear: both;">
+                    <button mat-button matStepperNext>Weiter</button>
+                    <button mat-button (click)="saveBewerber()">Bewerber ohne Tests speichern</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+                <div style="float: left; width: 50%">
+                    <ng-template matStepLabel>Antwortoptionen konfigurieren</ng-template>
+                    <button style="width:90%; margin-top:20px;" (click)="newOption()" mat-raised-button color="primary">Neue Antwortoption erstellen</button>
+                    <br>
+                    <span style="display:inline-block; margin-top: 20px;">
+                        <b>Hinzugefügte Optionen </b>
+                    </span>
+                    <br>
+                    
+                    <div id="bindCSSAntwortOption" style="margin-top: 10px; width: 100%">
+                    <mat-card *ngFor="let option of antwortOptionen" class="antwortOption" style="margin-top:5px; width:90%">
+                        <mat-card-title>
+                            {{option.titel}}
+                        </mat-card-title>
+                    </mat-card>
+                </div>
+
+
+                </div>
+
+                    
+
+                <div style="float: left; width: 50%">
+                    <mat-form-field style="width:99%;">
+                        <input [(ngModel)]=titel matInput placeholder="Titel" required>
+                    </mat-form-field>
+
+                    <mat-form-field style="width:99%;">
+                        <!-- <input matInput placeholder="Benutzername" required> -->
+                        <textarea matInput [(ngModel)]="text"  matTextareaAutosize [matAutosizeMaxRows]=9 [matAutosizeMinRows]=9 placeholder="Text der Antwort"></textarea>
+                    </mat-form-field>
+
+                    <button style="width:99%; margin-top:20px;" (click)="addAnwortOption()" mat-raised-button color="primary">Antwortoption hinzufügen</button>
+
+                </div>
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Zurück</button>
+                    <button mat-button matStepperNext>Weiter</button>
+                </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Abschließen
+            </ng-template>
+            Wollen Sie die neue Email jetzt speichern?
+            <div>
+                <button mat-button matStepperPrevious>Ja</button>
+                <button mat-button (click)="stepper.reset()">Nein</button>
+                <button mat-button matStepperPrevious>Zurück</button>
+
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+
+</div>

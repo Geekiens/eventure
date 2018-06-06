@@ -1,14 +1,17 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { Component, OnInit} from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDialog/addEmailDialog.component';
+
 
 
 
 
 
 @Component({
-  encapsulation: ViewEncapsulation.None,
   selector: 'app-new-test',
   templateUrl: './newTest.component.html',
   styleUrls: ['./newTest.component.scss']
@@ -20,7 +23,29 @@ export class NewTestComponent implements OnInit {
   hasAnswers = false;
   showAnswer = false;
 
-  constructor(private notificationsService: NotificationsService) { }
+  constructor(private notificationsService: NotificationsService, public dialog: MatDialog) { }
+
+
+  addEmail() {
+
+  }
+
+  useEmailAsTemplate() {
+
+  }
+
+  createEmail() {
+    let dialogRef = this.dialog.open(AddEmailDialogComponent, {
+      width: '80vw',
+      data: {  }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+
+  }
 
   emailClicked(email: Email) {
       this.showAnswer = true;
@@ -28,6 +53,9 @@ export class NewTestComponent implements OnInit {
       this.showMailText = true;
       this.hasAnswers = this.selectedEmail.antworten.length > 0;
   }
+
+
+
 
 
   ngOnInit() {

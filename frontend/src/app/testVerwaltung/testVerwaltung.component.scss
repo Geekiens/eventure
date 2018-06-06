@@ -1,4 +1,4 @@
-.inboxWrapper{
+#bindCSSTestVerwaltung .inboxWrapper{
     width: calc(100% - 3px);
     padding: 10px;
     margin-top: 15px;
@@ -9,10 +9,10 @@
 
   
 }
-#bindCSSMail .mat-card{
+#bindCSSTestVerwaltung #bindCSSMail .mat-card{
     padding: 8px 15px 8px 15px;
 }
-.selectBoxWrapper{
+#bindCSSTestVerwaltung .selectBoxWrapper{
     width: 15%;
     margin-top: 15px;
     padding: 10px;
@@ -23,7 +23,7 @@
 
 }
 
-.detailWrapper{
+#bindCSSTestVerwaltung .detailWrapper{
     //margin-left: calc(30% - 3px)
     width: 50%;
     margin-top: 15px;
@@ -34,7 +34,7 @@
   
 }
 
-.inboxElementWrapper{
+#bindCSSTestVerwaltung .inboxElementWrapper{
     margin-top: 10px;
     width: 30%;
     padding: 10px;
@@ -43,12 +43,12 @@
     display:inline-block;
 }
 
-.mailElement{
+#bindCSSTestVerwaltung .mailElement{
     margin-top:5px;
     width: calc(100% - 3px);
 }
 
-.text-div {
+#bindCSSTestVerwaltung .text-div {
     display: inline-block;
     overflow: hidden;
     height: 1.4em;
