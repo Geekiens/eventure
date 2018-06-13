@@ -3,6 +3,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
 
+import { SelectDateDialogComponent } from '@app/home/inbox/selectDateDialog/selectDateDialog.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 
@@ -20,7 +22,7 @@ export class InboxComponent implements OnInit {
   hasAnswers = false;
   showAnswer = false;
 
-  constructor(private notificationsService: NotificationsService) { }
+  constructor(private notificationsService: NotificationsService, public dialog: MatDialog) { }
 
   emailClicked(email: Email) {
     this.showAnswer = false;
@@ -30,6 +32,12 @@ export class InboxComponent implements OnInit {
   }
   antwortenClicked() {
     this.showAnswer = true;
+  }
+  aufTerminClicked() {
+    let dialogRef = this.dialog.open(SelectDateDialogComponent, {
+      width: '50vw',
+      data: {  }
+    });
   }
 
   ngOnInit() {

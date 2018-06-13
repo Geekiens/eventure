@@ -3,11 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
-import { BewerberVerwaltungComponent } from './bewerberVerwaltung.component';
+import { TestVerwaltungComponent } from './testVerwaltung.component';
 
-describe(' BewerberVerwaltungComponent', () => {
-  let component: BewerberVerwaltungComponent;
-  let fixture: ComponentFixture<BewerberVerwaltungComponent>;
+describe(' TestVerwaltungComponent', () => {
+  let component: TestVerwaltungComponent;
+  let fixture: ComponentFixture<TestVerwaltungComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,13 +16,13 @@ describe(' BewerberVerwaltungComponent', () => {
           FlexLayoutModule,
           MaterialModule
         ],
-        declarations: [BewerberVerwaltungComponent]
+        declarations: [TestVerwaltungComponent]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BewerberVerwaltungComponent);
+    fixture = TestBed.createComponent(TestVerwaltungComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

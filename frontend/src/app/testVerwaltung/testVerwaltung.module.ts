@@ -10,6 +10,11 @@ import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component'
 import { AddEmailDialogComponent } from './newTest/addEmailDialog/addEmailDialog.component';
 import { FormsModule } from '@angular/forms';
 
+//PrimeNG
+import {OrganizationChartModule} from 'primeng/organizationchart';
+import {TreeModule} from 'primeng/tree';
+
+
 
 
 
@@ -20,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     TranslateModule,
     FlexLayoutModule,
     MaterialModule,
+    OrganizationChartModule,
+    TreeModule,
     TestVerwaltungRoutingModule
   ],
   declarations: [

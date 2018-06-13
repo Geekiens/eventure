@@ -12,6 +12,9 @@ import { QuoteService } from './quote.service';
 import { CountdownModule } from 'ngx-countdown';
 import {InboxComponent} from './inbox/inbox.component';
 
+import { SelectDateDialogComponent } from './inbox/selectDateDialog/selectDateDialog.component';
+
+
 
 @NgModule({
   imports: [
@@ -25,11 +28,14 @@ import {InboxComponent} from './inbox/inbox.component';
     HomeRoutingModule
   ],
   declarations: [
+    SelectDateDialogComponent,
     InboxComponent,
     HomeComponent
   ],
   providers: [
     QuoteService
-  ]
+  ],
+  entryComponents: [SelectDateDialogComponent],
+
 })
 export class HomeModule { }

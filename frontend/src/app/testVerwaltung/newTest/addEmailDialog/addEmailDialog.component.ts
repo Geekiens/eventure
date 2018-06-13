@@ -2,7 +2,8 @@ import {OnInit, Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { NotificationsService } from "angular2-notifications";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+import {TreeNode} from 'primeng/api';
+import {TreeModule} from 'primeng/tree';
 
 
 
@@ -16,16 +17,20 @@ export class AddEmailDialogComponent implements OnInit{
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
+  erscheintDirekt = false;
+
   antwortOptionen: AntwortOption[] = [];
   titel: string;
   text: string;
-
+  hatFolgemail = false;
+  emailBaum: TreeNode[];
+  selection: TreeNode;
 
 
   constructor(private _formBuilder: FormBuilder,  notificationsService: NotificationsService) {
 
     }
-  saveBewerber() {
+  saveEmail() {
     
   }
   newOption() {
@@ -50,6 +55,38 @@ export class AddEmailDialogComponent implements OnInit{
     this.secondFormGroup = this._formBuilder.group({
       //secondCtrl: ['', Validators.required]
     });
+
+
+    this.emailBaum = [{
+      label: '1. Mail',
+      expanded: true,
+      children: [
+          {
+              label: '1. Folgemail',
+              expanded: true,
+              children: [
+                  {
+                      label: 'weitere Folgemail'
+                  },
+                  {
+                      label: 'weitere Folgemail'
+                  }
+              ]
+          },
+          {
+              label: '2. Folgemail',
+              expanded: true,
+              children: [
+                  {
+                      label: 'weitere Folgemail'
+                  },
+                  {
+                      label: 'weitere Folgemail'
+                  }
+              ]
+          }
+      ]
+  }];
   }
   
 }
