@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
@@ -11,7 +12,7 @@ import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 import { CountdownModule } from 'ngx-countdown';
 import {InboxComponent} from './inbox/inbox.component';
-
+import {CalendarModule} from 'primeng/calendar';
 import { SelectDateDialogComponent } from './inbox/selectDateDialog/selectDateDialog.component';
 
 
@@ -21,6 +22,8 @@ import { SelectDateDialogComponent } from './inbox/selectDateDialog/selectDateDi
     CommonModule,
     CountdownModule,
     TranslateModule,
+    FormsModule,
+    CalendarModule,
     CoreModule,
     SharedModule,
     FlexLayoutModule,

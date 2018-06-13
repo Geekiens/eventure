@@ -6,6 +6,17 @@
 // Theme variables, must be included before the libraries to allow overriding defaults
 @import "theme/theme-variables";
 
+
+@import '../node_modules/primeng/resources/themes/omega/theme.css';
+
+@import "../node_modules/primeng/resources/primeng.min.css";
+
+@import "../node_modules/primeicons/primeicons.css";
+
+
+
+
+
 // 3rd party libraries
 @import "~material-design-icons-iconfont/dist/fonts/material-icons.css";
 

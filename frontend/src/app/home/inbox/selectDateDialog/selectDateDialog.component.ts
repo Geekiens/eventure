@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class SelectDateDialogComponent implements OnInit {
 
+  von: Date;
+  bis: Date;
 
   constructor() {
 

@@ -17,7 +17,7 @@
     "generate": "ng generate"
   },
   "dependencies": {
-    "@angular/animations": "^6.0.1",
+    "@angular/animations": "^6.0.4",
     "@angular/cdk": "^6.0.1",
     "@angular/common": "^6.0.1",
     "@angular/compiler": "^6.0.1",
@@ -37,6 +37,8 @@
     "lodash": "^4.17.10",
     "material-design-icons-iconfont": "^3.0.3",
     "ngx-countdown": "^3.0.1",
+    "primeicons": "^1.0.0-beta.7",
+    "primeng": "^6.0.0-rc.1",
     "rxjs": "^6.1.0",
     "zone.js": "^0.8.26"
   },
