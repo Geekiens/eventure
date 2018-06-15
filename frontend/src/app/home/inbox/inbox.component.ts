@@ -33,6 +33,13 @@ export class InboxComponent implements OnInit {
   antwortenClicked() {
     this.showAnswer = true;
   }
+  openCalendar() {
+    let dialogRef = this.dialog.open(SelectDateDialogComponent, {
+      width: '50vw',
+      data: {  }
+    });
+  }
+
   aufTerminClicked() {
     let dialogRef = this.dialog.open(SelectDateDialogComponent, {
       width: '50vw',

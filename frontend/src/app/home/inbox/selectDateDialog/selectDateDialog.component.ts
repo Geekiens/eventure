@@ -12,14 +12,16 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class SelectDateDialogComponent implements OnInit {
 
-  von: Date;
-  bis: Date;
+  von: Date = new Date();
+  bis: Date = new Date();
 
   constructor() {
 
     }
 
     ngOnInit() {
+      this.von.setHours(12, 0);
+      this.bis.setHours(13, 0);
 
     }
 }

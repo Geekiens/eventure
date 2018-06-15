@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
+import {Router} from '@angular/router';
 import { environment } from '@env/environment';
 import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberDialog/addBewerberDialog.component';
 
@@ -13,7 +13,7 @@ export class BewerberVerwaltungComponent implements OnInit {
 
   showAllBewerber = true;
   showBewerberDetails = false;
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   toogleBewerber() {
     this.showAllBewerber = !this.showAllBewerber;
@@ -27,7 +27,10 @@ export class BewerberVerwaltungComponent implements OnInit {
 
   }
 
-  
+  evaluateTest() {
+    this.router.navigate(['bewerberVerwaltung/bewerten']);
+
+  }
 
 
 

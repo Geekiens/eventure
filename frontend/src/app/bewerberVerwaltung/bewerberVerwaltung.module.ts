@@ -8,6 +8,7 @@ import { MaterialModule } from '@app/material.module';
 import { BewerberVerwaltungRoutingModule } from './bewerberVerwaltung-routing.module';
 import { BewerberVerwaltungComponent } from './bewerberVerwaltung.component';
 import { AddBewerberDialogComponent } from './addBewerberDialog/addBewerberDialog.component';
+import { EvaluateTestComponent } from '@app/bewerberVerwaltung/evaluateTest/evaluateTest.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AddBewerberDialogComponent } from './addBewerberDialog/addBewerberDialo
   ],
   declarations: [
     BewerberVerwaltungComponent,
+    EvaluateTestComponent,
     AddBewerberDialogComponent
   ],
   entryComponents: [AddBewerberDialogComponent],

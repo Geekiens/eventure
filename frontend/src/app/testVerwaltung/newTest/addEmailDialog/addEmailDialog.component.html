@@ -1,7 +1,7 @@
 <div style="text-align: left">
     <mat-horizontal-stepper [linear]="false" #stepper>
         <mat-step [stepControl]="firstFormGroup">
-            <div style="float: left; width: 50%">
+            <div style="float: left; width: 35%">
                 <ng-template matStepLabel>Angaben zur Email</ng-template>
                 <mat-form-field style="width:90%;">
                     <input matInput placeholder="Titel" required>
@@ -24,10 +24,192 @@
                     <input matInput placeholder="Email erscheint ... Minuten nach Testbeginn">
                 </mat-form-field>
             </div>
-            <div style="float: left; width: 50%">
+            <div style="float: left; width: 29%">
                 <mat-form-field style="width:99%;">
-                    <textarea matInput matTextareaAutosize [matAutosizeMaxRows]=14 [matAutosizeMinRows]=14 placeholder="Text der Email"></textarea>
+                    <textarea matInput matTextareaAutosize [matAutosizeMaxRows]=22 [matAutosizeMinRows]=22 placeholder="Text der Email"></textarea>
                 </mat-form-field>
+            </div>
+
+            <div style="margin-left:1%; float: left; width: 35%">
+
+
+                <mat-tab-group id="matTabAddEmail" class="demo-tab-group">
+                    <mat-tab label="Maximale Punkte">
+
+                        <div style="float:left; width: 80%;">
+                            <div style="display: inline-bock; margin-top: 25px;">Sozialkompetenz </div>
+                            <br>
+                            <div style="display: inline-bock; margin-top: 27px;">Delegationsbereitschaft </div>
+                            <br>
+                            <div style="display: inline-bock; margin-top: 27px;">Verantwortungsbewusstsein </div>
+                            <br>
+                            <div style="display: inline-bock; margin-top: 27px;">Analytische Fähigkeiten </div>
+                            <br>
+                            <div style="display: inline-bock; margin-top: 27px;">Arbeitsorganisation </div>
+                            <br>
+                            <div style="display: inline-bock; margin-top: 27px;">Konzentrationsfähigkeit </div>
+                        </div>
+                        <div style="float:left;">
+                            <mat-form-field style="width:25px;">
+                                <input number [(ngModel)]=maxPunkte[0] matInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field style="width:25px;">
+                                <input number [(ngModel)]=maxPunkte[1] matInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field style="width:25px;">
+                                <input number [(ngModel)]=maxPunkte[2] matInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field style="width:25px;">
+                                <input number [(ngModel)]=maxPunkte[3] matInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field style="width:25px;">
+                                <input number [(ngModel)]=maxPunkte[4] matInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field style="width:25px;">
+                                <input number [(ngModel)]=maxPunkte[5] matInput>
+                            </mat-form-field>
+
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Antworten">
+
+                            <div style="float:left; width: 80%;">
+                                    <div style="display: inline-bock; margin-top: 25px;">Sozialkompetenz </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Delegationsbereitschaft </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Verantwortungsbewusstsein </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Analytische Fähigkeiten </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Arbeitsorganisation </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Konzentrationsfähigkeit </div>
+                                </div>
+                                <div style="float:left;">
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=antwortenPunkte[0] matInput>
+                                    </mat-form-field> / {{maxPunkte[0]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=antwortenPunkte[1] matInput>
+                                    </mat-form-field> / {{maxPunkte[1]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=antwortenPunkte[2] matInput>
+                                    </mat-form-field> / {{maxPunkte[2]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=antwortenPunkte[3] matInput>
+                                    </mat-form-field> / {{maxPunkte[3]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=antwortenPunkte[4] matInput>
+                                    </mat-form-field> / {{maxPunkte[4]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=antwortenPunkte[5] matInput>
+                                    </mat-form-field> / {{maxPunkte[5]}}
+        
+                                </div>
+        
+                    </mat-tab>
+                    <mat-tab label="Löschen">
+                        
+                            <div style="float:left; width: 80%;">
+                                    <div style="display: inline-bock; margin-top: 25px;">Sozialkompetenz </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Delegationsbereitschaft </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Verantwortungsbewusstsein </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Analytische Fähigkeiten </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Arbeitsorganisation </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Konzentrationsfähigkeit </div>
+                                </div>
+                                <div style="float:left;">
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=loeschenPunkte[0] matInput>
+                                    </mat-form-field> / {{maxPunkte[0]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=loeschenPunkte[1] matInput>
+                                    </mat-form-field> / {{maxPunkte[1]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=loeschenPunkte[2] matInput>
+                                    </mat-form-field> / {{maxPunkte[2]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=loeschenPunkte[3] matInput>
+                                    </mat-form-field> / {{maxPunkte[3]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=loeschenPunkte[4] matInput>
+                                    </mat-form-field> / {{maxPunkte[4]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=loeschenPunkte[5] matInput>
+                                    </mat-form-field> / {{maxPunkte[5]}}
+        
+                                </div>
+        
+                    </mat-tab>
+                    <mat-tab label="Weiterleiten">
+                        
+                            <div style="float:left; width: 80%;">
+                                    <div style="display: inline-bock; margin-top: 25px;">Sozialkompetenz </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Delegationsbereitschaft </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Verantwortungsbewusstsein </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Analytische Fähigkeiten </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Arbeitsorganisation </div>
+                                    <br>
+                                    <div style="display: inline-bock; margin-top: 27px;">Konzentrationsfähigkeit </div>
+                                </div>
+                                <div style="float:left;">
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=weiterleitenPunkte[0] matInput> 
+                                    </mat-form-field> / {{maxPunkte[1]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=weiterleitenPunkte[1] matInput>
+                                    </mat-form-field> / {{maxPunkte[1]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=weiterleitenPunkte[2] matInput>
+                                    </mat-form-field> / {{maxPunkte[2]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=weiterleitenPunkte[3] matInput>
+                                    </mat-form-field> / {{maxPunkte[3]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=weiterleitenPunkte[4] matInput>
+                                    </mat-form-field> / {{maxPunkte[4]}}
+                                    <br>
+                                    <mat-form-field style="width:25px;">
+                                        <input number [(ngModel)]=weiterleitenPunkte[5] matInput>
+                                    </mat-form-field> / {{maxPunkte[5]}}
+        
+                                </div>
+        
+                    </mat-tab>
+
+                </mat-tab-group>
+
+
+
             </div>
             <div style=" clear: both;">
                 <button mat-button matStepperNext>Weiter</button>
@@ -35,52 +217,81 @@
             </div>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
-            <div style="float: left; width: 50%">
-                <ng-template matStepLabel>Antwortoptionen konfigurieren</ng-template>
-                <button style="width:90%; margin-top:20px;" (click)="newOption()" mat-raised-button color="primary">Neue Antwortoption erstellen</button>
-                <br>
-                <span style="display:inline-block; margin-top: 20px;">
-                    <b>Hinzugefügte Optionen </b>
-                </span>
-                <br>
-
-                <div id="bindCSSAntwortOption" style="margin-top: 10px; width: 100%">
-                    <mat-card *ngFor="let option of antwortOptionen" class="antwortOption" style="margin-top:5px; width:90%">
-                        <mat-card-title>
-                            {{option.titel}}
-                        </mat-card-title>
-                    </mat-card>
-                </div>
-
-
-            </div>
-
-
-
-            <div style="float: left; width: 50%">
-                <mat-form-field style="width:99%;">
-                    <input [(ngModel)]=titel matInput placeholder="Titel" required>
-                </mat-form-field>
-
-                <mat-form-field style="width:99%;">
-                    <!-- <input matInput placeholder="Benutzername" required> -->
-                    <textarea matInput [(ngModel)]="text" matTextareaAutosize [matAutosizeMaxRows]=9 [matAutosizeMinRows]=9 placeholder="Text der Antwort"></textarea>
-                </mat-form-field>
-
-                <div style="width: 90%;">
-                    <mat-checkbox [color]="'primary'" [(ngModel)]="hatFolgemail">Die Antwortoption löst eine automatische Folgemail des Systems aus</mat-checkbox>
-                </div>
-
-                <mat-form-field *ngIf="hatFolgemail" style="width:90%;">
-                    <input matInput placeholder="Titel der Folgemail">
-                </mat-form-field>
-
-                <button style="width:99%; margin-top:20px;" (click)="addAnwortOption()" mat-raised-button color="primary">Antwortoption hinzufügen</button>
-
-            </div>
-
-
             <div>
+                <div style="float: left; width: 30%">
+                    <ng-template matStepLabel>Antwortoptionen konfigurieren</ng-template>
+                    <button style="width:90%; margin-top:20px;" (click)="newOption()" mat-raised-button color="primary">Neue Antwortoption erstellen</button>
+                    <br>
+                    <span style="display:inline-block; margin-top: 20px;">
+                        <b>Hinzugefügte Optionen </b>
+                    </span>
+                    <br>
+
+                    <div id="bindCSSAntwortOption" style="margin-top: 10px; width: 100%">
+                        <mat-card (click)="optionClicked(option)" *ngFor="let option of antwortOptionen" class="antwortOption" style="margin-top:5px; width:90%">
+                            <mat-card-title>
+                                {{option.titel}}
+                            </mat-card-title>
+                        </mat-card>
+                    </div>
+
+
+                </div>
+
+
+
+                <div style="float: left; width: 35%">
+                    <mat-form-field style="width:99%;">
+                        <input [(ngModel)]=currentAntwortOption.titel matInput placeholder="Titel" required>
+                    </mat-form-field>
+
+                    <mat-form-field style="width:99%;">
+                        <!-- <input matInput placeholder="Benutzername" required> -->
+                        <textarea matInput [(ngModel)]="currentAntwortOption.text" matTextareaAutosize [matAutosizeMaxRows]=9 [matAutosizeMinRows]=9
+                            placeholder="Text der Antwort"></textarea>
+                    </mat-form-field>
+
+                    <div style="width: 90%;">
+                        <mat-checkbox [color]="'primary'" [(ngModel)]="hatFolgemail">Die Antwortoption löst eine automatische Folgemail des Systems aus</mat-checkbox>
+                    </div>
+
+                    <mat-form-field *ngIf="hatFolgemail" style="width:90%;">
+                        <input matInput placeholder="Titel der Folgemail">
+                    </mat-form-field>
+
+                    <button *ngIf="!editOption" style="width:99%; margin-top:20px;" (click)="addAnwortOption()" mat-raised-button color="primary">Antwortoption hinzufügen</button>
+                    <button *ngIf="editOption" style="width:99%; margin-top:20px;" (click)="editFinished()" mat-raised-button color="primary">Bearbeitung abschließen</button>
+                    <button *ngIf="editOption" style="float:left; width:50%; margin-top:20px;" (click)="editFinished()" mat-raised-button color="primary">Bearbeitung abbrechen</button>
+                    <button *ngIf="editOption" style="float:left; width:50%; margin-top:20px;" (click)="removeOption(currentAntwortOption)" mat-raised-button
+                        color="warn">Option Löschen</button>
+
+                </div>
+
+
+                <div style="float:left; width: 35%">
+                    <div style="margin-left:5%; float:left; width: 70%;">
+                        <div style="display: inline-bock; margin-top: 30px;">Sozialkompetenz </div>
+                        <br>
+                        <div style="display: inline-bock; margin-top: 30px;">Delegationsbereitschaft </div>
+                    </div>
+                    <div style="float:right;">
+                        <mat-form-field style="width:50px;">
+                            <input [(ngModel)]=currentAntwortOption.punkte[0] matInput>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field style="width:50px;">
+                            <input [(ngModel)]=currentAntwortOption.punkte[1] matInput>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+            <div style="clear: both; margin-top: 25px;">
                 <button mat-button matStepperPrevious>Zurück</button>
                 <button mat-button matStepperNext>Weiter</button>
             </div>
@@ -88,7 +299,7 @@
         <mat-step>
             <ng-template matStepLabel>Abschließen
             </ng-template>
-            
+
             Wollen Sie die neue Email jetzt speichern?
             <div style="text-align: center;">
                 <p-organizationChart selectionMode="single" selection="selection" [value]="emailBaum"></p-organizationChart>

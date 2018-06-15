@@ -54,16 +54,16 @@
 
   <div  style="float: left; margin-top: 1vh;" class="">
       <mat-card style="width:20vw">
-          <div class="text-div">
+          <div >
             <b>
             Vorhandene Emails
             </b>
           
         </div>
       </mat-card>
-      <div *ngFor="let email of emails" class="mailElement" (click)="emailClicked(email)">
+      <div *ngFor="let email of emails" class="mailElementNewTest" (click)="emailClicked(email)">
         <mat-card style="width:20vw">
-            <div class="text-div">
+            <div>
              <mat-checkbox [color]="'primary'"  >{{email.titel}}</mat-checkbox>
           </div>
         </mat-card>
@@ -84,18 +84,18 @@
 
   <div style="float: left; margin-top: 1vh;" class="">
       <mat-card style="width:20vw">
-          <div class="text-div">
+          <div>
             <b>
             Emails im Test
             </b>
           
         </div>
       </mat-card>
-      <div *ngFor="let email of emails" class="mailElement" (click)="emailClicked(email)">
+      <div *ngFor="let email of emails" class="mailElementNewTest" (click)="emailClicked(email)">
         <mat-card style="width:20vw">
-            <div class="text-div">
+            <div>
               <span style="display: inline-block; width: 100%;">
-                  <span style="display: inline-block; width:90%; height:1em;">
+                  <span style="display: inline-block; width:90%; ">
              {{email.titel}} 
              </span>
              <span style="display: inline-block; width:5%">
