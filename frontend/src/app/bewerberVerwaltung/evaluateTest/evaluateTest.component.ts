@@ -13,14 +13,39 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./evaluateTest.component.scss']
 })
 export class EvaluateTestComponent implements OnInit {
-
+  reaktionen: BewerberReaktion[] = [];
+  bewertung: number[] = [0,0,0,0,0,0];
+  emailPunkte: number[] = [0,0,0,0,0,0];
+  maxPunkte: number[] = [5,10,2,2,2,3];
+  
 
   constructor() { }
 
   ngOnInit() {
+    let email: Email = {absender: 'Hans Müller',
+                        titel: 'Bewerbung',
+                        text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore e',
+                        absendeDatum: '15.06.2018'};
+
+    let reaktion: BewerberReaktion = {reaktion: 'Nö',
+                                      email: email};
+    this.reaktionen.push(reaktion);
+    email.absender = 'Martin Meier';
+    email.titel = 'Zweite Email';
+    reaktion.email = email;
+    this.reaktionen.push(reaktion);
+
   }
-
-
- 
 }
 
+export interface BewerberReaktion {
+  reaktion: string;
+  email: Email;
+}
+
+export interface Email {
+  absender: string;
+  titel: string;
+  text?: string;
+  absendeDatum: string;
+}

@@ -2,49 +2,121 @@
 
   <div style="width: 80%; margin:auto; margin-top: 20px;">
     <mat-accordion style="text-align: left; width: 80%; margin:auto; margin-top: 20px;">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Automatisierte Bewertung
-            </mat-panel-title>
-            <mat-panel-description>
-              Punkte auf Basis des erstellten Schemas
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-      
-          Zeit <br>
-          Punkte
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Videomitschnitt
-            </mat-panel-title>
-            <mat-panel-description>
-              Aufzeichnung des Tests als Video (Bewertung erforderlich)
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          VIDEO EINFÜGEN
-        </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Automatisierte Bewertung
+          </mat-panel-title>
+          <mat-panel-description>
+            Punkte auf Basis des erstellten Schemas
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        Zeit
+        <br> Punkte
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Videomitschnitt
+          </mat-panel-title>
+          <mat-panel-description>
+            Aufzeichnung des Tests als Video (Bewertung erforderlich)
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        VIDEO EINFÜGEN
+      </mat-expansion-panel>
 
 
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Freitextantworten
-              </mat-panel-title>
-              <mat-panel-description>
-                Bewerten Sie diese Antworten, um den Test abschließen zu können
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            - Email muss angezeigt werden können
-	- Anwort als Text zeigen
-	- Bewertungschema muss offen sein (0/5...)
-            </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Freitextantworten
+          </mat-panel-title>
+          <mat-panel-description>
+            Bewerten Sie diese Antworten, um den Test abschließen zu können
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <br>
 
-      </mat-accordion>
+        <div style="width: 100%">
+          <div style="width: 60%; float:left;">
+            <mat-card>
+              <mat-card-content>
+                <mat-card-title>
+                  <span style="display: inline-block; width: 70%; ">Von: {{reaktionen[0].email.absender}}</span>
+                  <span>{{reaktionen[0].email.absendeDatum}}</span>
+                  <br> {{reaktionen[0].email.titel}}
+                </mat-card-title>
+                <mat-card-subtitle>
 
-      </div>
+                </mat-card-subtitle>
+              </mat-card-content>
+              <div>
+                {{reaktionen[0].email.text}}
+              </div>
+
+              <h2>Antwort:</h2>
+              <div>{{reaktionen[0].reaktion}}</div>
+
+            </mat-card>
+          </div>
+
+          <div style=" width: 34%; float:right;">
+            <h2>Antwort Bewerten </h2>
+
+            <div style="width: 80%; float: left;">
+              <div style="display: inline-bock; margin-top: 17px;">Sozialkompetenz </div>
+              <br>
+              <div style="display: inline-bock; margin-top: 17px;">Delegationsbereitschaft </div>
+              <br>
+              <div style="display: inline-bock; margin-top: 17px;">Verantwortungsbewusstsein </div>
+              <br>
+              <div style="display: inline-bock; margin-top: 17px;">Analytische Fähigkeiten </div>
+              <br>
+              <div style="display: inline-bock; margin-top: 17px;">Arbeitsorganisation </div>
+              <br>
+              <div style="display: inline-bock; margin-top: 17px;">Konzentrationsfähigkeit </div>
+            </div>
+
+            <div style="float:left;">
+              <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=emailPunkte[0] matInput>
+              </mat-form-field> / {{maxPunkte[0]}}
+              <br>
+              <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=emailPunkte[1] matInput>
+              </mat-form-field> / {{maxPunkte[1]}}
+              <br>
+              <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=emailPunkte[2] matInput>
+              </mat-form-field> / {{maxPunkte[2]}}
+              <br>
+              <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=emailPunkte[3] matInput>
+              </mat-form-field> / {{maxPunkte[3]}}
+              <br>
+              <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=emailPunkte[4] matInput>
+              </mat-form-field> / {{maxPunkte[4]}}
+              <br>
+              <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=emailPunkte[5] matInput>
+              </mat-form-field> / {{maxPunkte[5]}}
+
+          </div>
+          </div>
+
+        </div>
+
+        <div style="clear: both;"></div>
+
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </div>
 
 
 
