@@ -15,6 +15,69 @@
         Zeit
         <br> Punkte
       </mat-expansion-panel>
+
+
+
+
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Kalender
+            </mat-panel-title>
+            <mat-panel-description>
+              Terminierte Emails des Bewerbers
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+            
+
+      <div style="margin-top: 15px;">
+          <div style="float: left; width: 33%; text-align: center">
+              <div style="height:250px; width: 90%; background: #cccccc">
+                  <span style="font-size: 1.2em">
+                      <b>Tag 1</b>
+                  </span>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">8-10: Test Termin</div>
+      
+              </div>
+          </div>
+      
+          <div style="float: left; width: 33%; text-align: center">
+              <div style="height:250px; width: 90%; background: #cccccc">
+                  <span style="font-size: 1.2em">
+                      <b>Tag 2</b>
+                  </span>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">9-10: Test Termin 2</div>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">11-13: Test Termin 3</div>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">13-14: Test Termin 4</div>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">14-15: Test Termin 5</div>
+      
+              </div>
+          </div>
+      
+          <div style="float: left; width: 33%; text-align: center">
+              <div style="height:250px; width: 90%; background: #cccccc">
+                  <span style="font-size: 1.2em">
+                      <b>Tag 3</b>
+                  </span>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">9-11: Test Termin 6</div>
+                  <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">15-16: Test Termin 7</div>
+      
+      
+              </div>
+          </div>
+
+          <div style="clear: both;"></div>
+
+      </div>
+
+        </mat-expansion-panel>
+
+
+
+
+
+
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -37,35 +100,40 @@
             Bewerten Sie diese Antworten, um den Test abschließen zu können
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <br>
+        
 
-        <div style="width: 100%">
+        <div style="text-align: center;" *ngIf="allEmailsEvaluated">
+          <h2>Es wurden alle Emails bewertet</h2>
+        </div>
+        <div *ngIf="!allEmailsEvaluated" style="width: 100%">
           <div style="width: 60%; float:left;">
+              <h2>{{index}} von {{reaktionen.length}} Antworten bewertet.</h2>
+
             <mat-card>
               <mat-card-content>
                 <mat-card-title>
-                  <span style="display: inline-block; width: 70%; ">Von: {{reaktionen[0].email.absender}}</span>
-                  <span>{{reaktionen[0].email.absendeDatum}}</span>
-                  <br> {{reaktionen[0].email.titel}}
+                  <span style="display: inline-block; width: 70%; ">Von: {{reaktion.email.absender}}</span>
+                  <span>{{reaktion.email.absendeDatum}}</span>
+                  <br> {{reaktion.email.titel}}
                 </mat-card-title>
                 <mat-card-subtitle>
 
                 </mat-card-subtitle>
               </mat-card-content>
               <div>
-                {{reaktionen[0].email.text}}
+                {{reaktion.email.text}}
               </div>
 
               <h2>Antwort:</h2>
-              <div>{{reaktionen[0].reaktion}}</div>
+              <div>{{reaktion.reaktion}}</div>
 
             </mat-card>
           </div>
 
-          <div style=" width: 34%; float:right;">
-            <h2>Antwort Bewerten </h2>
+          <div style="padding-left:15px; padding-right: 15px; padding-bottom: 15px; border-radius: 10px; background: #eeeeee; width: 34%; float:right;">
+            <h2>Antwort Bewerten</h2>
 
-            <div style="width: 80%; float: left;">
+            <div style="font-size: 1.3em; width: 80%; float: left;">
               <div style="display: inline-bock; margin-top: 17px;">Sozialkompetenz </div>
               <br>
               <div style="display: inline-bock; margin-top: 17px;">Delegationsbereitschaft </div>
@@ -105,6 +173,8 @@
               </mat-form-field> / {{maxPunkte[5]}}
 
           </div>
+          <button style="width:100%; margin-top:20px;" (click)="nextMail()" mat-raised-button color="primary">Bewertung speichern und nächste Antwort bewerten</button>
+
           </div>
 
         </div>

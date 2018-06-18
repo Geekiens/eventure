@@ -22,6 +22,7 @@ export class NewTestComponent implements OnInit {
   selectedEmail: Email = null;
   hasAnswers = false;
   showAnswer = false;
+  context: String = '';
 
   constructor(private notificationsService: NotificationsService, public dialog: MatDialog) { }
 

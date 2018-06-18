@@ -4,7 +4,7 @@
       <mat-card-content>
         <mat-card-title>
 
-          <div style="width:100%">
+          <div style="width:100%; font-size: 0.8em">
             <span style="width:15%; display: inline-block;"> Titel:
             </span>
             <span style="width:30%; display: inline-block; margin-right:5%;">
@@ -23,7 +23,7 @@
 
           </div>
 
-          <div style="width:100%">
+          <div style="width:100%; font-size: 0.8em">
             <span style="width:15%;  display: inline-block;"> Position:
             </span>
             <span style="width:30%;  display: inline-block;  margin-right:5%;">
@@ -42,6 +42,17 @@
 
           </div>
 
+          <div style="width:100%; font-size: 0.8em">
+              <span style="float:left; width:15%;  "> Kontext:
+                </span>
+              <mat-form-field style="width:80%;">
+                  <!-- <input matInput placeholder="Benutzername" required> -->
+                  <textarea matInput [(ngModel)]="context" matTextareaAutosize [matAutosizeMaxRows]=5 [matAutosizeMinRows]=2
+                      placeholder="Text der dem Bewerber vor dem Test gezeigt wird."></textarea>
+              </mat-form-field>
+
+          </div>
+
 
 
 
@@ -52,8 +63,8 @@
     </mat-card>
   </div>
 
-  <div  style="float: left; margin-top: 1vh;" class="">
-      <mat-card style="width:20vw">
+  <div  style="float: left; margin-top: 1vh; margin-left: 1vw;" class="">
+      <mat-card style="width:19vw">
           <div >
             <b>
             Vorhandene Emails
@@ -62,7 +73,7 @@
         </div>
       </mat-card>
       <div *ngFor="let email of emails" class="mailElementNewTest" (click)="emailClicked(email)">
-        <mat-card style="width:20vw">
+        <mat-card style="width:19vw">
             <div>
              <mat-checkbox [color]="'primary'"  >{{email.titel}}</mat-checkbox>
           </div>
