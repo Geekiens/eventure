@@ -26,6 +26,12 @@ public class Antwort   {
   @JsonProperty("text")
   private String text = null;
 
+
+  @JsonProperty("punkte")
+
+  @Valid
+  private int[] punkte;
+
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   @JsonProperty("id")
@@ -46,7 +52,6 @@ public class Antwort   {
    * @return titel
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
 
 
   public String getTitel() {
@@ -120,6 +125,15 @@ public class Antwort   {
   public void setFolgeMail(Email folgeMail) {
     this.folgeMail = folgeMail;
   }
+
+  public int[] getPunkte() {
+    return punkte;
+  }
+
+  public void setPunkte(int[] punkte) {
+    this.punkte = punkte;
+  }
+
 
 
   @Override

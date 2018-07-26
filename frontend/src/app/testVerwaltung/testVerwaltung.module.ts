@@ -4,12 +4,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
-import { TestVerwaltungRoutingModule } from './testVerwaltung-routing.module';
-import { TestVerwaltungComponent } from './testVerwaltung.component';
+import { TestVerwaltungRoutingModule } from '@app/testVerwaltung/testVerwaltung-routing.module';
+import { TestVerwaltungComponent } from '@app/testVerwaltung/testVerwaltung.component';
 import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component';
-import { AddEmailDialogComponent } from './newTest/addEmailDialog/addEmailDialog.component';
+import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDialog/addEmailDialog.component';
 import { FormsModule } from '@angular/forms';
-
+import { EmailService } from '@app/core/services/email.service';
 //PrimeNG
 import {OrganizationChartModule} from 'primeng/organizationchart';
 import {TreeModule} from 'primeng/tree';
@@ -33,6 +33,9 @@ import {TreeModule} from 'primeng/tree';
     TestVerwaltungComponent,
     NewTestComponent,
     AddEmailDialogComponent
+  ],
+  providers: [
+    EmailService,
   ],
   entryComponents: [AddEmailDialogComponent],
 

@@ -5,6 +5,9 @@ import { NotificationsService } from 'angular2-notifications';
 import * as RecordRTC from 'recordrtc';
 import { QuoteService } from './quote.service';
 
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,7 +22,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   showInbox = false;
   testCompleted = false;
   testRecord = false;
-
+  anrufAnzeigen = true;
   private stream: MediaStream;
   private recordRTC: any;
 
@@ -27,7 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // set the initial state of the video
-    let video:HTMLVideoElement = this.video.nativeElement;
+    let video : HTMLVideoElement = this.video.nativeElement;
     video.muted = false;
     video.controls = true;
     video.autoplay = false;
@@ -53,6 +56,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.recordRTC.startRecording();
     let video: HTMLVideoElement = this.video.nativeElement;
     video.src = window.URL.createObjectURL(stream);
+
+
+
+
     this.toggleControls();
   }
 
@@ -65,26 +72,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
     let recordRTC = this.recordRTC;
     video.src = audioVideoWebMURL;
     this.toggleControls();
-    var recordedBlob = recordRTC.getBlob();
+    let recordedBlob = recordRTC.getBlob();
     recordRTC.getDataURL(function (dataURL) { });
   }
 
   startRecording() {
     this.testRecord = true;
-    let mediaConstraints = {
+    const mediaConstraints: any = {
+
       video: {
         mandatory: {
           minWidth: 1280,
-          minHeight: 720
-        }
+          minHeight: 720}
       }, audio: true
     };
+    
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
       .then(this.successCallback.bind(this), this.errorCallback.bind(this));
 
-
+      
+      
   }
+
+
 
   stopRecording() {
     this.testRecord = false;
@@ -125,10 +136,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.counter.stop();
   }
 
+  callIncome() {
+    this.anrufAnzeigen = true;
+  }
+
   notified(event: any) {
     console.log(event / 1000 );
     const time = event / 1000;
     switch (time) {
+      case 1190: 
       case 900: this.reminderForLeftTime('15 Minuten'); break;
       case 600: this.reminderForLeftTime('10 Minuten'); break;
       case 300: this.reminderForLeftTime('5 Minuten'); break;

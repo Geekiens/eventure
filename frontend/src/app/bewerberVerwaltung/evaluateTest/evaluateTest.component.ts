@@ -18,6 +18,8 @@ export class EvaluateTestComponent implements OnInit {
   bewertung: number[] = [0,0,0,0,0,0];
   emailPunkte: number[] = [0,0,0,0,0,0];
   maxPunkte: number[] = [5,10,2,2,2,3];
+  kalenderMaxPunkte: number[] = [10,10,10,10,50,10];
+  kalenderPunkte: number[] = [0,0,0,0,0,0];
   reaktion: BewerberReaktion;
   index = 0;
   allEmailsEvaluated = false;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
@@ -17,12 +17,27 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class InboxComponent implements OnInit {
   showMailText = false;
+  @Input() anrufAnzeigen: boolean;
   emails: Email[];
   selectedEmail: Email = null;
   hasAnswers = false;
   showAnswer = false;
 
+  anrufer = 'Chuck';
+  //showAnruf = false;
+
   constructor(private notificationsService: NotificationsService, public dialog: MatDialog) { }
+
+  acceptCall() {
+    const audio = new Audio();
+    audio.src = '../../../../assets/' + this.anrufer + '.mp3';
+    audio.load();
+    audio.play();
+  }
+  
+  declineCall() {
+    this.anrufAnzeigen = false;
+  }
 
   emailClicked(email: Email) {
     this.showAnswer = false;

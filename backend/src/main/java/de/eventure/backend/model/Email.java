@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
-
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -33,6 +32,24 @@ public class Email   {
 
   @JsonProperty("absendeDatum")
   private String absendeDatum = null;
+
+  @JsonProperty("antwortenPunkte")
+  @Valid
+  private int[] antwortenPunkte;
+
+
+  @JsonProperty("loeschenPunkte")
+  @Valid
+  private int[] loeschenPunkte;
+
+  @JsonProperty("weiterleitenPunkte")
+  @Valid
+  private int[] weiterleitenPunkte;
+
+
+  @JsonProperty("punkte")
+  @Valid
+  private int[] punkte;
 
   @JsonProperty("prioritaet")
   private String prioritaet = null;
@@ -67,7 +84,7 @@ public class Email   {
    * @return titel
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+
 
 
   public String getTitel() {
@@ -108,7 +125,6 @@ public class Email   {
    * @return absender
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
 
 
   public String getAbsender() {
@@ -169,7 +185,6 @@ public class Email   {
    * @return erscheintDirekt
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
 
 
   public Boolean isErscheintDirekt() {
@@ -198,6 +213,47 @@ public class Email   {
 
   public void setErscheintNachMS(Integer erscheintNachMS) {
     this.erscheintNachMS = erscheintNachMS;
+  }
+
+  public int[] getPunkte() {
+    return punkte;
+  }
+
+  public void setPunkte(int[] punkte) {
+    this.punkte = punkte;
+  }
+
+
+  public int[] getAntwortenPunkte() {
+    return antwortenPunkte;
+  }
+
+  public void setAntwortenPunkte(int[] antwortenPunkte) {
+    this.antwortenPunkte = antwortenPunkte;
+  }
+
+  public int[] getLoeschenPunkte() {
+    return loeschenPunkte;
+  }
+
+  public void setLoeschenPunkte(int[] loeschenPunkte) {
+    this.loeschenPunkte = loeschenPunkte;
+  }
+
+  public int[] getWeiterleitenPunkte() {
+    return weiterleitenPunkte;
+  }
+
+  public void setWeiterleitenPunkte(int[] weiterleitenPunkte) {
+    this.weiterleitenPunkte = weiterleitenPunkte;
+  }
+
+  public Boolean getErscheintDirekt() {
+    return erscheintDirekt;
+  }
+
+  public Boolean getAktiv() {
+    return aktiv;
   }
 
   public Email antworten(List<Antwort> antworten) {
@@ -239,7 +295,6 @@ public class Email   {
    * @return id
   **/
    @ApiModelProperty(required = true, value = "")
-  @NotNull
   @Valid
 
   public Long getId() {
