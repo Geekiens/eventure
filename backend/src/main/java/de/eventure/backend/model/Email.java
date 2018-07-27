@@ -25,6 +25,7 @@ public class Email   {
   private String titel = null;
 
   @JsonProperty("text")
+  @Lob
   private String text = null;
 
   @JsonProperty("absender")

@@ -26,10 +26,8 @@ public class Test   {
   private Integer zeit = null;
 
   @JsonProperty("emails")
-  @Valid
-  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "emails", joinColumns = @JoinColumn(referencedColumnName = "id", name = "test_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
-
+  @ManyToMany(cascade=CascadeType.DETACH)
+  @JoinTable(name="email_test", joinColumns=@JoinColumn(name="test_id"), inverseJoinColumns=@JoinColumn(name="email_id"))
   private List<Email> emails = new ArrayList<Email>();
 
   @JsonProperty("titel")
@@ -39,6 +37,16 @@ public class Test   {
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   private Long id = null;
+
+
+
+  @JsonProperty("kontext")
+  @Lob
+  private String kontext = null;
+
+  @JsonProperty("beschreibung")
+  @Lob
+  private String beschreibung = null;
 
   @JsonProperty("testFuer")
   private String testFuer = null;
@@ -120,10 +128,31 @@ public class Test   {
     return this;
   }
 
-   /**
+  public String getKontext() {
+    return kontext;
+  }
+
+  public void setKontext(String kontext) {
+    this.kontext = kontext;
+  }
+
+  public String getBeschreibung() {
+    return beschreibung;
+  }
+
+  public void setBeschreibung(String beschreibung) {
+    this.beschreibung = beschreibung;
+  }
+
+  public Boolean getAktiv() {
+    return aktiv;
+  }
+
+  /**
    * Get id
    * @return id
   **/
+
   @ApiModelProperty(value = "")
 
   @Valid
@@ -166,7 +195,6 @@ public class Test   {
    * @return aktiv
   **/
   @ApiModelProperty(value = "")
-
 
   public Boolean isAktiv() {
     return aktiv;
