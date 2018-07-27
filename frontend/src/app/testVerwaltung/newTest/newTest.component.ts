@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
+import { Email, EmailService } from '@app/core/services/email.service';
+import { Test, TestService } from '@app/core/services/test.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
@@ -17,21 +19,80 @@ import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDia
   styleUrls: ['./newTest.component.scss']
 })
 export class NewTestComponent implements OnInit {
+  titel: String = '';
+  zeit: number;
+  position: String = '';
+  beschreibung: String = '';
+  kontext: String = '';
+
+
+
   showMailText = false;
   emails: Email[];
+  allEmails: Email[];
+  testEmails: Email[] = [];
   selectedEmail: Email = null;
   hasAnswers = false;
   showAnswer = false;
-  context: String = '';
+  emailSelection: Email[] = [];
 
-  constructor(private notificationsService: NotificationsService, public dialog: MatDialog) { }
+  constructor(private testService: TestService, private emailService: EmailService, private notificationsService: NotificationsService, public dialog: MatDialog) { }
+
+  saveTest() {
+    const test: Test = {
+      titel: this.titel,
+      zeit: this.zeit,
+      position: this.position,
+      beschreibung: this.beschreibung,
+      kontext: this.kontext,
+      emails: this.testEmails
+    };
+    this.testService.createTest(test);
+
+    this.titel = this.position =  this.beschreibung = this.kontext = '';
+    this.zeit = null;
+    this.testEmails = [];
+    this.emailService.getEmails().subscribe(emails => {
+      this.emails = emails;
+    });
 
 
-  addEmail() {
+    this.notificationsService.success('Test gespeichert', '', {
+      timeOut: 4000,
+      showProgressBar: false,
+      pauseOnHover: true,
+      clickToClose: true
+    });
+  }
 
+  addEmailstoTest() {
+    this.emailSelection.forEach(element => {
+      this.testEmails.push(element);
+      let index = this.emails.indexOf(element);
+      this.emails.splice(index, 1);
+    });
+    this.emailSelection = [];
+  }
+
+  removeEmailFromSelection(email) {
+    let index = this.testEmails.indexOf(email);
+    this.testEmails.splice(index, 1);
+    this.emails.push(email);
   }
 
   useEmailAsTemplate() {
+
+  }
+
+
+  addToSelection(event, email) {
+    if (this.emailSelection.indexOf(email) === -1) {
+      this.emailSelection.push(email);
+    } else {
+      const index = this.emailSelection.indexOf(email);
+      this.emailSelection.splice(index,  1);
+    }
+    console.log(this.emailSelection);
 
   }
 
@@ -42,12 +103,41 @@ export class NewTestComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.emailService.getEmails().subscribe(emails => {
+        this.handleFilter(emails);
+        this.emailSelection = [];
+
+      });
+
+      console.log(this.emails);
+        console.log(this.testEmails);
     });
 
 
   }
+  containsEmail(email): boolean {
+    console.log(this.testEmails);
+    for (let index = 0; index < this.testEmails.length; index++) {
+      if (email.id === this.testEmails[index].id) {
+        return true;
+      }
+    }
 
+    return false;
+  }
+  handleFilter(emails) {
+    let test: Email[] = [];
+    this.emails = [];
+    emails.forEach(email => {
+        if (this.containsEmail(email)) {
+          console.log('Test');
+          test.push(email);
+        } else {
+          this.emails.push(email);
+        }
+        });
+        this.testEmails = test;
+  }
   emailClicked(email: Email) {
       this.showAnswer = true;
       this.selectedEmail = email;
@@ -60,7 +150,10 @@ export class NewTestComponent implements OnInit {
 
 
   ngOnInit() {
-     this.emails = this.getEmails();
+     //this.emails = this.getEmails();
+    this.emailService.getEmails().subscribe(emails => {
+      this.emails = emails;
+    });
   }
 
 
@@ -195,21 +288,5 @@ export class NewTestComponent implements OnInit {
         }
       ];
   }
-}
-
-export interface Email {
-  absender: string;
-  titel: string;
-  text?: string;
-  absendeDatum: string;
-  priortaet?: string;
-  erscheintDirekt: boolean;
-  erscheintNachMS?: number;
-  antworten: Antwort[];
-}
-export interface Antwort {
-  titel: string;
-  text: string;
-  folgeMail?: Email;
 }
 

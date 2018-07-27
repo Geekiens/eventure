@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/core';
-import { TestVerwaltungComponent } from './testVerwaltung.component';
+import { TestVerwaltungComponent } from '@app/testVerwaltung/testVerwaltung.component';
 import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component';
 
 

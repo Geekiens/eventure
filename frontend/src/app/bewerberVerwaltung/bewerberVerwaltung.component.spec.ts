@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
-import { BewerberVerwaltungComponent } from './bewerberVerwaltung.component';
+import { BewerberVerwaltungComponent } from '@app/bewerberVerwaltung/bewerberVerwaltung.component';
 
 describe(' BewerberVerwaltungComponent', () => {
   let component: BewerberVerwaltungComponent;

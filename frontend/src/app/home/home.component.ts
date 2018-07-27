@@ -3,7 +3,7 @@ import { finalize } from 'rxjs/operators';
 import { CountdownComponent } from 'ngx-countdown';
 import { NotificationsService } from 'angular2-notifications';
 import * as RecordRTC from 'recordrtc';
-import { QuoteService } from './quote.service';
+import { QuoteService } from '@app/home/quote.service';
 
 
 

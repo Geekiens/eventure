@@ -3,6 +3,10 @@ import { Component, OnInit } from "@angular/core";
 
 import { environment } from "@env/environment";
 import { Router } from "@angular/router";
+import { Test, TestService } from '@app/core/services/test.service';
+import { Email } from '@app/core/services/email.service';
+
+
 
 @Component({
   selector: "app-testVerwaltung",
@@ -10,6 +14,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./testVerwaltung.component.scss"]
 })
 export class TestVerwaltungComponent implements OnInit {
+  tests: Test[];
+  showTests: ShowTest[];
   showDetails = false;
   emails: Email[];
   showAnswer = false;
@@ -17,11 +23,17 @@ export class TestVerwaltungComponent implements OnInit {
   showMailText = false;
   hasAnswers = false;
 
-  constructor(private router: Router) {}
+  constructor(private testService: TestService, private router: Router) {}
   createTest() {
-    this.router.navigate(['testVerwaltung/neuerTest']);  }
-  openDetails() {
-    this.showDetails = true;
+    this.router.navigate(['testVerwaltung/neuerTest']);  
+  }
+  
+  openDetails(showTest: ShowTest) {
+    showTest.show = true;
+    this.emails = showTest.test.emails;
+    console.log(this.emails);
+    this.showDetails = !this.showDetails;
+
   }
   closeDetails() {
     this.showDetails = false;
@@ -38,7 +50,15 @@ export class TestVerwaltungComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.emails = this.getEmails();
+
+     this.testService.getTests().subscribe(tests => {
+      this.tests = tests;
+      this.showTests = [];
+      tests.forEach(test => {
+        this.showTests.push({test: test, show: false});
+      });
+      console.log(this.showTests);
+    });
   }
 
 
@@ -175,19 +195,9 @@ export class TestVerwaltungComponent implements OnInit {
   }
 }
 
-export interface Email {
-  absender: string;
-  titel: string;
-  text?: string;
-  absendeDatum: string;
-  priortaet?: string;
-  erscheintDirekt: boolean;
-  erscheintNachMS?: number;
-  antworten: Antwort[];
-}
-export interface Antwort {
-  titel: string;
-  text: string;
-  folgeMail?: Email;
+
+export interface ShowTest {
+  test: Test;
+  show: boolean;
 }
 

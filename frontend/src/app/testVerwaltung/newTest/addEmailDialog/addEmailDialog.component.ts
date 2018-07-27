@@ -90,13 +90,18 @@ export class AddEmailDialogComponent implements OnInit {
    return treeString;
   }
   generateTree() {
-    let treeString: string = '[{ "label": "' + this.titel + '", ' +
-                      '"expanded": true, ' +
-                      '"children": [';
+    this.buildEmail();
+    let treeString: string = '';
     if (this.rootEmail !== undefined) {
+      treeString = '[{ "label": "' + this.rootEmail.titel + '", ' +
+      '"expanded": true, ' +
+      '"children": [';
       treeString = treeString + this.generateChildren(this.rootEmail.antworten);
 
     } else {
+      treeString = '[{ "label": "' + this.titel + '", ' +
+      '"expanded": true, ' +
+      '"children": [';
       treeString = treeString + this.generateChildren(this.antworten);
     }
     treeString = treeString + ']}]';
@@ -149,6 +154,7 @@ export class AddEmailDialogComponent implements OnInit {
   optionClicked(option: Antwort) {
     console.log(option);
     this.currentAntwort = option;
+    this.punkte = option.punkte;
     this.editOption = true;
   }
   editAbort() {
@@ -169,8 +175,6 @@ export class AddEmailDialogComponent implements OnInit {
     this.editAbort();
   }
   saveEmail() {
-
-    console.log(this.titel);
     if (this.rootEmail === undefined) {
       this.buildEmail();
       this.rootEmail = this.email;

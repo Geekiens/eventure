@@ -10,6 +10,8 @@ import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component'
 import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDialog/addEmailDialog.component';
 import { FormsModule } from '@angular/forms';
 import { EmailService } from '@app/core/services/email.service';
+import { TestService } from '@app/core/services/test.service';
+
 //PrimeNG
 import {OrganizationChartModule} from 'primeng/organizationchart';
 import {TreeModule} from 'primeng/tree';
@@ -36,6 +38,7 @@ import {TreeModule} from 'primeng/tree';
   ],
   providers: [
     EmailService,
+    TestService
   ],
   entryComponents: [AddEmailDialogComponent],
 

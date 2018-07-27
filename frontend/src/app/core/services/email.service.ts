@@ -25,6 +25,14 @@ export class EmailService {
     return this.http.get<Email[]>(`${this.emailsUrl}?kalenderVon=${name}&faellig=true`, httpOptions);
   }
 
+  public getEmails() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    };
+    return this.http.get<Email[]>('http://localhost:8080/assessment/getEmail', httpOptions);
+  }
 
   public getEmailById(id: string) {
     const httpOptions = {

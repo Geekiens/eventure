@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
-import { TestVerwaltungComponent } from './testVerwaltung.component';
+import { TestVerwaltungComponent } from '@app/testVerwaltung/testVerwaltung.component';
 
 describe(' TestVerwaltungComponent', () => {
   let component: TestVerwaltungComponent;

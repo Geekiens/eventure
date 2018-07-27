@@ -9,7 +9,7 @@
             </span>
             <span style="width:30%; display: inline-block; margin-right:5%;">
               <mat-form-field style="width:100%">
-                <input matInput value="">
+                <input matInput [(ngModel)]="titel">
               </mat-form-field>
             </span>
 
@@ -17,7 +17,7 @@
             </span>
             <span style="width:30%; display: inline-block;">
               <mat-form-field style="width:100%">
-                <input matInput value="">
+                <input matInput [(ngModel)]="zeit">
               </mat-form-field>
             </span>
 
@@ -28,7 +28,7 @@
             </span>
             <span style="width:30%;  display: inline-block;  margin-right:5%;">
               <mat-form-field style="width:100%">
-                <input matInput value="">
+                <input matInput [(ngModel)]="position">
               </mat-form-field>
             </span>
 
@@ -36,20 +36,23 @@
             </span>
             <span style="width:30%;  display: inline-block;">
               <mat-form-field style="width:100%">
-                <input matInput value="">
+                <input matInput [(ngModel)]="beschreibung">
               </mat-form-field>
             </span>
 
           </div>
 
           <div style="width:100%; font-size: 0.8em">
-              <span style="float:left; width:15%;  "> Kontext:
+              <span style="float:left; width:15%; margin-top:30px; "> Kontext:
                 </span>
               <mat-form-field style="width:80%;">
                   <!-- <input matInput placeholder="Benutzername" required> -->
-                  <textarea matInput [(ngModel)]="context" matTextareaAutosize [matAutosizeMaxRows]=5 [matAutosizeMinRows]=2
+                  <textarea matInput [(ngModel)]="kontext" matTextareaAutosize [matAutosizeMaxRows]=5 [matAutosizeMinRows]=2
                       placeholder="Text der dem Bewerber vor dem Test gezeigt wird."></textarea>
               </mat-form-field>
+
+              <button style="width:100%; margin-top:20px;" (click)="saveTest()" mat-raised-button color="primary">Test speichern</button>    <br>
+
 
           </div>
 
@@ -75,14 +78,14 @@
       <div *ngFor="let email of emails" class="mailElementNewTest" (click)="emailClicked(email)">
         <mat-card style="width:19vw">
             <div>
-             <mat-checkbox [color]="'primary'"  >{{email.titel}}</mat-checkbox>
+             <mat-checkbox (change)="addToSelection(checked, email)" [color]="'primary'">{{email.titel}}</mat-checkbox>
           </div>
         </mat-card>
       </div>
     </div>    
 
     <div  style="float: left; margin-top: 1vh;" class="">
-        <button style="width:10vw; margin-top:70px;" (click)="addEmail()" mat-raised-button color="primary">Auswahl hinzufügen</button>    <br>
+        <button style="width:10vw; margin-top:70px;" (click)="addEmailstoTest()" mat-raised-button color="primary">Auswahl hinzufügen</button>    <br>
         <button style="width:10vw; margin-top:40px;"(click)="useEmailAsTemplate()" mat-raised-button color="primary">Auswahl als Vorlage</button>       <br>
         <button style="width:10vw; margin-top:40px;"(click)="createEmail()" mat-raised-button color="primary">Neue Email erstellen</button>     <br>  
    
@@ -100,7 +103,7 @@
           
         </div>
       </mat-card>
-      <div *ngFor="let email of emails" class="mailElementNewTest" (click)="emailClicked(email)">
+      <div *ngFor="let email of testEmails" class="mailElementNewTest" (click)="emailClicked(email)">
         <mat-card style="width:20vw">
             <div>
               <span style="display: inline-block; width: 100%;">
@@ -108,7 +111,7 @@
              {{email.titel}} 
              </span>
              <span style="display: inline-block; width:5%">
-                <i class="material-icons">
+                <i (click)="removeEmailFromSelection(email)" class="material-icons">
                     clear
                     </i>
                 </span>
