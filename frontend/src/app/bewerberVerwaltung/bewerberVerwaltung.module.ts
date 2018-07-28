@@ -10,6 +10,13 @@ import { BewerberVerwaltungComponent } from '@app/bewerberVerwaltung/bewerberVer
 import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberDialog/addBewerberDialog.component';
 import { EvaluateTestComponent } from '@app/bewerberVerwaltung/evaluateTest/evaluateTest.component';
 
+import { TestService } from '@app/core/services/test.service';
+import { BewerberService } from '@app/core/services/bewerber.service';
+import { PruefungService } from '@app/core/services/pruefung.service';
+
+
+
+
 
 @NgModule({
   imports: [
@@ -24,6 +31,11 @@ import { EvaluateTestComponent } from '@app/bewerberVerwaltung/evaluateTest/eval
     BewerberVerwaltungComponent,
     EvaluateTestComponent,
     AddBewerberDialogComponent
+  ],
+  providers: [
+    TestService,
+    BewerberService,
+    PruefungService
   ],
   entryComponents: [AddBewerberDialogComponent],
 

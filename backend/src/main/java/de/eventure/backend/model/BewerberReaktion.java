@@ -13,20 +13,20 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * BewerberReaktionen
+ * BewerberReaktion
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
 @Entity
-public class BewerberReaktionen   {
+public class BewerberReaktion   {
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   @JsonProperty("id")
   private Long id = null;
 
   @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "email_reaktionen", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerberReaktionen_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
+  @JoinTable(name = "email_reaktionen", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerberReaktion_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
   @JsonProperty("email")
   private Email email = null;
 
@@ -36,7 +36,7 @@ public class BewerberReaktionen   {
   @JsonProperty("text")
   private String text = null;
 
-  public BewerberReaktionen email(Email email) {
+  public BewerberReaktion email(Email email) {
     this.email = email;
     return this;
   }
@@ -58,7 +58,7 @@ public class BewerberReaktionen   {
     this.email = email;
   }
 
-  public BewerberReaktionen reaktionsArt(String reaktionsArt) {
+  public BewerberReaktion reaktionsArt(String reaktionsArt) {
     this.reaktionsArt = reaktionsArt;
     return this;
   }
@@ -78,7 +78,7 @@ public class BewerberReaktionen   {
     this.reaktionsArt = reaktionsArt;
   }
 
-  public BewerberReaktionen text(String text) {
+  public BewerberReaktion text(String text) {
     this.text = text;
     return this;
   }
@@ -128,11 +128,11 @@ public class BewerberReaktionen   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BewerberReaktionen bewerberReaktionen = (BewerberReaktionen) o;
-    return Objects.equals(this.email, bewerberReaktionen.email) &&
-            Objects.equals(this.id, bewerberReaktionen.id) &&
-            Objects.equals(this.reaktionsArt, bewerberReaktionen.reaktionsArt) &&
-            Objects.equals(this.text, bewerberReaktionen.text);
+    BewerberReaktion bewerberReaktion = (BewerberReaktion) o;
+    return Objects.equals(this.email, bewerberReaktion.email) &&
+            Objects.equals(this.id, bewerberReaktion.id) &&
+            Objects.equals(this.reaktionsArt, bewerberReaktion.reaktionsArt) &&
+            Objects.equals(this.text, bewerberReaktion.text);
   }
 
   @Override
@@ -143,7 +143,7 @@ public class BewerberReaktionen   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BewerberReaktionen {\n");
+    sb.append("class BewerberReaktion {\n");
     
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    reaktionsArt: ").append(toIndentedString(reaktionsArt)).append("\n");

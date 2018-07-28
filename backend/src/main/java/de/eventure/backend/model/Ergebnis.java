@@ -1,9 +1,10 @@
 package de.eventure.backend.model;
 
+import java.util.List;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import de.eventure.backend.model.BewerberReaktionen;
+import de.eventure.backend.model.BewerberReaktion;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
@@ -33,10 +34,11 @@ public class Ergebnis   {
   @JsonProperty("verbleibendeZeit")
   private Integer verbleibendeZeit = null;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(name = "bewerberReaktion", joinColumns = @JoinColumn(referencedColumnName = "id", name = "pruefung_id"), inverseJoinColumns = @JoinColumn(name = "ergebnis_id"))
+
   @JsonProperty("bewerberReaktionen")
-  private BewerberReaktionen bewerberReaktionen = null;
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name="bewerberReaktion_id")
+  private List<BewerberReaktion> bewerberReaktionen = null;
 
   public Ergebnis videoPfad(String videoPfad) {
     this.videoPfad = videoPfad;
@@ -97,24 +99,24 @@ public class Ergebnis   {
     this.verbleibendeZeit = verbleibendeZeit;
   }
 
-  public Ergebnis bewerberReaktionen(BewerberReaktionen bewerberReaktionen) {
+  public Ergebnis bewerberReaktionen(List<BewerberReaktion> bewerberReaktionen) {
     this.bewerberReaktionen = bewerberReaktionen;
     return this;
   }
 
    /**
-   * Get bewerberReaktionen
-   * @return bewerberReaktionen
+   * Get bewerberReaktion
+   * @return bewerberReaktion
   **/
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public BewerberReaktionen getBewerberReaktionen() {
+  public List<BewerberReaktion> getBewerberReaktionen() {
     return bewerberReaktionen;
   }
 
-  public void setBewerberReaktionen(BewerberReaktionen bewerberReaktionen) {
+  public void setBewerberReaktion(List<BewerberReaktion> bewerberReaktionen) {
     this.bewerberReaktionen = bewerberReaktionen;
   }
 

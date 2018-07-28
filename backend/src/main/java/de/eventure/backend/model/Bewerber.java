@@ -43,7 +43,7 @@ public class Bewerber   {
   @JsonProperty("beworbenFuer")
   private String beworbenFuer = null;
 /*
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "Pruefungen_Bewerber", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerber_id"), inverseJoinColumns = @JoinColumn(name = "pruefung_id"))
     @JsonProperty("pruefungen")
   @Valid

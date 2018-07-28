@@ -1,22 +1,22 @@
 <div style="text-align: left">
     <mat-horizontal-stepper [linear]="false" #stepper>
         <mat-step [stepControl]="firstFormGroup">
-            <form>
+    
                 <ng-template matStepLabel>Angaben zum Bewerber</ng-template>
                 <mat-form-field>
-                    <input matInput placeholder="Name" required>
+                    <input matInput placeholder="Name"  [(ngModel)]="name" required>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Angestrebte Position" >
+                    <input matInput placeholder="Angestrebte Position" [(ngModel)]="beworbenFuer" >
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Email"  required>
+                    <input matInput placeholder="Email"  [(ngModel)]="mailAdresse">
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Benutzername" required>
+                    <input matInput placeholder="Benutzername" [(ngModel)]="benutzername">
                 </mat-form-field>
                 <div>
                     <button mat-button matStepperNext>Weiter</button>
@@ -24,33 +24,29 @@
 
 
                 </div>
-            </form>
+            
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
-                <form>
+               
                 <ng-template matStepLabel>Tests hinzufügen</ng-template>
                 <h3>Tests auswählen</h3>
 
-               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'" [(ngModel)]="checked"  >Management 1</mat-checkbox></div>
-               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked1" >Management 2</mat-checkbox></div>
-               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked2" >Entwickler 1</mat-checkbox></div>
-               <div style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked3" >Entwickler 1</mat-checkbox></div>
-               <div style="width: 50%; float: clear;"> <mat-checkbox [color]="'primary'"  [(ngModel)]="checked4" >HR 1</mat-checkbox></div>
-
+               <div *ngFor="let testChecked of testsChecked" style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'" [(ngModel)]="testChecked.checked"  >{{testChecked.test?.titel}}</mat-checkbox></div>
+            
+        
             
 
                 <div>
                     <button mat-button matStepperPrevious>Zurück</button>
                     <button mat-button matStepperNext>Weiter</button>
                 </div>
-                </form>
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Abschließen
             </ng-template>
             Wollen Sie den neuen Bewerber jetzt speichern?
             <div>
-                <button mat-button matStepperPrevious>Ja</button>
+                <button mat-button (click)="saveBewerberMitPruefungen()" matStepperPrevious>Ja</button>
                 <button mat-button (click)="stepper.reset()">Nein</button>
                 <button mat-button matStepperPrevious>Zurück</button>
 
