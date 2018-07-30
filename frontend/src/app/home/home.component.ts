@@ -5,7 +5,9 @@ import { NotificationsService } from 'angular2-notifications';
 import * as RecordRTC from 'recordrtc';
 import { QuoteService } from '@app/home/quote.service';
 
-
+import { BewerberService, Bewerber } from '@app/core/services/bewerber.service';
+import { PruefungService, Pruefung } from '@app/core/services/pruefung.service';
+import { AuthenticationService } from '@app/core/authentication/authentication.service';
 
 
 @Component({
@@ -16,8 +18,9 @@ import { QuoteService } from '@app/home/quote.service';
 export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild(CountdownComponent) counter: CountdownComponent;
   @ViewChild('video') video: any;
-
+  config: String = '{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
   quote: string;
+  timer = 1200;
   isLoading: boolean;
   showInbox = false;
   testCompleted = false;
@@ -25,8 +28,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   anrufAnzeigen = true;
   private stream: MediaStream;
   private recordRTC: any;
+  bewerber: Bewerber;
+  selectedPruefung: any;
+  pruefungen: Pruefung[] = [];
 
-  constructor(private quoteService: QuoteService, private notificationsService: NotificationsService) { }
+  constructor(private bewerberService: BewerberService, private authenticationService: AuthenticationService, private quoteService: QuoteService, private notificationsService: NotificationsService) { }
 
   ngAfterViewInit() {
     // set the initial state of the video
@@ -34,6 +40,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
     video.muted = false;
     video.controls = true;
     video.autoplay = false;
+  }
+
+  returnConfig() {
+    console.log('test');
+    if (this.selectedPruefung) {
+      //return '{leftTime: ' +  this.selectedPruefung.test.zeit + ', notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}'
+      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
+
+    }
+    else {
+      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
+    }
   }
 
   toggleControls() {
@@ -115,6 +133,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   startTimer() {
+    console.log(this.selectedPruefung);
     this.counter.begin();
     this.showInbox = true;
   }
@@ -173,6 +192,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
+      this.bewerber = b;
+      let pruefungen: Pruefung[] = [];
+      this.bewerber.pruefungen.forEach( p => {
+        if (p.status === 'offen') {
+          pruefungen.push(p);
+        }
+      });
+      this.pruefungen = pruefungen;
+    });
+
     this.isLoading = true;
     this.quoteService.getRandomQuote({ category: 'dev' })
       .pipe(finalize(() => { this.isLoading = false; }))
@@ -182,13 +212,4 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 }
 
-export interface Email {
-  absender: string;
-  titel: string;
-  text?: string;
-  absendeDatum: string;
-  priortaet?: string;
-  ersccheintDirekt: boolean;
-  erscheintNachMS?: number;
-}
 

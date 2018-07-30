@@ -59,7 +59,9 @@ public class GetAbgeschlossenePruefungenFuerBewerberApiController implements Get
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
             return ResponseEntity.ok()
                     .headers(headers)
-                    .body((List<Pruefung>) pruefungRepository.findAllByBewerberEqualsAndStatusEquals(bewerber, "abgeschlossen"));
+                    .body((List<Pruefung>) pruefungRepository.findAll());
+
+               //     .body((List<Pruefung>) pruefungRepository.findAllByBewerberEqualsAndStatusEquals(bewerber, "abgeschlossen"));
         }
 
         return new ResponseEntity<List<Pruefung>>(HttpStatus.BAD_REQUEST);

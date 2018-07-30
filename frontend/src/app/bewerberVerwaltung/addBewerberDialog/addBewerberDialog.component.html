@@ -19,8 +19,8 @@
                     <input matInput placeholder="Benutzername" [(ngModel)]="benutzername">
                 </mat-form-field>
                 <div>
-                    <button mat-button matStepperNext>Weiter</button>
-                    <button mat-button (click)="saveBewerber()">Bewerber ohne Tests speichern</button>
+                    <button mat-button  (click)="saveBewerber()" matStepperNext>Weiter</button>
+                    <button mat-button (click)="saveBewerber(); dialogRef.close();">Bewerber ohne Tests speichern</button>
 
 
                 </div>
@@ -47,7 +47,7 @@
             Wollen Sie den neuen Bewerber jetzt speichern?
             <div>
                 <button mat-button (click)="saveBewerberMitPruefungen()" matStepperPrevious>Ja</button>
-                <button mat-button (click)="stepper.reset()">Nein</button>
+                <button mat-button (click)="this.dialogRef.close()">Nein</button>
                 <button mat-button matStepperPrevious>Zurück</button>
 
             </div>

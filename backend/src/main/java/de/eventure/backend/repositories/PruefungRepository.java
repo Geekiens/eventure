@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PruefungRepository extends CrudRepository<Pruefung, Long> {
 
-    List<Pruefung> findAllByBewerberEqualsAndStatusEquals(Bewerber bewerber, String status);
+   // List<Pruefung> findAllByBewerberEqualsAndStatusEquals(Bewerber bewerber, String status);
 }
 
 

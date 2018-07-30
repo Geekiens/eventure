@@ -22,7 +22,7 @@ export class TestVerwaltungComponent implements OnInit {
   selectedEmail: Email;
   showMailText = false;
   hasAnswers = false;
-
+  config = '{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
   constructor(private testService: TestService, private router: Router) {}
   createTest() {
     this.router.navigate(['testVerwaltung/neuerTest']);  

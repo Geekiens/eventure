@@ -5,8 +5,11 @@ import { NotificationsService } from 'angular2-notifications';
 
 import { SelectDateDialogComponent } from '@app/home/inbox/selectDateDialog/selectDateDialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { PruefungService, Pruefung } from '@app/core/services/pruefung.service';
+import { ErgebnisService, Ergebnis, BewerberReaktion, Kalendereintrag } from '@app/core/services/ergebnis.service';
 
-
+import { Email, Antwort } from '@app/core/services/email.service';
+import { element } from '../../../../node_modules/protractor';
 
 
 @Component({
@@ -17,16 +20,26 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class InboxComponent implements OnInit {
   showMailText = false;
+  antwortText = '';
   @Input() anrufAnzeigen: boolean;
+  @Input() pruefung: Pruefung;
+  beantworteteEmails: Email [] = [];
   emails: Email[];
   selectedEmail: Email = null;
+  kalendereintrag: Kalendereintrag;
   hasAnswers = false;
+  displayedMails: Email[];
+  eingang = true;
   showAnswer = false;
-
+  ergebnis: Ergebnis = {videoPfad: 'Dummy'};
+  bewerberReaktion: BewerberReaktion = null;
+  weiterleiten = false;
+  weiterleitenPersonen: String[] = ['Softwarearchitekt', 'Studentischer Entwickler', 'Direkter Vorgesetzter', 'Personalabteilung', 'Kunde', 'Projektleiter'];
+  selectedPerson: String;
   anrufer = 'Chuck';
   //showAnruf = false;
 
-  constructor(private notificationsService: NotificationsService, public dialog: MatDialog) { }
+  constructor(private ergebnisService: ErgebnisService, private notificationsService: NotificationsService, public dialog: MatDialog) { }
 
   acceptCall() {
     const audio = new Audio();
@@ -40,14 +53,16 @@ export class InboxComponent implements OnInit {
   }
 
   emailClicked(email: Email) {
+    this.weiterleiten = false;
     this.showAnswer = false;
     this.selectedEmail = email;
     this.showMailText = true;
     this.hasAnswers = this.selectedEmail.antworten.length > 0;
   }
   antwortenClicked() {
-    this.showAnswer = true;
+    this.showAnswer = !this.showAnswer;
   }
+
   openCalendar() {
     let dialogRef = this.dialog.open(SelectDateDialogComponent, {
       width: '50vw',
@@ -55,164 +70,108 @@ export class InboxComponent implements OnInit {
     });
   }
 
+  weiterleitenClicked() {
+    this.weiterleiten = !this.weiterleiten;
+  }
+
   aufTerminClicked() {
     let dialogRef = this.dialog.open(SelectDateDialogComponent, {
-      width: '50vw',
-      data: {  }
+      data: {ergebnis: this.ergebnis, titel: this.selectedEmail.titel }, width: '50vw'
     });
   }
 
+
+  sendMail() {
+  this.bewerberReaktion = {
+    reaktionsArt: 'antwort',
+    email: this.selectedEmail,
+    text: this.antwortText
+  };
+  if (this.ergebnis.bewerberReaktionen) {
+    this.ergebnis.bewerberReaktionen.push(this.bewerberReaktion);
+  }
+  else {
+    this.ergebnis.bewerberReaktionen = [];
+    this.ergebnis.bewerberReaktionen.push(this.bewerberReaktion);
+  }
+  this.ergebnisService.updateErgebnis(this.ergebnis).subscribe(e => {
+    this.ergebnis = e;
+  });
+  this.beantworteteEmails.push(this.selectedEmail);
+
+  this.emails.forEach(element => {
+    let index = this.emails.indexOf(element);
+    this.emails.splice(index, 1);
+  });
+}
+
+showEingang() {
+  this.displayedMails = this.emails;
+}
+showAusgang() {
+  let mails: Email[] = [];
+  this.ergebnis.bewerberReaktionen.forEach( reakt => {
+    if (reakt.reaktionsArt === 'option' || reakt.reaktionsArt === 'antwort') {
+      mails.push(reakt.email);
+    }
+  });
+  this.displayedMails = mails;
+}
+
+  mailWeiterleiten() {
+    this.bewerberReaktion = {
+      reaktionsArt: 'weiterleiten',
+      email: this.selectedEmail,
+      text: this.selectedPerson
+    };
+    if (this.ergebnis.bewerberReaktionen) {
+      this.ergebnis.bewerberReaktionen.push(this.bewerberReaktion);
+    }
+    else {
+      this.ergebnis.bewerberReaktionen = [];
+      this.ergebnis.bewerberReaktionen.push(this.bewerberReaktion);
+    }
+    this.ergebnisService.updateErgebnis(this.ergebnis).subscribe(e => {
+      this.ergebnis = e;
+    });
+
+  }
+
+  sendOption(i) {
+    this.bewerberReaktion = {
+      reaktionsArt: 'option',
+      email: this.selectedEmail,
+      text: i
+    };
+    if (this.ergebnis.bewerberReaktionen) {
+      this.ergebnis.bewerberReaktionen.push(this.bewerberReaktion);
+    }
+    else {
+      this.ergebnis.bewerberReaktionen = [];
+      this.ergebnis.bewerberReaktionen.push(this.bewerberReaktion);
+    }
+    this.ergebnisService.updateErgebnis(this.ergebnis).subscribe(e => {
+      this.ergebnis = e;
+    });
+    this.beantworteteEmails.push(this.selectedEmail);
+
+    this.emails.forEach(element => {
+      let index = this.emails.indexOf(element);
+      this.emails.splice(index, 1);
+    });
+  }
+ 
   ngOnInit() {
-     this.emails = this.getEmails();
+    
+    this.ergebnisService.createErgebnis(this.ergebnis).subscribe(e => {
+      this.ergebnis = e;
+    });
+
+    this.displayedMails = this.emails = this.pruefung.test.emails;
   }
 
-
-  getEmails() {
-      return [
-        {
-          absender: 'Peter Müller',
-          titel: 'Terminabsprache',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          sum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam vol
-          uptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor s
-          it amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et 
-          justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscin
-          g elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-           Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          sum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam vol
-          uptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor s
-          it amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et 
-          justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscin
-          g elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-           Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          sum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam vol
-          uptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor s
-          it amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et 
-          justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscin
-          g elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-           Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          sum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam vol
-          uptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor s
-          it amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et 
-          justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscin
-          g elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-           Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          sum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam vol
-          uptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor s
-          it amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et 
-          justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscin
-          g elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [],
-        },
-        {
-          absender: 'Peter Müller',
-          titel: 'Urlaub',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [
-            {
-              titel: 'Erlaubnis',
-              text: `Hallo Herr Mustermann, <br> <br>
-                     hiermit bestätige ich Ihren Urlaubsantrag.<br><br>
-                     Viele Grüße<br>
-                     X`,
-              folgeMail: {
-                           absender: 'Max Mustermann',
-                           titel: 'Bewerbung4',
-                           text: ``,
-                           absendeDatum: '2018-05-30',
-                           priortaet: 'normal',
-                           erscheintDirekt: true,
-                           antworten: [{
-                                titel: 'Erlaubnis',
-                                text: 'Lorem ipsum 3',
-                           }],
-                         }
-            },
-            {
-              titel: 'Ablehnen',
-              text: 'Lorem ipsum  <br> test',
-            }
-        ],
-        },
-        {
-          absender: 'Franz Meier',
-          titel: 'Gehaltsgespräch',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [],
-        },
-        {
-          absender: 'Max Mustermann',
-          titel: 'Bewerbung',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [],
-        },
-        {
-          absender: 'Max Mustermann',
-          titel: 'Bewerbung2',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [],
-        },
-        {
-          absender: 'Max Mustermann',
-          titel: 'Bewerbung3',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [],
-        },
-        {
-          absender: 'Max Mustermann',
-          titel: 'Bewerbung4',
-          text: `Lorem ipsum dolor sit amet, consetetur sadipscing el diam voluptua. At vero eos et accusam
-          et justo duo dono sea takimata sanctus est Lorem ipsum dolor sit `,
-          absendeDatum: '2018-05-30',
-          priortaet: 'normal',
-          erscheintDirekt: true,
-          antworten: [],
-        }
-      ];
-  }
 }
 
-export interface Email {
-  absender: string;
-  titel: string;
-  text?: string;
-  absendeDatum: string;
-  priortaet?: string;
-  erscheintDirekt: boolean;
-  erscheintNachMS?: number;
-  antworten: Antwort[];
-}
-export interface Antwort {
-  titel: string;
-  text: string;
-  folgeMail?: Email;
-}
+
+
 

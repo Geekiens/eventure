@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {Router} from '@angular/router';
 import { environment } from '@env/environment';
 import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberDialog/addBewerberDialog.component';
+import { Bewerber, BewerberService } from '@app/core/services/bewerber.service';
+
 
 @Component({
   selector: 'app-bewerberVerwaltung',
@@ -11,12 +13,52 @@ import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberD
 })
 export class BewerberVerwaltungComponent implements OnInit {
 
+  bewerber: Bewerber[];
+  displayedBewerber: Bewerber[];
+  bewerberMitPruefung: Bewerber[];
+
   showAllBewerber = true;
   showBewerberDetails = false;
-  constructor(public dialog: MatDialog, private router: Router) { }
+  currentBewerber: Bewerber;
+
+  constructor(private bewerberService: BewerberService, public dialog: MatDialog, private router: Router) { }
+
+  annehmen() {
+    this.currentBewerber.status = 'angenommen';
+    this.bewerberService.updateBewerber(this.currentBewerber);
+  }
+
+  ablehnen() {
+    this.currentBewerber.status = 'abgelehnt';
+
+  }
 
   toogleBewerber() {
     this.showAllBewerber = !this.showAllBewerber;
+    this.updateDisplayedBewerber();
+  }
+
+  updateDisplayedBewerber() {
+    if (this.showAllBewerber) {
+      this.displayedBewerber = this.bewerber;
+    } else {
+      this.bewerberMitPruefung = [];
+      this.bewerber.forEach( b => {
+        let contains = false;
+        if (b.pruefungen) {
+          b.pruefungen.forEach ( p => {
+            if (p.status === 'bearbeitet') {
+              contains = true;
+            }
+          });
+          if (contains) {
+            this.bewerberMitPruefung.push(b);
+          }
+        }
+
+      });
+      this.displayedBewerber = this.bewerberMitPruefung;
+    }
   }
 
   addTestToBewerber() {
@@ -34,7 +76,8 @@ export class BewerberVerwaltungComponent implements OnInit {
 
 
 
-  showBewerber(bewerber: string) {
+  showBewerber(bewerber: Bewerber) {
+    this.currentBewerber = bewerber;
     this.showBewerberDetails = true;
   }
 
@@ -45,13 +88,31 @@ export class BewerberVerwaltungComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.getBewerber();
     });
   }
 
-  
+  getBewerber() {
+    this.bewerberService.getBewerber().subscribe( bewerber => {
+      this.bewerber = bewerber;
+      this.displayedBewerber = this.bewerber;
+      this.showAllBewerber = true;
+    });
+  }
+
+  status(bewerber) {
+    if (bewerber.status === 'offen') {return 'In Bearbeitung'; }
+    if (bewerber.status === 'abgelehnt') {return 'Abgelehnt'; }
+    if (bewerber.status === 'angenommen') {return 'Angenommen'; }
 
 
-  ngOnInit() { }
+
+  }
+
+  ngOnInit() {
+    this.getBewerber();
+    this.showBewerberDetails = false;
+    this.updateDisplayedBewerber();
+  }
 
 }

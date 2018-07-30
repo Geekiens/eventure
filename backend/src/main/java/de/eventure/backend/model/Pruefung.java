@@ -1,6 +1,8 @@
 package de.eventure.backend.model;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import de.eventure.backend.model.Bewerber;
@@ -26,13 +28,14 @@ public class Pruefung   {
   @JoinColumn(name = "test_id")
   @JsonProperty("test")
   private Test test = null;
-
-  @ManyToOne(cascade = CascadeType.PERSIST)
+/*
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "bewerber_id")
+  @JsonIgnoreProperties("pruefungen")
   @JsonProperty("bewerber")
   private Bewerber bewerber = null;
-
-  @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+*/
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinColumn(name = "ergebnis_id")
   @JsonProperty("ergebnis")
   private Ergebnis ergebnis = null;
@@ -66,12 +69,12 @@ public class Pruefung   {
   public void setTest(Test test) {
     this.test = test;
   }
-
+/*
   public Pruefung bewerber(Bewerber bewerber) {
     this.bewerber = bewerber;
     return this;
   }
-
+*/
    /**
    * Get bewerber
    * @return bewerber
@@ -80,7 +83,7 @@ public class Pruefung   {
   @NotNull
 
   @Valid
-
+/*
   public Bewerber getBewerber() {
     return bewerber;
   }
@@ -88,7 +91,7 @@ public class Pruefung   {
   public void setBewerber(Bewerber bewerber) {
     this.bewerber = bewerber;
   }
-
+*/
   public Pruefung ergebnis(Ergebnis ergebnis) {
     this.ergebnis = ergebnis;
     return this;
@@ -163,7 +166,7 @@ public class Pruefung   {
     }
     Pruefung pruefung = (Pruefung) o;
     return Objects.equals(this.test, pruefung.test) &&
-        Objects.equals(this.bewerber, pruefung.bewerber) &&
+       // Objects.equals(this.bewerber, pruefung.bewerber) &&
         Objects.equals(this.ergebnis, pruefung.ergebnis) &&
         Objects.equals(this.status, pruefung.status) &&
         Objects.equals(this.id, pruefung.id);
@@ -171,7 +174,7 @@ public class Pruefung   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(test, bewerber, ergebnis, status, id);
+    return Objects.hash(test, ergebnis, status, id);
   }
 
   @Override
@@ -180,7 +183,7 @@ public class Pruefung   {
     sb.append("class Pruefung {\n");
     
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
-    sb.append("    bewerber: ").append(toIndentedString(bewerber)).append("\n");
+   //sb.append("    bewerber: ").append(toIndentedString(bewerber)).append("\n");
     sb.append("    ergebnis: ").append(toIndentedString(ergebnis)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

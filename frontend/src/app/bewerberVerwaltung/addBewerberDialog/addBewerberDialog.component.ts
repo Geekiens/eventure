@@ -23,7 +23,6 @@ export class AddBewerberDialogComponent implements OnInit{
   beworbenFuer: String;
   mailAdresse: String;
   benutzername: String;
-
   bewerber: Bewerber;
   pruefungen: Pruefung[];
 
@@ -33,40 +32,41 @@ export class AddBewerberDialogComponent implements OnInit{
 
 
 
-  constructor(private pruefungService: PruefungService, private bewerberService: BewerberService, private testService: TestService, private _formBuilder: FormBuilder,  notificationsService: NotificationsService) {
+  constructor(public dialogRef: MatDialogRef<AddBewerberDialogComponent>, private pruefungService: PruefungService, private bewerberService: BewerberService, private testService: TestService, private _formBuilder: FormBuilder,  notificationsService: NotificationsService) {
 
     }
   saveBewerber() {
     this.bewerber = {
       name: this.name,
-      beworbenFuer: this.beworbenFuer,
-      mailAdresse: this.mailAdresse,
-      benutzername: this.benutzername
-    };
-    this.bewerberService.createBewerber(this.bewerber);
-  }
-
-  saveBewerberMitPruefungen() {
-    this.bewerber = {
-      name: this.name,
+      status: 'offen',
       beworbenFuer: this.beworbenFuer,
       mailAdresse: this.mailAdresse,
       benutzername: this.benutzername,
       passwort: 'passwort'
     };
+    this.bewerberService.createBewerber(this.bewerber).subscribe(bewerber => {
+      this.bewerber = bewerber;
+    });
+
+  }
+
+  saveBewerberMitPruefungen() {
     this.pruefungen = [];
-    
+    //this.saveBewerber();
     this.testsChecked.forEach(testChecked => {
       if (testChecked.checked) {
         let pruefung: Pruefung = {
           test: testChecked.test,
-          bewerber: this.bewerber,
           status: 'offen'
         };
         this.pruefungen.push(pruefung);
       }
     });
-    this.pruefungService.createPruefungen(this.pruefungen);
+
+     this.bewerber.pruefungen = this.pruefungen;
+     this.bewerberService.updateBewerber(this.bewerber);
+     this.dialogRef.close();
+
 
   }
   ngOnInit() {

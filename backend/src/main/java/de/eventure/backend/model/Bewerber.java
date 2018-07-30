@@ -1,6 +1,8 @@
 package de.eventure.backend.model;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import de.eventure.backend.model.Pruefung;
@@ -37,18 +39,24 @@ public class Bewerber   {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("status")
+  private String status = null;
+
   @JsonProperty("mailAdresse")
   private String mailAdresse = null;
 
   @JsonProperty("beworbenFuer")
   private String beworbenFuer = null;
-/*
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "Pruefungen_Bewerber", joinColumns = @JoinColumn(referencedColumnName = "id", name = "bewerber_id"), inverseJoinColumns = @JoinColumn(name = "pruefung_id"))
-    @JsonProperty("pruefungen")
-  @Valid
-  private List<Pruefung> pruefungen = null;
-*/
+
+  @OneToMany(cascade = CascadeType.ALL)
+  @JsonProperty("pruefungen")
+  //@JsonIgnoreProperties("bewerber")
+  @JoinTable(
+          name="pruefungen_bewerber",
+          joinColumns = @JoinColumn( name="bewerber_id"),
+          inverseJoinColumns = @JoinColumn( name="pruefung_id"))
+  private List<Pruefung> pruefungen = new ArrayList<Pruefung>();
+
 
   public Bewerber benutzername(String benutzername) {
     this.benutzername = benutzername;
@@ -96,7 +104,15 @@ public class Bewerber   {
     return this;
   }
 
-   /**
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  /**
    * Get name
    * @return name
   **/
@@ -116,7 +132,17 @@ public class Bewerber   {
     return this;
   }
 
-    /**
+
+
+  public List<Pruefung> getPruefungen() {
+    return pruefungen;
+  }
+
+  public void setPruefungen(List<Pruefung> pruefungen) {
+    this.pruefungen = pruefungen;
+  }
+
+  /**
      * Get id
      * @return id
      **/

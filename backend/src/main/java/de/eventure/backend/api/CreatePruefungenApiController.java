@@ -37,7 +37,7 @@ public class CreatePruefungenApiController implements CreatePruefungenApi {
 
     @Autowired
     private PruefungRepository pruefungRepository;
-    private BewerberRepository bewerberRepository;
+   // private BewerberRepository bewerberRepository;
 
 
     private final ObjectMapper objectMapper;
@@ -55,9 +55,9 @@ public class CreatePruefungenApiController implements CreatePruefungenApi {
         String content = request.getHeader("Content-Type");
         if (accept != null && accept.contains("application/json") && content != null && content.contains("application/json")) {
             List<Pruefung> retPruefungen = new ArrayList<Pruefung>();
-
+           // Bewerber bewerber = bewerberRepository.save(pruefungen.iterator().next().getBewerber());
             for (Pruefung pruefung : pruefungen){
-
+             //   pruefung.setBewerber(bewerber);
                 pruefung = pruefungRepository.save(pruefung);
                 retPruefungen.add(pruefung);
             }

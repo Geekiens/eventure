@@ -59,7 +59,8 @@ public class GetOffenePruefungenFuerBewerberApiController implements GetOffenePr
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
             return ResponseEntity.ok()
                     .headers(headers)
-                    .body((List<Pruefung>) pruefungRepository.findAllByBewerberEqualsAndStatusEquals(bewerber, "offen"));
+                    .body((List<Pruefung>) pruefungRepository.findAll());
+                //    .body((List<Pruefung>) pruefungRepository.findAllByBewerberEqualsAndStatusEquals(bewerber, "offen"));
         }
 
         return new ResponseEntity<List<Pruefung>>(HttpStatus.BAD_REQUEST);

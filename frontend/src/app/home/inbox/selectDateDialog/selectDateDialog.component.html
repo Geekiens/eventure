@@ -1,10 +1,10 @@
 <div style="text-align: left; font-size: 1.2em; font-family: Arial, Helvetica, sans-serif; ">
 
     <div style="float: left;">
-        <span style="margin-top:7px; display: inline-block;">Gehaltsgespräch</span>
+        <span style="margin-top:7px; display: inline-block;">{{data.titel}}</span>
         <br> <span style="margin-top:23px; display: inline-block;">
 
-            <mat-radio-group>
+            <mat-radio-group [(ngModel)]="tag">
                 <mat-radio-button [color]="'primary'" value="1">Tag 1</mat-radio-button>
                 <mat-radio-button [color]="'primary'" value="2">Tag 2</mat-radio-button>
                 <mat-radio-button [color]="'primary'" value="3">Tag 3</mat-radio-button>
@@ -20,17 +20,27 @@
         <span style="margin-top:23px; display: inline-block;"> Bis: </span>
     </div>
 
-    <div style="clear: right;">
+    
+  
+    <div style="margin-left: 20px; float: left;">
 
 
-        <span style=" display: inline-block;"><p-calendar [inputStyle]="{'width':'70px'}" [(ngModel)]="von" [timeOnly]="true" [stepMinute]="15"></p-calendar></span>
+        <span style=" display: inline-block;"><p-calendar [inputStyle]="{'width':'70px'}" [(ngModel)]="von" [timeOnly]="true" [stepMinute]="30"></p-calendar></span>
         <br>
-        <span style="margin-top:10px; display: inline-block;"><p-calendar [inputStyle]="{'width':'70px'}" [(ngModel)]="bis" [timeOnly]="true" [stepMinute]="15"></p-calendar></span>
+        <span style="margin-top:10px; display: inline-block;"><p-calendar [inputStyle]="{'width':'70px'}" [(ngModel)]="bis" [timeOnly]="true" [stepMinute]="30"></p-calendar></span>
 
     </div>
 
+    <div  style="float: left; margin-top:20px;">
+            <button  (click)="sendKalendereintrag()" mat-raised-button color="primary">Auf Termin legen</button>
+        </div>
+
+        <div  style="clear: both;">
+            </div>
 
 </div>
+
+ 
 
 <div style="margin-top: 15px;">
     <div style="float: left; width: 33%; text-align: center">

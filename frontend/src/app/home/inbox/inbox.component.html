@@ -7,9 +7,9 @@
         <button style="width:90%; margin-left: 5%;" (click)="openCalendar()" mat-raised-button color="primary">
           Kalender öffnen</button>
         <br>
-        <span style="margin-top: 25px; display: inline-block;"> Posteingang</span>
-        <br> Postausgang
-        <br> Weitergeleitet
+        <span (click)="showEingang()" style="margin-top: 25px; display: inline-block;"> Posteingang</span>
+        <br> <span (click)="showAusgang()">Postausgang</span>
+        <br> <span>Weitergeleitet</span>
         <br> Gelöscht
         <br>
 
@@ -29,7 +29,7 @@
     </mat-card>
   </div>
   <div id="bindCSSMail" style="float: left;" class="inboxElementWrapper">
-    <div *ngFor="let email of emails" class="mailElement" (click)="emailClicked(email)">
+    <div *ngFor="let email of displayedMails" class="mailElement" (click)="emailClicked(email)">
       <mat-card>
 
         <div class="">
@@ -45,7 +45,7 @@
             {{email.titel}}
           </div>
           <div style="font-size: 0.8em; color:grey;" class="text-div">
-            {{email.text}}
+            {{email.text}} 
           </div>
         </div>
       </mat-card>
@@ -67,6 +67,16 @@
             <span style="margin-left: 20px;" (click)="verschiebenClicked()">Verschieben</span>
             <span style="margin-left: 20px;" (click)="aufTerminClicked()">Auf Termin legen</span>
             <span style="margin-left: 20px;" (click)="loeschenClicked()">Löschen</span>
+            <div *ngIf="weiterleiten" style="margin-top: 20px;">
+            <mat-form-field *ngIf="weiterleiten" >
+                <mat-select [(ngModel)]="selectedPerson" placeholder="Weiterleiten an">
+                  <mat-option *ngFor="let person of weiterleitenPersonen" [value]="person">
+                    {{person}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <button style="margin-left: 25px;" *ngIf="weiterleiten"  (click)="mailWeiterleiten()" mat-raised-button color="primary">Email Weiterleiten</button>
+            </div>
           </div>
 
 
@@ -74,7 +84,7 @@
       </mat-card-content>
       <div style="margin-bottom: 20px;">
         <div style="height:25vh; overflow-y: scroll;" class="">
-          {{selectedEmail.text}}
+          <pre>{{selectedEmail.text}}</pre>
         </div>
       </div>
 
@@ -84,10 +94,10 @@
 
       <mat-tab-group *ngIf="hasAnswers && showAnswer" style="margin-top:5px;" class="demo-tab-group">
 
-        <mat-tab *ngFor="let antwort of selectedEmail.antworten" label="{{antwort.titel}}">
+        <mat-tab *ngFor="let antwort of selectedEmail.antworten; let i = index" label="{{antwort.titel}}">
           <div style="overflow-y: scroll; height:17vh; margin-top:5px;" [innerHTML]="antwort.text" class="demo-tab-content">
           </div>
-          <button (click)="startTimer()" mat-raised-button color="primary">Senden</button>
+          <button (click)="sendOption(i)" mat-raised-button color="primary">Senden</button>
 
         </mat-tab>
 
@@ -96,11 +106,11 @@
 
       <div style="height:22vh; margin-top:5px;">
         <mat-form-field *ngIf="!hasAnswers && showAnswer" style="width: 100%;">
-          <textarea matInput matTextareaAutosize [matAutosizeMaxRows]=10 placeholder="Bitte beantworten Sie diese Mail"></textarea>
+          <textarea [(ngModel)]="antwortText"  matInput matTextareaAutosize [matAutosizeMaxRows]=10 placeholder="Bitte beantworten Sie diese Mail"></textarea>
         </mat-form-field>
       </div>
 
-      <button *ngIf="showAnswer" (click)="startTimer()" mat-raised-button color="primary">Senden</button>
+      <button *ngIf="showAnswer" (click)="sendMail()" mat-raised-button color="primary">Senden</button>
 
 
     </mat-card>

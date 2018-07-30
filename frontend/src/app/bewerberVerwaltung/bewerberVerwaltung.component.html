@@ -1,11 +1,16 @@
 <div class="container">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <mat-card style="height:90vh; width:30%; float:left">
     <h3>
       <mat-card-title>
+          
+        <span style="color:darkgray; float: left;" *ngIf="showBewerberDetails" (click)="showBewerberDetails = !showBewerberDetails"> <i class="fa fa-line-chart"></i> </span>
+        <span style="float: left;" *ngIf="!showBewerberDetails" (click)="showBewerberDetails = !showBewerberDetails"> <i class="fa fa-line-chart"></i>
+        </span>
 
 
         <button style=" width: 60%" (click)="toogleBewerber()" mat-raised-button color="primary">
-          <span *ngIf="showAllBewerber">Bewerber mit abgeschlossener Prüfung</span>
+          <span *ngIf="showAllBewerber">Bewerber mit bearbeiteter Prüfung</span>
           <span *ngIf="!showAllBewerber">Alle Bewerber</span>
         </button>
 
@@ -14,21 +19,16 @@
           person_add
         </i>
 
-        <div (click)="showBewerber('BEWERBER EINFÜGEN')" style="text-align: left; margin-top: 20px;">
-          <span class="dot"></span>
-          <span style="margin-right: 20px">Bewerbername</span>
-          <span>Entwickler</span>
-          <br>
 
-          <span class="dot_yellow"></span>
-          <span style="margin-right: 20px">Bewerbername</span>
-          <span>Abteilungsleiter</span>
+        <div *ngFor="let selectedBewerber of displayedBewerber" (click)="showBewerber(selectedBewerber)" style="text-align: left; margin-top: 20px;">
+          <span style="float:left;" *ngIf="selectedBewerber.status == 'angenommen'" class="dot"></span>
+          <span style="float:left;" *ngIf="selectedBewerber.status == 'offen'" class="dot_yellow"></span>
+          <span style="float:left;" *ngIf="selectedBewerber.status == 'abgelehnt'" class="dot_red"></span>
+          <span style="margin-left:10px; float:left; width: 55%">{{selectedBewerber.name}}</span>
+          <span style="float:right; width: 35%">{{selectedBewerber.beworbenFuer}}</span>
           <br>
-
-          <span class="dot_red"></span>
-          <span style="margin-right: 20px">Bewerbername</span>
-          <span>Human Resource</span>
-        </div>
+       </div>
+        
 
       </mat-card-title>
     </h3>
@@ -38,29 +38,35 @@
 
 
 
-  <mat-card style="margin-left:1%; width:69%;  height:90vh;  float:right">
+  <mat-card *ngIf="showBewerberDetails" style="margin-left:1%; width:69%;  height:90vh;  float:right">
     <mat-card-title style="text-align: left; font-size:1.4em">
 
       <span style="display: inline-block; width: 20%">Name:</span>
-      <span style="display: inline-block; width: 25%">Bewerbername</span>
+      <span style="display: inline-block; width: 25%">{{currentBewerber?.name}}</span>
 
       <span style="display: inline-block; width: 20%">Benutzername:</span>
-      <span style="display: inline-block; width: 30%">User</span>
+      <span style="display: inline-block; width: 30%">{{currentBewerber?.benutzername}}</span>
 
       <br>
 
       <span style="display: inline-block; width: 20%">Angestrebte Position:</span>
-      <span style="display: inline-block; width: 25%">Position</span>
+      <span style="display: inline-block; width: 25%">{{currentBewerber?.beworbenFuer}}</span>
 
       <span style="display: inline-block; width: 20%">Email:</span>
-      <span style="display: inline-block; width: 30%">max.braemer@tu-dortmund.de</span>
+      <span style="display: inline-block; width: 30%">{{currentBewerber?.mailAdresse}}</span>
 
       <br>
 
-      <span style="display: inline-block; width: 20%">Berwerbungsstatus:</span>
-      <span style="display: inline-block; width: 25%">In Bearbeitung</span>
+      <span style="display: inline-block; width: 20%">Bewerbungsstatus:</span>
+      <span style="display: inline-block; width: 25%">{{status(currentBewerber)}}</span>
 
       <button style="width: 20%" (click)="generatePassword()" mat-raised-button color="primary">Neues Passwort generieren</button>
+      
+      <br>
+
+      <button *ngIf="currentBewerber?.status == 'offen'" style="float:left; width:22%; margin-top:20px; background: darkgreen" (click)="annehmen()"  mat-raised-button color="primary">Annehmen</button>
+      <button *ngIf="currentBewerber?.status == 'offen'" style="clear: both; width:22%; margin-top:20px;" (click)="ablehnen()"  mat-raised-button color="warn">Ablehnen</button>
+      <br>
 
     </mat-card-title>
 
@@ -88,10 +94,15 @@
           </span>
         </div>
 
-        <mat-card (click)="evaluateTest()" style="width:47%; margin-right: 3%; float: left;">
+        <mat-card *ngFor="let pruefung of currentBewerber?.pruefungen" (click)="evaluateTest()" style="width:47%; margin-right: 3%; float: left;">
           <mat-card-title>
-            Test "Management 1"
-            <span style="float: right;" class="dot_yellow"></span>
+            Test "{{pruefung?.test?.titel}}"
+            <span *ngIf="pruefung?.status == 'offen'" style="float: right;" class="dot_blue"></span>
+            <span *ngIf="pruefung?.status == 'bearbeitet'" style="float: right;" class="dot_yellow"></span>
+            <span *ngIf="pruefung?.status == 'abgeschlossen'" style="float: right;" class="dot_green"></span>
+
+
+
 
           </mat-card-title>
           <mat-card-content style="text-align: left; font-size: 0.9em">
@@ -102,20 +113,7 @@
           </mat-card-content>
         </mat-card>
 
-        <mat-card (click)="evaluateTest()" style="width:47%; margin-right: 3%; float:left">
-          <mat-card-title>
-            Test "Management 2"
-            <span style="float: right;" class="dot_yellow"></span>
-
-          </mat-card-title>
-          <mat-card-content style="text-align: left; font-size: 0.9em">
-              Benöigte Zeit: 14:10 von 15:00 <br>
-              Emails beantwortet: 7 <br>
-              Emails weitergeleitet 8 <br>
-              Emails gelöscht: 0 <br>
-            </mat-card-content>
- 
-        </mat-card>
+        
       </div>
 
     </mat-card-content>

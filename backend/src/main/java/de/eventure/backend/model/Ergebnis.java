@@ -34,6 +34,11 @@ public class Ergebnis   {
   @JsonProperty("verbleibendeZeit")
   private Integer verbleibendeZeit = null;
 
+  @JsonProperty("kalendereintraege")
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name="kalendereintrag_id")
+  private List<Kalendereintrag> kalendereintraege = null;
+
 
   @JsonProperty("bewerberReaktionen")
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -148,7 +153,7 @@ public class Ergebnis   {
     
     sb.append("    videoPfad: ").append(toIndentedString(videoPfad)).append("\n");
     sb.append("    verbleibendeZeit: ").append(toIndentedString(verbleibendeZeit)).append("\n");
-    sb.append("    bewerberReaktionen: ").append(toIndentedString(bewerberReaktionen)).append("\n");
+    sb.append("    bewerberReaktion: ").append(toIndentedString(bewerberReaktionen)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -8,46 +8,74 @@ import { Email } from '@app/core/services/email.service';
 
 
 @Injectable()
-export class PruefungService {
-    //private PruefungUrl = 'localhost:8080/assessment';
-    private newPruefungSource = new BehaviorSubject<Pruefung>(null);
+export class ErgebnisService {
+    // private ErgebnisUrl = 'localhost:8080/assessment';
+    private newErgebnisSource = new BehaviorSubject<Ergebnis>(null);
+    private updatedErgebnisSource = new BehaviorSubject<Ergebnis>(null);
 
-    newPruefung = this.newPruefungSource.asObservable();
+
+
+    newErgebnis = this.newErgebnisSource.asObservable();
+
 
     constructor(private http: HttpClient) {}
 
-    public createPruefung(pruefung: Pruefung) {
+    public createErgebnis(ergebnis: Ergebnis) {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         })
       };
-      return this.http.post<Pruefung>('http://localhost:8080/assessment/createPruefung', pruefung, httpOptions)
-        .subscribe(pruefung => {
-          this.newPruefungSource.next(pruefung);
-          this.newPruefungSource.next(null);
+      return this.http.post<Ergebnis>('http://localhost:8080/assessment/createErgebnis', ergebnis, httpOptions);
+      /*
+        .subscribe(retErgebnis => {
+          this.newErgebnisSource.next(retErgebnis);
+          this.newErgebnisSource.next(null);
         });
+        */
+
     }
-}
-export interface Pruefung {
-  test: Test;
-  bewerber?: Bewerber;
-  ergebnis?: Ergebnis;
-  status?: string;
-  id?: string;
+
+    public updateErgebnis(ergebnis: Ergebnis) {
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          })
+        };
+        return this.http.post<Ergebnis>('http://localhost:8080/assessment/updateErgebnis', ergebnis, httpOptions)
+        /*
+          .subscribe(resergebnis => {
+            this.updatedErgebnisSource.next(resergebnis);
+            this.updatedErgebnisSource.next(null);
+          });
+          */
+      }
+
 }
 
 export interface Ergebnis {
-    bewerberReaktion: BewerberReaktion[];
+    bewerberReaktionen?: BewerberReaktion[];
     verbleibendeZeit?: number;
     videoPfad: String;
     id?: string;
-  }
+    kalendereintraege?: Kalendereintrag[];
+}
 
-  export interface BewerberReaktion {
+export interface BewerberReaktion {
     reaktionsArt?: String;
     text?: String;
     email: Email;
     id?: string;
-  }
+}
+
+export interface Kalendereintrag {
+    tag?: String;
+    start?: String;
+    ende?: String;
+    titel: String;
+    id?: string;
+}
+
+
