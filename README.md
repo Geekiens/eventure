@@ -17,6 +17,8 @@ Eventure TU Dortmund Gruppe 9 Assessment Center
 
 Wichtig: Es muss node.js und npm installiert sein.
 
+Autor: Max Brämer
+
 
 
 
