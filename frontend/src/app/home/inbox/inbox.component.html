@@ -9,8 +9,8 @@
         <br>
         <span (click)="showEingang()" style="margin-top: 25px; display: inline-block;"> Posteingang</span>
         <br> <span (click)="showAusgang()">Postausgang</span>
-        <br> <span>Weitergeleitet</span>
-        <br> Gelöscht
+        <br> <span (click)="showWeiterleiten()">Weitergeleitet</span>
+        <br> <span (click)="showGeloescht()">Gelöscht</span>  
         <br>
 
         <div *ngIf="anrufAnzeigen" style="margin-top: 25vh; padding: 10px 15px 10px 15px; background-image:linear-gradient(to bottom,  blue 0%,black 70%);">
@@ -61,7 +61,7 @@
           <br> {{selectedEmail.titel}}
         </mat-card-title>
         <mat-card-subtitle>
-          <div style="font-size: 1.2em">
+          <div *ngIf="eingang" style="font-size: 1.2em">
             <span (click)="antwortenClicked()">Antworten</span>
             <span style="margin-left: 20px;" (click)="weiterleitenClicked()">Weiterleiten</span>
             <span style="margin-left: 20px;" (click)="verschiebenClicked()">Verschieben</span>
@@ -91,6 +91,20 @@
       <hr style="">
 
 
+      <div *ngIf="showAntwortText" style="margin-bottom: 20px;">
+          <div style="height:25vh; " class="">
+            <h2>{{titelAntwort}}</h2>
+
+            <pre>{{antwort}}</pre>
+          </div>
+      </div>
+  
+      
+      <div *ngIf="weitergeleitet" style="margin-bottom: 20px;">
+          <div style="height:25vh;" class="">
+            <h2>Weitergeleitet an: {{antwort}}</h2>
+          </div>
+      </div>
 
       <mat-tab-group *ngIf="hasAnswers && showAnswer" style="margin-top:5px;" class="demo-tab-group">
 

@@ -61,6 +61,11 @@ export interface Ergebnis {
     videoPfad: String;
     id?: string;
     kalendereintraege?: Kalendereintrag[];
+    punkteAntworten?: number[];
+    punkteOptionen?: number[];
+    punkteWeiterleiten?: number[];
+    punkteLoeschen?: number[];
+    punkteSumme?: number[];
 }
 
 export interface BewerberReaktion {
@@ -74,6 +79,8 @@ export interface Kalendereintrag {
     tag?: String;
     start?: String;
     ende?: String;
+    startMinuten?: String;
+    endeMinuten?: String;
     titel: String;
     id?: string;
 }

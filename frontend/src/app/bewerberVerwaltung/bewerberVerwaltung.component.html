@@ -94,7 +94,7 @@
           </span>
         </div>
 
-        <mat-card *ngFor="let pruefung of currentBewerber?.pruefungen" (click)="evaluateTest()" style="width:47%; margin-right: 3%; float: left;">
+        <mat-card *ngFor="let pruefung of currentBewerber?.pruefungen" (click)="evaluateTest(pruefung)" style="width:47%; margin-right: 3%; float: left;">
           <mat-card-title>
             Test "{{pruefung?.test?.titel}}"
             <span *ngIf="pruefung?.status == 'offen'" style="float: right;" class="dot_blue"></span>
@@ -106,10 +106,20 @@
 
           </mat-card-title>
           <mat-card-content style="text-align: left; font-size: 0.9em">
+            <div *ngIf="pruefung?.status != 'offen'">
             Benöigte Zeit: 20:00 von 20:00 <br>
-            Emails beantwortet: 10 <br>
-            Emails weitergeleitet 5 <br>
-            Emails gelöscht: 2 <br>
+            Emails beantwortet: {{getAnzahlBeantwortet(pruefung.ergebnis)}} <br>
+            Emails weitergeleitet {{getAnzahlWeitergeleitet(pruefung.ergebnis)}} <br>
+            Emails gelöscht: {{getAnzahlGeloescht(pruefung.ergebnis)}} 
+     
+            </div>
+            <div *ngIf="pruefung?.status == 'offen'">
+                Der Bewerber hat den Test noch nicht bearbeitet.
+                <br>
+                <br>
+                <br>
+                Eine Bewertung ist daher noch nicht möglich.
+                </div>
           </mat-card-content>
         </mat-card>
 

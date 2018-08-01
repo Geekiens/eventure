@@ -23,16 +23,16 @@ import javax.validation.constraints.*;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
-@Api(value = "getAbgeschlossenePruefungenFuerBewerber", description = "the getAbgeschlossenePruefungenFuerBewerber API")
-public interface GetAbgeschlossenePruefungenFuerBewerberApi {
+@Api(value = "getPruefungByID", description = "the getPruefungByID API")
+public interface GetPruefungByID {
 
-    @ApiOperation(value = "Sucht alle abgeschlossene Prüfungen des Bewerbers", nickname = "getAbgeschlossenePruefungenFuerBewerber", notes = "", response = Pruefung.class, responseContainer = "List", tags={ "alle", })
+    @ApiOperation(value = "Sucht Pruefung über ID", nickname = "getPruefungByID", notes = "", response = Pruefung.class, responseContainer = "List", tags={ "alle", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Alle abgeschlossene Prüfungen des Bewerbers", response = Pruefung.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "Prüfung mit angebener ID", response = Pruefung.class),
         @ApiResponse(code = 400, message = "bad input parameter") })
-    @RequestMapping(value = "/getAbgeschlossenePruefungenFuerBewerber",
+    @RequestMapping(value = "/getPruefungByID",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Pruefung>> getAbgeschlossenePruefungenFuerBewerber(@ApiParam(value = "Benutzername des Bewerbers") @Valid @RequestParam(value = "id", required = false) Long id);
+    ResponseEntity<Pruefung> getAbgeschlossenePruefungenFuerBewerber(Long id);
 
 }

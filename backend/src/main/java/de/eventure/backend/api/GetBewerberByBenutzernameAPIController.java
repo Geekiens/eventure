@@ -53,7 +53,6 @@ public class GetBewerberByBenutzernameAPIController implements GetBewerberByBenu
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS");
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
-            log.error("name: " + benutzername);
             return ResponseEntity.ok()
                     .headers(headers)
                     .body((Bewerber) bewerberRepository.findBewerberByBenutzername(benutzername));

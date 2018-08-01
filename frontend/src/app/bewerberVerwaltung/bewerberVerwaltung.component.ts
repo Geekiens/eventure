@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import { environment } from '@env/environment';
 import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberDialog/addBewerberDialog.component';
 import { Bewerber, BewerberService } from '@app/core/services/bewerber.service';
+import { Pruefung } from '@app/core/services/pruefung.service';
+import { Ergebnis } from '@app/core/services/pruefung.service';
 
 
 @Component({
@@ -69,8 +71,9 @@ export class BewerberVerwaltungComponent implements OnInit {
 
   }
 
-  evaluateTest() {
-    this.router.navigate(['bewerberVerwaltung/bewerten']);
+  evaluateTest(pruefung: Pruefung) {
+    this.router.navigate(['bewerberVerwaltung/bewerten'], {queryParams: {id: pruefung.id }
+      });
 
   }
 
@@ -90,6 +93,37 @@ export class BewerberVerwaltungComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.getBewerber();
     });
+  }
+
+  getAnzahlBeantwortet(ergebnis: Ergebnis) {
+    let counter = 0;
+    console.log(ergebnis)
+    ergebnis.bewerberReaktionen.forEach( reakt => {
+      if (reakt.reaktionsArt === 'antwort' || reakt.reaktionsArt === 'option') {
+        counter ++;
+      }
+    });
+    return counter;
+  }
+
+  getAnzahlWeitergeleitet(ergebnis: Ergebnis) {
+    let counter = 0;
+    ergebnis.bewerberReaktionen.forEach( reakt => {
+      if (reakt.reaktionsArt === 'weitergeleitet') {
+        counter ++;
+      }
+    });
+    return counter;
+  }
+
+  getAnzahlGeloescht(ergebnis: Ergebnis) {
+    let counter = 0;
+    ergebnis.bewerberReaktionen.forEach( reakt => {
+      if (reakt.reaktionsArt === 'geloescht') {
+        counter ++;
+      }
+    });
+    return  counter;
   }
 
   getBewerber() {

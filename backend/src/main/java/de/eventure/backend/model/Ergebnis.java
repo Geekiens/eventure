@@ -30,6 +30,25 @@ public class Ergebnis   {
   @JsonProperty("id")
   private Long id = null;
 
+  @JsonProperty("punkteAntworten")
+  @Valid
+  private int[] punkteAntworten;
+
+  @JsonProperty("punkteOptionen")
+  @Valid
+  private int[] punkteOptionen;
+
+  @JsonProperty("punkteWeiterleiten")
+  @Valid
+  private int[] punkteWeiterleiten;
+
+  @JsonProperty("punkteLoeschen")
+  @Valid
+  private int[] punkteLoeschen;
+
+  @JsonProperty("punkteSumme")
+  @Valid
+  private int[] punkteSumme;
 
   @JsonProperty("verbleibendeZeit")
   private Integer verbleibendeZeit = null;
@@ -125,6 +144,57 @@ public class Ergebnis   {
     this.bewerberReaktionen = bewerberReaktionen;
   }
 
+  public List<Kalendereintrag> getKalendereintraege() {
+    return kalendereintraege;
+  }
+
+  public void setKalendereintraege(List<Kalendereintrag> kalendereintraege) {
+    this.kalendereintraege = kalendereintraege;
+  }
+
+  public void setBewerberReaktionen(List<BewerberReaktion> bewerberReaktionen) {
+    this.bewerberReaktionen = bewerberReaktionen;
+  }
+
+  public int[] getPunkteAntworten() {
+    return punkteAntworten;
+  }
+
+  public void setPunkteAntworten(int[] punkteAntworten) {
+    this.punkteAntworten = punkteAntworten;
+  }
+
+  public int[] getPunkteOptionen() {
+    return punkteOptionen;
+  }
+
+  public void setPunkteOptionen(int[] punkteOptionen) {
+    this.punkteOptionen = punkteOptionen;
+  }
+
+  public int[] getPunkteWeiterleiten() {
+    return punkteWeiterleiten;
+  }
+
+  public void setPunkteWeiterleiten(int[] punkteWeiterleiten) {
+    this.punkteWeiterleiten = punkteWeiterleiten;
+  }
+
+  public int[] getPunkteLoeschen() {
+    return punkteLoeschen;
+  }
+
+  public void setPunkteLoeschen(int[] punkteLoeschen) {
+    this.punkteLoeschen = punkteLoeschen;
+  }
+
+  public int[] getPunkteSumme() {
+    return punkteSumme;
+  }
+
+  public void setPunkteSumme(int[] punkteSumme) {
+    this.punkteSumme = punkteSumme;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {

@@ -48,8 +48,7 @@
             <span style="font-size: 1.2em">
                 <b>Tag 1</b>
             </span>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">8-10: Test Termin</div>
-
+            <div *ngFor="let t1 of tag1" style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">{{t1.start}}:{{nullenErgaenzen(t1.startMinuten)}}-{{t1.ende}}:{{nullenErgaenzen(t1.endeMinuten)}} {{t3.titel}}</div>
         </div>
     </div>
 
@@ -58,11 +57,7 @@
             <span style="font-size: 1.2em">
                 <b>Tag 2</b>
             </span>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">9-10: Test Termin 2</div>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">11-13: Test Termin 3</div>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">13-14: Test Termin 4</div>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">14-15: Test Termin 5</div>
-
+            <div *ngFor="let t2 of tag2" style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">{{t2.start}}:{{nullenErgaenzen(t2.startMinuten)}}-{{t2.ende}}:{{nullenErgaenzen(t2.endeMinuten)}} {{t2.titel}}</div>
         </div>
     </div>
 
@@ -71,10 +66,7 @@
             <span style="font-size: 1.2em">
                 <b>Tag 3</b>
             </span>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">9-11: Test Termin 6</div>
-            <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">15-16: Test Termin 7</div>
-
-
+            <div *ngFor="let t3 of tag3" style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">{{t3.start}}:{{nullenErgaenzen(t3.startMinuten)}}-{{t3.ende}}:{{nullenErgaenzen(t3.endeMinuten)}} {{t3.titel}}</div>
         </div>
     </div>
 </div>

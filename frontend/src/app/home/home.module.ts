@@ -14,12 +14,16 @@ import { CountdownModule } from 'ngx-countdown';
 import {InboxComponent} from '@app/home/inbox/inbox.component';
 import {CalendarModule} from 'primeng/calendar';
 import { SelectDateDialogComponent } from '@app/home/inbox/selectDateDialog/selectDateDialog.component';
+import { ConfirmationDialogComponent } from '@app/home/inbox/confirmationDialog/confirmationDialog.component';
+
 
 import { BewerberService } from '@app/core/services/bewerber.service';
 import { PruefungService } from '@app/core/services/pruefung.service';
 import { ErgebnisService } from '@app/core/services/ergebnis.service';
 
 import { AuthenticationService } from '@app/core/authentication/authentication.service';
+
+
 
 
 
@@ -35,9 +39,10 @@ import { AuthenticationService } from '@app/core/authentication/authentication.s
     SharedModule,
     FlexLayoutModule,
     MaterialModule,
-    HomeRoutingModule
+    HomeRoutingModule,
   ],
   declarations: [
+    ConfirmationDialogComponent,
     SelectDateDialogComponent,
     InboxComponent,
     HomeComponent
@@ -47,9 +52,9 @@ import { AuthenticationService } from '@app/core/authentication/authentication.s
     BewerberService,
     PruefungService,
     ErgebnisService,
-    AuthenticationService
+    AuthenticationService,
   ],
-  entryComponents: [SelectDateDialogComponent],
+  entryComponents: [SelectDateDialogComponent, ConfirmationDialogComponent],
 
 })
 export class HomeModule { }

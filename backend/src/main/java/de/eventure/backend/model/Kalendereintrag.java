@@ -30,8 +30,14 @@ public class Kalendereintrag {
     @JsonProperty("start")
     private String start = null;
 
+    @JsonProperty("startMinuten")
+    private String startMinuten = null;
+
     @JsonProperty("ende")
     private String ende = null;
+
+    @JsonProperty("endeMinuten")
+    private String endeMinuten = null;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -83,6 +89,22 @@ public class Kalendereintrag {
 
     public void setEnde(String ende) {
         this.ende = ende;
+    }
+
+    public String getStartMinuten() {
+        return startMinuten;
+    }
+
+    public void setStartMinuten(String startMinuten) {
+        this.startMinuten = startMinuten;
+    }
+
+    public String getEndeMinuten() {
+        return endeMinuten;
+    }
+
+    public void setEndeMinuten(String endeMinuten) {
+        this.endeMinuten = endeMinuten;
     }
 
     @Override

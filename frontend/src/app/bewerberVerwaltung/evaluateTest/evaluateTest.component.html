@@ -11,9 +11,69 @@
             Punkte auf Basis des erstellten Schemas
           </mat-panel-description>
         </mat-expansion-panel-header>
+        <div style="font-size: 1.4em; margin-top: 20px; ">
+          Verbleibende Zeit: {{runden(pruefung?.ergebnis?.verbleibendeZeit / 60)}} Minuten
 
-        Zeit
-        <br> Punkte
+          <br>
+          <br> Punkte durch automatische Korrekturen:
+          <br>
+
+          <div style="font-size: 0.8em; margin-top: 20px; width: 40vw;">
+            <span style="color: lightgrey; display: inline-block; width: 32%;">Kompetenz</span>
+            <span style="color: lightgrey; display: inline-block; width: 21%;">Antwortoptionen</span>
+            <span style="color: lightgrey; display: inline-block; width: 15%;">Löschen</span>
+            <span style="color: lightgrey; display: inline-block; width: 20%;">Gesamt</span>
+
+
+            <br>
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+            <span style="display: inline-block; width: 40%;">Sozialkompetenz</span>
+            <span style="display: inline-block; width: 15%;">{{optionPunkte[0]}}</span>
+            <span style="display: inline-block; width: 15%;">{{loeschenPunkte[0]}}</span>
+            <span style="display: inline-block; width: 15%;">{{autoPunkte[0]}}</span>
+
+            <br>
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+            <span style="display: inline-block; width: 40%;">Delegationsbereitschaft</span>
+            <span style="display: inline-block; width: 15%;">{{optionPunkte[1]}}</span>
+            <span style="display: inline-block; width: 15%;">{{loeschenPunkte[1]}}</span>
+            <span style="display: inline-block; width: 15%;">{{autoPunkte[1]}}</span>
+
+            <br>
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+            <span style="display: inline-block; width: 40%;">Verantwortungsbewusstsein</span>
+            <span style="display: inline-block; width: 15%;">{{optionPunkte[2]}}</span>
+            <span style="display: inline-block; width: 15%;">{{loeschenPunkte[2]}}</span>
+            <span style="display: inline-block; width: 15%;">{{autoPunkte[2]}}</span>
+
+            <br>
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+            <span style="display: inline-block; width: 40%;">Analytische Fähigkeiten</span>
+            <span style="display: inline-block; width: 15%;">{{optionPunkte[3]}}</span>
+            <span style="display: inline-block; width: 15%;">{{loeschenPunkte[3]}}</span>
+            <span style="display: inline-block; width: 15%;">{{autoPunkte[3]}}</span>
+
+            <br>
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+            <span style="display: inline-block; width: 40%;">Arbeitsorganisation</span>
+            <span style="display: inline-block; width: 15%;">{{optionPunkte[4]}}</span>
+            <span style="display: inline-block; width: 15%;">{{loeschenPunkte[4]}}</span>
+            <span style="display: inline-block; width: 15%;">{{autoPunkte[4]}}</span>
+
+            <br>
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+            <span style="display: inline-block; width: 40%;">Konzentrationsfähigkeit</span>
+            <span style="display: inline-block; width: 15%;">{{optionPunkte[5]}}</span>
+            <span style="display: inline-block; width: 15%;">{{loeschenPunkte[5]}}</span>
+            <span style="display: inline-block; width: 15%;">{{autoPunkte[5]}}</span>
+
+            <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+
+
+          </div>
+        </div>
+
+
       </mat-expansion-panel>
 
 
@@ -35,7 +95,7 @@
               <span style="font-size: 1.2em">
                 <b>Tag 1</b>
               </span>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">8-10: Test Termin</div>
+              <div *ngFor="let t1 of tag1" style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">{{t1.start}}:{{nullenErgaenzen(t1.startMinuten)}}-{{t1.ende}}:{{nullenErgaenzen(t1.endeMinuten)}} {{t1.titel}}</div>
 
             </div>
           </div>
@@ -45,11 +105,8 @@
               <span style="font-size: 1.2em">
                 <b>Tag 2</b>
               </span>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">9-10: Test Termin 2</div>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">11-13: Test Termin 3</div>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">13-14: Test Termin 4</div>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">14-15: Test Termin 5</div>
-
+              <div *ngFor="let t2 of tag2" style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">{{t2.start}}:{{nullenErgaenzen(t2.startMinuten)}}-{{t2.ende}}:{{nullenErgaenzen(t2.endeMinuten)}} {{t2.titel}}</div>
+           
             </div>
           </div>
 
@@ -58,10 +115,7 @@
               <span style="font-size: 1.2em">
                 <b>Tag 3</b>
               </span>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">9-11: Test Termin 6</div>
-              <div style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">15-16: Test Termin 7</div>
-
-
+              <div *ngFor="let t3 of tag3" style="margin-top: 5px; padding-left: 10px; padding-top: 0.2em; text-align:left; height: 1.5em; background: #3968af; color: white; margin-left: 5%; width: 90%; border-radius: 5px;">{{t3.start}}:{{nullenErgaenzen(t3.startMinuten)}}-{{t3.ende}}:{{nullenErgaenzen(t3.endeMinuten)}} {{t3.titel}}</div>
             </div>
           </div>
 
@@ -146,6 +200,100 @@
         VIDEO EINFÜGEN
       </mat-expansion-panel>
 
+      
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Weiterleiten
+            </mat-panel-title>
+            <mat-panel-description>
+              Bewerten Sie die weitergeleiteten Emails
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+        <div style="text-align: center;" *ngIf="allWeitergeleitetEvaluated">
+            <h2>Es wurden alle Emails bewertet</h2>
+          </div>
+          <div style="text-align: center;" *ngIf="antworten?.length <= 0">
+              <h2>Es wurden keine Emails weitergeleitet</h2>
+            </div>
+          <div *ngIf="!allWeitergeleitetEvaluated && weitergeleiteteMails?.length > 0" style="width: 100%">
+            <div style="width: 60%; float:left;">
+              <h2>{{index}} von {{weitergeleiteteMails?.length}} weitergeleitete Emails bewertet.</h2>
+              <mat-card>
+                <mat-card-content>
+                  <mat-card-title>
+                    <span style="display: inline-block; width: 70%; ">Von: {{weitergeleiteteMail?.email?.absender}}</span>
+                    <span>{{weitergeleiteteMail?.email?.absendeDatum}}</span>
+                    <br> {{weitergeleiteteMail?.email?.titel}}
+                  </mat-card-title>
+                  <mat-card-subtitle>
+  
+                  </mat-card-subtitle>
+                </mat-card-content>
+                <div>
+                  {{weitergeleiteteMail?.email?.text}}
+                </div>
+  
+                <h2>Weitergeleitet an:</h2>
+                <div>{{weitergeleiteteMail?.text}}</div>
+  
+              </mat-card>
+            </div>
+  
+            <div style="padding-left:15px; padding-right: 15px; padding-bottom: 15px; border-radius: 10px; background: #eeeeee; width: 34%; float:right;">
+              <h2>Weiterleiten Bewerten</h2>
+  
+              <div style="font-size: 1.3em; width: 80%; float: left;">
+                <div style="display: inline-bock; margin-top: 17px;">Sozialkompetenz </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Delegationsbereitschaft </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Verantwortungsbewusstsein </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Analytische Fähigkeiten </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Arbeitsorganisation </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Konzentrationsfähigkeit </div>
+              </div>
+  
+              <div style="float:left;">
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=weiterleitenPunkte[0] matInput>
+                </mat-form-field> / {{antwort?.email?.weiterleitenPunkte[0]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=weiterleitenPunktee[1] matInput>
+                </mat-form-field> / {{antwort?.email?.weiterleitenPunkte[1]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=weiterleitenPunkte[2] matInput>
+                </mat-form-field> / {{antwort?.email?.weiterleitenPunkte[2]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=weiterleitenPunkte[3] matInput>
+                </mat-form-field> / {{antwort?.email?.weiterleitenPunkte[3]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=weiterleitenPunkte[4] matInput>
+                </mat-form-field> / {{antwort?.email?.weiterleitenPunkte[4]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=weiterleitenPunkte[5] matInput>
+                </mat-form-field> / {{antwort?.email?.weiterleitenPunkte[5]}}
+  
+              </div>
+              <button style="width:100%; margin-top:20px;" (click)="nextMail()" mat-raised-button color="primary">Bewertung speichern und nächste weitergeleitete Email bewerten</button>
+  
+            </div>
+  
+          </div>
+  
+          <div style="clear: both;"></div>
+        </mat-expansion-panel>
+  
+
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -161,27 +309,30 @@
         <div style="text-align: center;" *ngIf="allEmailsEvaluated">
           <h2>Es wurden alle Emails bewertet</h2>
         </div>
-        <div *ngIf="!allEmailsEvaluated" style="width: 100%">
+        <div style="text-align: center;" *ngIf="antworten?.length <= 0">
+            <h2>Es wurden keine Emails mit einem Freitext beantwortet</h2>
+          </div>
+        <div *ngIf="!allEmailsEvaluated && antworten?.length > 0" style="width: 100%">
           <div style="width: 60%; float:left;">
-            <h2>{{index}} von {{reaktionen.length}} Antworten bewertet.</h2>
+            <h2>{{index}} von {{antworten?.length}} Antworten bewertet.</h2>
 
             <mat-card>
               <mat-card-content>
                 <mat-card-title>
-                  <span style="display: inline-block; width: 70%; ">Von: {{reaktion.email.absender}}</span>
-                  <span>{{reaktion.email.absendeDatum}}</span>
-                  <br> {{reaktion.email.titel}}
+                  <span style="display: inline-block; width: 70%; ">Von: {{antwort?.email?.absender}}</span>
+                  <span>{{antwort?.email?.absendeDatum}}</span>
+                  <br> {{antwort?.email?.titel}}
                 </mat-card-title>
                 <mat-card-subtitle>
 
                 </mat-card-subtitle>
               </mat-card-content>
               <div>
-                {{reaktion.email.text}}
+                {{antwort?.email?.text}}
               </div>
 
               <h2>Antwort:</h2>
-              <div>{{reaktion.reaktion}}</div>
+              <div>{{antwort?.text}}</div>
 
             </mat-card>
           </div>
@@ -206,27 +357,27 @@
             <div style="float:left;">
               <mat-form-field style="width:25px;">
                 <input number [(ngModel)]=emailPunkte[0] matInput>
-              </mat-form-field> / {{maxPunkte[0]}}
+              </mat-form-field> / {{antwort?.email?.antwortenPunkte[0]}}
               <br>
               <mat-form-field style="width:25px;">
                 <input number [(ngModel)]=emailPunkte[1] matInput>
-              </mat-form-field> / {{maxPunkte[1]}}
+              </mat-form-field> / {{antwort?.email?.antwortenPunkte[1]}}
               <br>
               <mat-form-field style="width:25px;">
                 <input number [(ngModel)]=emailPunkte[2] matInput>
-              </mat-form-field> / {{maxPunkte[2]}}
+              </mat-form-field> / {{antwort?.email?.antwortenPunkte[2]}}
               <br>
               <mat-form-field style="width:25px;">
                 <input number [(ngModel)]=emailPunkte[3] matInput>
-              </mat-form-field> / {{maxPunkte[3]}}
+              </mat-form-field> / {{antwort?.email?.antwortenPunkte[3]}}
               <br>
               <mat-form-field style="width:25px;">
                 <input number [(ngModel)]=emailPunkte[4] matInput>
-              </mat-form-field> / {{maxPunkte[4]}}
+              </mat-form-field> / {{antwort?.email?.antwortenPunkte[4]}}
               <br>
               <mat-form-field style="width:25px;">
                 <input number [(ngModel)]=emailPunkte[5] matInput>
-              </mat-form-field> / {{maxPunkte[5]}}
+              </mat-form-field> / {{antwort?.email?.antwortenPunkte[5]}}
 
             </div>
             <button style="width:100%; margin-top:20px;" (click)="nextMail()" mat-raised-button color="primary">Bewertung speichern und nächste Antwort bewerten</button>
@@ -239,6 +390,55 @@
 
 
       </mat-expansion-panel>
+
+
+      
+      <mat-expansion-panel *ngIf="(antworten?.length <= 0 || allEmailsEvaluated) && (weitergeleiteteMails?.length <= 0 || allWeitergeleitetEvaluated)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Testergebnis
+            </mat-panel-title>
+            <mat-panel-description>
+              Berechnung des Testergebnis anfordern
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <button style="width:100%; margin-top:20px;" (click)="berechneErgebnis()" mat-raised-button color="primary">Ergebnis berechnen</button>
+          
+          <div *ngIf="ergebnisBerechnet" style="font-size: 1.1em; margin-top: 20px; width: 40vw;">
+              <span style="color: lightgrey; display: inline-block; width: 40%;">Kompetenz</span>
+              <span style="color: lightgrey; display: inline-block; width: 20%;">Summe</span>
+  
+  
+              <br>
+              <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+              <span style="display: inline-block; width: 40%;">Sozialkompetenz</span>
+              <span style="display: inline-block; width: 15%;">{{punkteSumme[0]}}</span>
+              <br>
+              <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+              <span style="display: inline-block; width: 40%;">Delegationsbereitschaft</span>
+              <span style="display: inline-block; width: 15%;">{{punkteSumme[1]}}</span>
+
+              <br>
+              <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+              <span style="display: inline-block; width: 40%;">Verantwortungsbewusstsein</span>
+              <span style="display: inline-block; width: 15%;">{{punkteSumme[2]}}</span>
+              <br>
+              <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+              <span style="display: inline-block; width: 40%;">Analytische Fähigkeiten</span>
+              <span style="display: inline-block; width: 15%;">{{punkteSumme[3]}}</span>
+              <br>
+              <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+              <span style="display: inline-block; width: 40%;">Arbeitsorganisation</span>
+              <span style="display: inline-block; width: 15%;">{{punkteSumme[4]}}</span>
+              <br>
+              <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+              <span style="display: inline-block; width: 40%;">Konzentrationsfähigkeit</span>
+              <span style="display: inline-block; width: 15%;">{{punkteSumme[5]}}</span>
+  
+  
+            </div>
+
+          </mat-expansion-panel>
 
     </mat-accordion>
 

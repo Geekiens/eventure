@@ -7,6 +7,8 @@ import { QuoteService } from '@app/home/quote.service';
 
 import { BewerberService, Bewerber } from '@app/core/services/bewerber.service';
 import { PruefungService, Pruefung } from '@app/core/services/pruefung.service';
+import { ErgebnisService, Ergebnis } from '@app/core/services/ergebnis.service';
+
 import { AuthenticationService } from '@app/core/authentication/authentication.service';
 
 
@@ -29,10 +31,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private stream: MediaStream;
   private recordRTC: any;
   bewerber: Bewerber;
-  selectedPruefung: any;
+  selectedPruefung: Pruefung;
   pruefungen: Pruefung[] = [];
+  verbleibendeZeit: number;
 
-  constructor(private bewerberService: BewerberService, private authenticationService: AuthenticationService, private quoteService: QuoteService, private notificationsService: NotificationsService) { }
+  constructor(private pruefungsService: PruefungService, private ergebnisService: ErgebnisService, private bewerberService: BewerberService, private authenticationService: AuthenticationService, private quoteService: QuoteService, private notificationsService: NotificationsService) { }
 
   ngAfterViewInit() {
     // set the initial state of the video
@@ -129,7 +132,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
+beendePruefung() {
+  this.pruefungsService.getPruefungById(this.selectedPruefung.id).subscribe( p => {
+    this.selectedPruefung = p;
+    this.selectedPruefung.status = 'bearbeitet';
+    this.selectedPruefung.ergebnis.verbleibendeZeit = this.verbleibendeZeit; // timer Zeit einfügen 
+    this.pruefungsService.updatePruefung(this.selectedPruefung).subscribe( p2 => {
+      console.log('test');
+    });
+  });
 
+}
 
 
   startTimer() {
@@ -153,6 +166,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.showInbox = false;
     this.testCompleted = true;
     this.counter.stop();
+    this.beendePruefung();
+
   }
 
   callIncome() {
@@ -162,6 +177,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   notified(event: any) {
     console.log(event / 1000 );
     const time = event / 1000;
+    this.verbleibendeZeit = time;
+
     switch (time) {
       case 1190: 
       case 900: this.reminderForLeftTime('15 Minuten'); break;
