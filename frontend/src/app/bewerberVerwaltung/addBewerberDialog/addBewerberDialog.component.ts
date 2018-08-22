@@ -7,10 +7,6 @@ import { BewerberService, Bewerber } from '@app/core/services/bewerber.service';
 import { PruefungService, Pruefung } from '@app/core/services/pruefung.service';
 
 
-
-
-
-
 @Component({
   selector: "addBewerberDialog",
   templateUrl: "./addBewerberDialog.component.html",

@@ -1,0 +1,3 @@
+<h3>Tests auswählen</h3>
+
+<div *ngFor="let testChecked of testsChecked" style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'" [(ngModel)]="testChecked.checked"  >{{testChecked.test?.titel}}</mat-checkbox></div>

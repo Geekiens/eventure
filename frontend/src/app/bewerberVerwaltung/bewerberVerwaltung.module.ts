@@ -14,6 +14,7 @@ import { TestService } from '@app/core/services/test.service';
 import { BewerberService } from '@app/core/services/bewerber.service';
 import { PruefungService } from '@app/core/services/pruefung.service';
 
+import { EditTestOfBewerberComponent } from '@app/bewerberVerwaltung/editTestOfBewerber/editTestOfBewerber.component';
 
 
 
@@ -30,14 +31,15 @@ import { PruefungService } from '@app/core/services/pruefung.service';
   declarations: [
     BewerberVerwaltungComponent,
     EvaluateTestComponent,
-    AddBewerberDialogComponent
+    AddBewerberDialogComponent,
+    EditTestOfBewerberComponent
   ],
   providers: [
     TestService,
     BewerberService,
     PruefungService
   ],
-  entryComponents: [AddBewerberDialogComponent],
+  entryComponents: [AddBewerberDialogComponent, EditTestOfBewerberComponent],
 
 })
 export class BewerberVerwaltungModule { }

@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {Router} from '@angular/router';
 import { environment } from '@env/environment';
 import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberDialog/addBewerberDialog.component';
+import { EditTestOfBewerberComponent } from '@app/bewerberVerwaltung/editTestOfBewerber/editTestOfBewerber.component';
 import { Bewerber, BewerberService } from '@app/core/services/bewerber.service';
 import { Pruefung } from '@app/core/services/pruefung.service';
 import { Ergebnis } from '@app/core/services/pruefung.service';
@@ -23,7 +24,7 @@ export class BewerberVerwaltungComponent implements OnInit {
   showBewerberDetails = false;
   currentBewerber: Bewerber;
 
-  constructor(private bewerberService: BewerberService, public dialog: MatDialog, private router: Router) { }
+  constructor(private bewerberService: BewerberService, public dialog: MatDialog, public addTestToBewerberDialog: MatDialog, private router: Router) { }
 
   annehmen() {
     this.currentBewerber.status = 'angenommen';
@@ -64,6 +65,9 @@ export class BewerberVerwaltungComponent implements OnInit {
   }
 
   addTestToBewerber() {
+    let addTestToBewerberDialogRef = this.addTestToBewerberDialog.open(EditTestOfBewerberComponent, {
+      data: { bewerber: this.currentBewerber }
+    });
 
   }
 
@@ -87,7 +91,7 @@ export class BewerberVerwaltungComponent implements OnInit {
   addBewerber() {
     let dialogRef = this.dialog.open(AddBewerberDialogComponent, {
       width: '50vw',
-      data: {  }
+      data: { bewerber: this.currentBewerber }
     });
 
     dialogRef.afterClosed().subscribe(result => {

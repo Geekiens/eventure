@@ -1,7 +1,10 @@
 <div class="container">
   <mat-card>
     <div>
-
+      <div *ngIf="pruefungen.length <= 0">
+        Keine Prüfungen vorhanden.
+        </div>
+        <div *ngIf="pruefungen.length > 0">
         <button *ngIf="!testCompleted && !showInbox && !testRecord" mat-raised-button color="primary" (click)="startRecording()"> Testaufnahme starten </button>
         <button *ngIf="!testCompleted && !showInbox && testRecord" mat-raised-button color="primary" (click)="stopRecording()"> Testaufnahme beenden</button>
         <mat-form-field *ngIf="!testCompleted && !showInbox" >
@@ -18,7 +21,7 @@
         $!m!:$!s!
       </countdown>
       <button style="margin-left:15px" *ngIf="!testCompleted && showInbox" (click)="stopTest()" mat-raised-button color="warn">Test abschließen</button>
-
+    </div>
 
       <div *ngIf="!testCompleted && !showInbox && testRecord">
         <div style="margin-top: 20px;">

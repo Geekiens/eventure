@@ -3,7 +3,7 @@ import { finalize } from "rxjs/operators";
 import { assertTSExpressionWithTypeArguments } from "babel-types";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PruefungService, Pruefung, BewerberReaktion, Kalendereintrag } from '@app/core/services/pruefung.service';
-import { _MatSortHeaderMixinBase } from "../../../../node_modules/@angular/material";
+import { _MatSortHeaderMixinBase } from "@angular/material";
 
 @Component({
   selector: "app-evaluate-test",

@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { NotificationsService } from "angular2-notifications";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TreeNode } from "primeng/api";
-import { Email, EmailService } from '../../../core/services/email.service';
+import { Email, EmailService } from '@app/core/services/email.service';
 
 
 @Component({
