@@ -14,6 +14,9 @@ import { TestService } from '@app/core/services/test.service';
 import { BewerberService } from '@app/core/services/bewerber.service';
 import { PruefungService } from '@app/core/services/pruefung.service';
 
+import { ChartsModule } from 'ng2-charts';
+
+
 import { EditTestOfBewerberComponent } from '@app/bewerberVerwaltung/editTestOfBewerber/editTestOfBewerber.component';
 
 
@@ -25,6 +28,7 @@ import { EditTestOfBewerberComponent } from '@app/bewerberVerwaltung/editTestOfB
     TranslateModule,
     FormsModule,
     FlexLayoutModule,
+    ChartsModule,
     MaterialModule,
     BewerberVerwaltungRoutingModule
   ],

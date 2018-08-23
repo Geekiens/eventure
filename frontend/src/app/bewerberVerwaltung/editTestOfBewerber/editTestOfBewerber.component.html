@@ -1,3 +1,8 @@
 <h3>Tests auswählen</h3>
-
-<div *ngFor="let testChecked of testsChecked" style="width: 50%; float: left;"> <mat-checkbox [color]="'primary'" [(ngModel)]="testChecked.checked"  >{{testChecked.test?.titel}}</mat-checkbox></div>
+<div style="display:inline-block; width: 100%">
+<div *ngFor="let testChecked of testsChecked" style="width: 50%; float: left;"> <mat-checkbox [disabled]="testChecked.disabled" [color]="'primary'" [(ngModel)]="testChecked.checked"  >{{testChecked.test?.titel}}</mat-checkbox></div>
+</div>
+<div style="width:100%; margin-top:20px;">
+        <button mat-button (click)="save()">Speichern</button>
+        <button mat-button (click)="this.dialogRef.close()">Abbrechen</button>
+</div>

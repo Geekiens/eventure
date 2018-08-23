@@ -7,12 +7,17 @@ import { EditTestOfBewerberComponent } from '@app/bewerberVerwaltung/editTestOfB
 import { Bewerber, BewerberService } from '@app/core/services/bewerber.service';
 import { Pruefung } from '@app/core/services/pruefung.service';
 import { Ergebnis } from '@app/core/services/pruefung.service';
+import {ViewEncapsulation} from '@angular/core';
+
+
 
 
 @Component({
   selector: 'app-bewerberVerwaltung',
   templateUrl: './bewerberVerwaltung.component.html',
-  styleUrls: ['./bewerberVerwaltung.component.scss']
+  styleUrls: ['./bewerberVerwaltung.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class BewerberVerwaltungComponent implements OnInit {
 
@@ -20,19 +25,49 @@ export class BewerberVerwaltungComponent implements OnInit {
   displayedBewerber: Bewerber[];
   bewerberMitPruefung: Bewerber[];
 
+  editName = false;
+  editBenutzername = false;
+  editPosition = false;
+
   showAllBewerber = true;
   showBewerberDetails = false;
   currentBewerber: Bewerber;
 
-  constructor(private bewerberService: BewerberService, public dialog: MatDialog, public addTestToBewerberDialog: MatDialog, private router: Router) { }
+  labels: String[] = ['Angenommen', 'Abgelehnt', 'Offen'];
+  chartColor:any[] = [{
+    hoverBorderColor: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'],
+    hoverBorderWidth: 0,
+    backgroundColor: ["#009900", "#e50000", "#ffff00"],
+    hoverBackgroundColor: ["#00b200", "#ff0000", "#ffff44"]
+  }];
+
+  data: number[] = [];
+  chartType: String = 'pie';
+
+  pruefungenLabels = ['Offen', 'Bearbeitet'];
+  pruefungenData: number[] = [];
+  pruefungenChartColor: any[] = [{
+    hoverBorderColor: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'],
+    hoverBorderWidth: 0,
+    backgroundColor: ["#3232ff", "#ffff00"],
+    hoverBackgroundColor: ["#0080ff", "#ffff44"]
+}];
+
+  constructor (private bewerberService: BewerberService, public dialog: MatDialog, public addTestToBewerberDialog: MatDialog, private router: Router) { }
 
   annehmen() {
     this.currentBewerber.status = 'angenommen';
     this.bewerberService.updateBewerber(this.currentBewerber);
   }
 
+  update() {
+    this.bewerberService.updateBewerber(this.currentBewerber);
+  }
+
   ablehnen() {
     this.currentBewerber.status = 'abgelehnt';
+    this.bewerberService.updateBewerber(this.currentBewerber);
+
 
   }
 
@@ -135,7 +170,35 @@ export class BewerberVerwaltungComponent implements OnInit {
       this.bewerber = bewerber;
       this.displayedBewerber = this.bewerber;
       this.showAllBewerber = true;
+      this.data = [0, 0, 0, 0];
+      this.pruefungenData = [0, 0];
+      this.bewerber.forEach( b => {
+        switch (b.status) {
+          case 'angenommen': this.data[0] = this.data[0] + 1;
+            break;
+          case 'abgelehnt': this.data[1] = this.data[1] + 1;
+            break;
+          case 'offen': this.data[2] = this.data[2] + 1;
+            break;
+          default:
+            break;
+        }
+        b.pruefungen.forEach(p => {
+          switch (p.status) {
+            case 'offen': this.pruefungenData[0] = this.pruefungenData[0] + 1;
+              break;
+            case 'bearbeitet': this.pruefungenData[1] = this.pruefungenData[1] + 1;
+              break;
+            default:
+              break;
+          }
+        });
+        
+      });
     });
+
+  
+
   }
 
   status(bewerber) {

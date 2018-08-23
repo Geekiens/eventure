@@ -209,21 +209,27 @@ beendePruefung() {
   }
 
   ngOnInit() {
-    this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
-      this.bewerber = b;
-      let pruefungen: Pruefung[] = [];
-      this.bewerber.pruefungen.forEach( p => {
-        if (p.status === 'offen') {
-          pruefungen.push(p);
-        }
-      });
-      this.pruefungen = pruefungen;
-    });
-
     this.isLoading = true;
     this.quoteService.getRandomQuote({ category: 'dev' })
       .pipe(finalize(() => { this.isLoading = false; }))
       .subscribe((quote: string) => { this.quote = quote; });
+
+      
+    this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
+      this.bewerber = b;
+      console.log(b);
+      let pruefungen: Pruefung[] = [];
+      if (this.bewerber.pruefungen !== undefined ) {
+        this.bewerber.pruefungen.forEach( p => {
+          if (p.status === 'offen') {
+            pruefungen.push(p);
+          }
+        });
+      }
+      this.pruefungen = pruefungen;
+    });
+
+
   }
 
 

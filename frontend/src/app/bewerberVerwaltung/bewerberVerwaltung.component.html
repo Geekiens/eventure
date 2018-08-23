@@ -4,7 +4,7 @@
     <h3>
       <mat-card-title>
           
-        <span style="color:darkgray; float: left;" *ngIf="showBewerberDetails" (click)="showBewerberDetails = !showBewerberDetails"> <i class="fa fa-line-chart"></i> </span>
+        <span style="color:darkgray; float: left;" *ngIf="showBewerberDetails" (click)="showBewerberDetails = !showBewerberDetails; getBewerber()"> <i class="fa fa-line-chart"></i> </span>
         <span style="float: left;" *ngIf="!showBewerberDetails" (click)="showBewerberDetails = !showBewerberDetails"> <i class="fa fa-line-chart"></i>
         </span>
 
@@ -24,8 +24,8 @@
           <span style="float:left;" *ngIf="selectedBewerber.status == 'angenommen'" class="dot"></span>
           <span style="float:left;" *ngIf="selectedBewerber.status == 'offen'" class="dot_yellow"></span>
           <span style="float:left;" *ngIf="selectedBewerber.status == 'abgelehnt'" class="dot_red"></span>
-          <span style="margin-left:10px; float:left; width: 55%">{{selectedBewerber.name}}</span>
-          <span style="float:right; width: 35%">{{selectedBewerber.beworbenFuer}}</span>
+          <span style="margin-left:10px; overflow-x: hidden; white-space:nowrap; float:left; width: 50%">{{selectedBewerber.name}}</span>
+          <span style="overflow-x: hidden; white-space:nowrap; float:right; width:40%">{{selectedBewerber.beworbenFuer}}</span>
           <br>
        </div>
         
@@ -36,24 +36,68 @@
     </mat-card-content>
   </mat-card>
 
+  <mat-card *ngIf="!showBewerberDetails" style="margin-left:1%; width:69%;  height:90vh;  float:right">
+    
+      <mat-card-title style="text-align: left; font-size:1.4em">
+        </mat-card-title>
+        <div style="float:left; width: 45%;">
+            <h2>Bewerber:</h2>
+            <canvas baseChart
+                    [data]="data"
+                    [labels]="labels"
+                    [colors]="chartColor"
+                    [chartType]="chartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+          <div style="float:left;  width: 45%;">
+              <h2>Prüfungen:</h2>
+              <canvas baseChart
+                      [data]="pruefungenData"
+                      [labels]="pruefungenLabels"
+                      [colors]="pruefungenChartColor"
+                      [chartType]="chartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+  </mat-card>
 
 
   <mat-card *ngIf="showBewerberDetails" style="margin-left:1%; width:69%;  height:90vh;  float:right">
     <mat-card-title style="text-align: left; font-size:1.4em">
 
-      <span style="display: inline-block; width: 20%">Name:</span>
-      <span style="display: inline-block; width: 25%">{{currentBewerber?.name}}</span>
+      <span style="display: inline-block; width: 20%">   Name:</span>
+    <!--  <span *ngIf="!editName" style="display: inline-block; width: 25%">{{currentBewerber?.name}}</span> -->
+      <mat-form-field  style="display: inline-block; width: 25%">
+          <input matInput [readonly]="!editName"  [(ngModel)]="currentBewerber.name">
+        </mat-form-field>
+        <i style="font-size: 0.7em;" *ngIf="!editName" (click)="editName=true" class="material-icons">edit</i>
+        <i style="font-size: 0.7em;" *ngIf="editName" (click)="editName=false; update();" class="material-icons">save</i>
 
       <span style="display: inline-block; width: 20%">Benutzername:</span>
-      <span style="display: inline-block; width: 30%">{{currentBewerber?.benutzername}}</span>
+      <mat-form-field  style="display: inline-block; width: 25%">
+          <input matInput [readonly]="!editBenutzername"  [(ngModel)]="currentBewerber.benutzername">
+        </mat-form-field>
+      <i style="font-size: 0.7em;" *ngIf="!editBenutzername" (click)="editBenutzername=true" class="material-icons">edit</i>
+      <i style="font-size: 0.7em;" *ngIf="editBenutzername" (click)="editBenutzername=false; update();" class="material-icons">save</i>
 
       <br>
 
       <span style="display: inline-block; width: 20%">Angestrebte Position:</span>
-      <span style="display: inline-block; width: 25%">{{currentBewerber?.beworbenFuer}}</span>
+      <mat-form-field  style="display: inline-block; width: 25%">
+          <input matInput [readonly]="!editPosition"  [(ngModel)]="currentBewerber.beworbenFuer">
+        </mat-form-field>
+      <i style="font-size: 0.7em;" *ngIf="!editPosition" (click)="editPosition=true" class="material-icons">edit</i>
+      <i style="font-size: 0.7em;" *ngIf="editPosition" (click)="editPosition=false; update();" class="material-icons">save</i>
 
       <span style="display: inline-block; width: 20%">Email:</span>
-      <span style="display: inline-block; width: 30%">{{currentBewerber?.mailAdresse}}</span>
+      <mat-form-field  style="display: inline-block; width:25%">
+          <input matInput [readonly]="!editMailAdresse"  [(ngModel)]="currentBewerber.mailAdresse">
+      </mat-form-field>
+      <i style="font-size: 0.7em;" *ngIf="!editMailAdresse" (click)="editMailAdresse=true" class="material-icons">edit</i>
+      <i style="font-size: 0.7em;" *ngIf="editMailAdresse" (click)="editMailAdresse=false; update();" class="material-icons">save</i>
 
       <br>
 

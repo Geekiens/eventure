@@ -45,6 +45,7 @@ export interface Test {
   beschreibung?: String;
   kontext?: String;
   emails?: Email[];
+  id?: number;
 }
 
 
