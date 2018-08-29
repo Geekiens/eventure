@@ -2,7 +2,7 @@
   <mat-card style="height:90vh; margin-top: 1vw; margin-left:1vw; width:19vw; float:left">
     <h3>
       <span (click)="createTest()">
-        <i class="material-icons">
+        <i style="font-size:0.8em" class="material-icons">
             add_circle_outline
             </i>
             Neuen Test erstellen
@@ -15,6 +15,11 @@
           <mat-expansion-panel *ngFor="let showTest of showTests" (opened)="openDetails(showTest)" (closed)="showDetails = !showDetails">
             <mat-expansion-panel-header>
               <mat-panel-title>
+                  <span *ngIf="showTest.show" (click)="editTest(showTest.test)">
+                      <i style="font-size:1em" class="material-icons">
+                          edit
+                          </i>
+                  </span>
                 {{showTest.test.titel}}
               </mat-panel-title>
               <mat-panel-description>
@@ -29,6 +34,7 @@
             <br>
             Position: {{showTest.test?.position}}
           </div>
+      
           </mat-expansion-panel>
 
 
@@ -54,8 +60,9 @@
             {{email.absender}}
           </div>
           <div style="text-align: right">
-            {{email.absendeDatum}}
-          </div>
+              <span  *ngIf="email.absendeDatum == 0">Heute</span>
+              <span  *ngIf="email.absendeDatum == 1">Gestern</span>
+              <span  *ngIf="email.absendeDatum > 1">Vor {{email.absendeDatum}} Tagen</span>            </div>
         </div>
         <div class="">
           <div class="text-div">
@@ -78,7 +85,9 @@
             <mat-card-content>
               <mat-card-title> 
                   <span style="display: inline-block; width: 70%; ">Von: {{selectedEmail.absender}}</span>
-                    <span>{{selectedEmail.absendeDatum}}</span>  <br>
+                  <span  *ngIf="selectedEmail.absendeDatum == 0">Heute</span>
+                  <span  *ngIf="selectedEmail.absendeDatum == 1">Gestern</span>
+                  <span  *ngIf="selectedEmail.absendeDatum > 1">Vor {{selectedEmail.absendeDatum}} Tagen</span>                       <br>
                     {{selectedEmail.titel}}            
               </mat-card-title>
               <mat-card-subtitle>

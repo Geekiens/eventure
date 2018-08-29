@@ -1,9 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { finalize } from "rxjs/operators";
 import { assertTSExpressionWithTypeArguments } from "babel-types";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PruefungService, Pruefung, BewerberReaktion, Kalendereintrag } from '@app/core/services/pruefung.service';
+import { TestService, Test } from '@app/core/services/test.service';
+
 import { _MatSortHeaderMixinBase } from "@angular/material";
+import { NotificationsService } from 'angular2-notifications';
+
+
 
 @Component({
   selector: "app-evaluate-test",
@@ -11,6 +16,8 @@ import { _MatSortHeaderMixinBase } from "@angular/material";
   styleUrls: ["./evaluateTest.component.scss"]
 })
 export class EvaluateTestComponent implements OnInit {
+  @ViewChild('video') video: any;
+  playVideo = false;
   reaktionen: BewerberReaktion[] = [];
   bewertung: number[] = [0, 0, 0, 0, 0, 0];
   emailPunkte: number[] = [0, 0, 0, 0, 0, 0]; // für eine Mail
@@ -18,6 +25,12 @@ export class EvaluateTestComponent implements OnInit {
   maxPunkte: number[] = [5, 10, 2, 2, 2, 3];
   kalenderMaxPunkte: number[] = [10, 10, 10, 10, 50, 10];
   kalenderPunkte: number[] = [0, 0, 0, 0, 0, 0];
+
+  anrufenMaxPunkte: number[] = [10, 10, 10, 10, 50, 10];
+  anrufenPunkte: number[] = [0, 0, 0, 0, 0, 0];
+
+  videoPunkte: number[] = [0, 0, 0, 0, 0, 0];
+  videoMaxPunkte: number[] = [25, 25, 25, 25, 25, 25];
   reaktion: BewerberReaktion;
   antwort: BewerberReaktion;
   pruefung: Pruefung;
@@ -33,6 +46,8 @@ export class EvaluateTestComponent implements OnInit {
   optionPunkte: number[] = [0, 0, 0, 0, 0, 0];
   ergebnisBerechnet = false;
 
+
+
   punkteAntworten: number[] = [0, 0, 0, 0, 0, 0]; // aggregiert
   punkteWeiterleiten: number[] = [0, 0, 0, 0, 0, 0];
   punkteSumme: number[] = [0, 0, 0, 0, 0, 0];
@@ -41,7 +56,7 @@ export class EvaluateTestComponent implements OnInit {
   tag2: Kalendereintrag[] = [];
   tag3: Kalendereintrag[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private pruefungService: PruefungService) {
+  constructor(private router: Router, private route: ActivatedRoute, private pruefungService: PruefungService, private testService: TestService) {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
       this.pruefungService.getPruefungById(this.id).subscribe(p => {
@@ -88,10 +103,54 @@ export class EvaluateTestComponent implements OnInit {
         this.tag1 = this.sortiere(this.tag1);
         this.tag2 = this.sortiere(this.tag2);
         this.tag3 = this.sortiere(this.tag3);
-
+        this.processVideo();
       });
     });
   }
+
+
+
+  toggleControls() {
+    let video: HTMLVideoElement = this.video.nativeElement;
+    video.muted = !video.muted;
+    video.controls = !video.controls;
+    video.autoplay = !video.autoplay;
+  }
+
+  processVideo() {
+    let video: HTMLVideoElement = this.video.nativeElement;
+    video.src = String(this.pruefung.ergebnis.videoPfad);
+    this.video.src = String(this.pruefung.ergebnis.videoPfad);
+    //video.= 'video/webm';
+    //let recordRTC = this.recordRTC;
+    //video.src = audioVideoWebMURL;
+    //this.toggleControls();
+    video.muted = false;
+    video.controls = true;
+    video.autoplay = true;
+    this.playVideo = true;
+    //let recordedBlob = recordRTC.getBlob();
+    //recordRTC.getDataURL(function (dataURL) { });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   nextMail() {
     for (let index = 0; index <= 5; index++) {
@@ -106,13 +165,40 @@ export class EvaluateTestComponent implements OnInit {
       }
     }
   }
+  back() {
+    this.router.navigate(['bewerberVerwaltung/ergebnis']);
+  }
 
   berechneErgebnis() {
     this.ergebnisBerechnet = true;
     for (let index = 0; index <= 5; index++) {
-      this.punkteSumme[index] = Number(this.punkteWeiterleiten[index]) + Number(this.punkteAntworten[index]) +
-                                Number(this.loeschenPunkte[index]) + Number(this.kalenderPunkte[index]) + Number(this.optionPunkte[index]);
+      this.punkteSumme[index] = Number(this.punkteWeiterleiten[index]) + Number(this.punkteAntworten[index]) + Number(this.videoPunkte[index]) +
+                                Number(this.loeschenPunkte[index]) + Number(this.kalenderPunkte[index]) + Number(this.optionPunkte[index])
+                                Number(this.anrufenPunkte[index]);
+                              }
+    this.pruefung.ergebnis.punkteAnrufer = this.anrufenPunkte;
+    this.pruefung.ergebnis.punkteSumme = this.punkteSumme;
+    this.pruefung.ergebnis.punkteKalender = this.kalenderPunkte;
+    this.pruefung.ergebnis.punkteVideo = this.videoPunkte;
+    this.pruefung.status = 'abgeschlossen';
+    console.log(this.pruefung);
+    let p: Pruefung = this.pruefung;
+    this.pruefungService.updatePruefungSub(this.pruefung);
+    for (let i = 0; i < 6; i++) {
+      if (this.pruefung.test.durchschnitt  !== null) {
+      this.pruefung.test.durchschnitt[i] = (this.pruefung.test.durchfuehrungen * this.pruefung.test.durchschnitt[i] +
+                                          this.pruefung.ergebnis.punkteSumme[i]) / (this.pruefung.test.durchfuehrungen + 1);
+      } else {
+
+        this.pruefung.test.durchschnitt = this.pruefung.ergebnis.punkteSumme;
+      }
+
     }
+    this.pruefung.test.durchfuehrungen ++;
+    this.testService.updateTest(this.pruefung.test);
+
+
+    this.router.navigate(['bewerberVerwaltung/ergebnis'], {queryParams: {id: p.id }});
 
   }
   nextWeitergeleitet() {
@@ -157,6 +243,7 @@ export class EvaluateTestComponent implements OnInit {
     return retArr;
   }
   ngOnInit() {
+   // this.processVideo();
 
   }
 }

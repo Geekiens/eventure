@@ -1,4 +1,4 @@
-<div class="container">
+<div id="bewerber" class="container">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <mat-card style="height:90vh; width:30%; float:left">
     <h3>
@@ -57,7 +57,7 @@
                       [data]="pruefungenData"
                       [labels]="pruefungenLabels"
                       [colors]="pruefungenChartColor"
-                      [chartType]="chartType"
+                      [chartType]="pruefungenChartType"
                       (chartHover)="chartHovered($event)"
                       (chartClick)="chartClicked($event)">
               </canvas>

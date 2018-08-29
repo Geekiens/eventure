@@ -7,7 +7,11 @@ import { MaterialModule } from '@app/material.module';
 import { TestVerwaltungRoutingModule } from '@app/testVerwaltung/testVerwaltung-routing.module';
 import { TestVerwaltungComponent } from '@app/testVerwaltung/testVerwaltung.component';
 import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component';
+import { EditTestComponent } from '@app/testVerwaltung/editTest/editTest.component';
+
 import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDialog/addEmailDialog.component';
+import { EditEmailDialogComponent } from '@app/testVerwaltung/newTest/editEmailDialog/editEmailDialog.component';
+
 import { FormsModule } from '@angular/forms';
 import { EmailService } from '@app/core/services/email.service';
 import { TestService } from '@app/core/services/test.service';
@@ -34,13 +38,15 @@ import {TreeModule} from 'primeng/tree';
   declarations: [
     TestVerwaltungComponent,
     NewTestComponent,
-    AddEmailDialogComponent
+    EditTestComponent,
+    AddEmailDialogComponent,
+    EditEmailDialogComponent
   ],
   providers: [
     EmailService,
     TestService
   ],
-  entryComponents: [AddEmailDialogComponent],
+  entryComponents: [AddEmailDialogComponent, EditEmailDialogComponent],
 
 
 })

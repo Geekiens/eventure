@@ -58,13 +58,17 @@ export class ErgebnisService {
 export interface Ergebnis {
     bewerberReaktionen?: BewerberReaktion[];
     verbleibendeZeit?: number;
-    videoPfad: String;
+    videoPfad?: any;
     id?: string;
     kalendereintraege?: Kalendereintrag[];
+    angenommeneAnrufe?: boolean[];
+    punkteAnrufen?: number[];
     punkteAntworten?: number[];
     punkteOptionen?: number[];
     punkteWeiterleiten?: number[];
     punkteLoeschen?: number[];
+    punkteKalender?: number[];
+    punkteVideo?: number[];
     punkteSumme?: number[];
 }
 

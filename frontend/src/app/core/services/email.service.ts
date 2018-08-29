@@ -43,13 +43,14 @@ export class EmailService {
     return this.http.get<Email>(`${this.emailsUrl}?id=${id}`, httpOptions);
   }
   public updateEmail(email: Email) {
+    console.log(email);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       })
     };
-    return this.http.put<Email>(`${this.emailsUrl}/${email.id}`, email, httpOptions)
+    return this.http.post<Email>(`http://localhost:8080/assessment/updateEmail`, email, httpOptions)
       .subscribe(responseEmail => {
         this.updatedEmailSource.next(responseEmail);
         this.updatedEmailSource.next(null);
@@ -84,13 +85,13 @@ export interface Email {
   titel: string;
   text?: string;
   absender?: string;
-  absendeDatum?: string;
+  absendeDatum?: number;
   prioritaet?: string;
   erscheintDirekt?: boolean;
   erscheintNachMS?: number;
   antworten?: Antwort[];
   id?: string;
-  aktiv?: string;
+  aktiv?: boolean;
   punkte?: number[];
   antwortenPunkte?: number[];
   weiterleitenPunkte?: number[];

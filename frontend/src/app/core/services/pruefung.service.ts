@@ -12,6 +12,10 @@ export class PruefungService {
     //private PruefungUrl = 'localhost:8080/assessment';
     private newPruefungSource = new BehaviorSubject<Pruefung>(null);
     private newPruefungenSource = new BehaviorSubject<Pruefung[]>(null);
+    private updatedPruefungSource = new BehaviorSubject<Pruefung>(null);
+
+    updatedpruefung = this.updatedPruefungSource.asObservable();
+    
 
 
 
@@ -58,6 +62,18 @@ export class PruefungService {
           });
       }
 
+      public updatePruefungSub(pruefung: Pruefung) {
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          })
+        };
+        return this.http.post<Pruefung>('http://localhost:8080/assessment/updatePruefung', pruefung, httpOptions).subscribe(responsePruefung => {
+          this.updatedPruefungSource.next(responsePruefung);
+          this.updatedPruefungSource.next(null);
+        });
+      }
       public updatePruefung(pruefung: Pruefung) {
         const httpOptions = {
           headers: new HttpHeaders({
@@ -78,12 +94,16 @@ export interface Pruefung {
 export interface Ergebnis {
     bewerberReaktionen?: BewerberReaktion[];
     verbleibendeZeit?: number;
-    videoPfad: String;
+    videoPfad?: String;
     id?: string;
     kalendereintraege?: Kalendereintrag[];
+    angenommeneAnrufe?: boolean[];
+    punkteAnrufer?: number[];
     punkteAntworten?: number[];
     punkteOptionen?: number[];
     punkteWeiterleiten?: number[];
+    punkteKalender?: number[];
+    punkteVideo?: number[];
     punkteLoeschen?: number[];
     punkteSumme?: number[];
 }

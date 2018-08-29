@@ -1,9 +1,9 @@
 
-.mat-form-field-appearance-legacy .mat-form-field-infix {
+#bewerber .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0;
 }
 
-.mat-form-field-infix {
+#bewerber  .mat-form-field-infix {
   padding: 0;
   border: 0;
 }
@@ -25,6 +25,14 @@
   height: 25px;
   width: 25px;
   background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot_green {
+  height: 25px;
+  width: 25px;
+  background-color: green;
   border-radius: 50%;
   display: inline-block;
 }

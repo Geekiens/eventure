@@ -1,0 +1,53 @@
+<div style="margin-top: 20px"></div>
+<mat-card style=" width: 50vw; text-align: center; margin: 0 auto;">
+
+  
+  <div style="text-align: left; margin: 0 auto; font-size: 1.1em; margin-top: 20px; width: 60%">
+      <span style="color: lightgrey; display: inline-block; width: 40%;">Kompetenz</span>
+      <span style="color: lightgrey; float: right;  margin-right: 25%;">Summe</span>
+
+
+      <br>
+      <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+      <span style="display: inline-block; width: 40%;">Sozialkompetenz</span>
+      <span style="float: right;  margin-right: 30%;">{{pruefung?.ergebnis?.punkteSumme[0]}}</span>
+      <br>
+      <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+      <span style="display: inline-block; width: 40%;">Delegationsbereitschaft</span>
+      <span style="float: right;  margin-right: 30%;">{{pruefung?.ergebnis?.punkteSumme[1]}}</span>
+
+      <br>
+      <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+      <span style="display: inline-block; width: 40%;">Verantwortungsbewusstsein</span>
+      <span style="float: right;  margin-right: 30%;">{{pruefung?.ergebnis?.punkteSumme[2]}}</span>
+      <br>
+      <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+      <span style="display: inline-block; width: 40%;">Analytische Fähigkeiten</span>
+      <span style="float: right;  margin-right: 30%;">{{pruefung?.ergebnis?.punkteSumme[3]}}</span>
+      <br>
+      <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+      <span style="display: inline-block; width: 40%;">Arbeitsorganisation</span>
+      <span style="float: right;  margin-right: 30%;">{{pruefung?.ergebnis?.punkteSumme[4]}}</span>
+      <br>
+      <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; width: 80%; float:left;">
+      <span style="display: inline-block; width: 40%;">Konzentrationsfähigkeit</span>
+      <span style="float: right;  margin-right: 30%;">{{pruefung?.ergebnis?.punkteSumme[5]}}</span>
+
+
+    </div>
+
+    </mat-card>
+    <div style="margin-top: 5px;"></div>
+    <mat-card style=" width: 50vw; text-align: center; margin: 0 auto;">
+
+        <canvas baseChart #baseChart="base-chart"
+        [datasets]="radarChartData"
+        [labels]="labels"
+        [colors]="chartColor"
+        [chartType]="chartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+</canvas>
+
+
+    </mat-card>

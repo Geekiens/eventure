@@ -33,6 +33,15 @@ public class Test   {
   @JsonProperty("titel")
   private String titel = null;
 
+  @JsonProperty("durchfuehrungen")
+  private int durchfuehrungen = 0;
+
+  @JsonProperty("durchschnitt")
+  private float[] durchschnitt;
+
+  @JsonProperty("anrufe")
+  private String[] anrufe;
+
   @JsonProperty("id")
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
@@ -48,8 +57,8 @@ public class Test   {
   @Lob
   private String beschreibung = null;
 
-  @JsonProperty("testFuer")
-  private String testFuer = null;
+  @JsonProperty("position")
+  private String position = null;
 
   @JsonProperty("aktiv")
   private Boolean aktiv = null;
@@ -136,6 +145,38 @@ public class Test   {
     this.kontext = kontext;
   }
 
+  public int getDurchfuehrungen() {
+    return durchfuehrungen;
+  }
+
+  public void setDurchfuehrungen(int durchfuehrungen) {
+    this.durchfuehrungen = durchfuehrungen;
+  }
+
+  public float[] getDurchschnitt() {
+    return durchschnitt;
+  }
+
+  public void setDurchschnitt(float[] durchschnitt) {
+    this.durchschnitt = durchschnitt;
+  }
+
+  public String[] getAnrufe() {
+    return anrufe;
+  }
+
+  public void setAnrufe(String[] anrufe) {
+    this.anrufe = anrufe;
+  }
+
+  public String getPosition() {
+    return position;
+  }
+
+  public void setPosition(String position) {
+    this.position = position;
+  }
+
   public String getBeschreibung() {
     return beschreibung;
   }
@@ -165,25 +206,21 @@ public class Test   {
     this.id = id;
   }
 
-  public Test testFuer(String testFuer) {
-    this.testFuer = testFuer;
+  public Test position(String position) {
+    this.position = position;
     return this;
   }
 
+
+
    /**
-   * Get testFuer
-   * @return testFuer
+   * Get position
+   * @return position
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getTestFuer() {
-    return testFuer;
-  }
 
-  public void setTestFuer(String testFuer) {
-    this.testFuer = testFuer;
-  }
 
   public Test aktiv(Boolean aktiv) {
     this.aktiv = aktiv;
@@ -218,13 +255,13 @@ public class Test   {
         Objects.equals(this.emails, test.emails) &&
         Objects.equals(this.titel, test.titel) &&
         Objects.equals(this.id, test.id) &&
-        Objects.equals(this.testFuer, test.testFuer) &&
+        Objects.equals(this.position, test.position) &&
         Objects.equals(this.aktiv, test.aktiv);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(zeit, emails, titel, id, testFuer, aktiv);
+    return Objects.hash(zeit, emails, titel, id, position, aktiv);
   }
 
   @Override
@@ -236,7 +273,7 @@ public class Test   {
     sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    titel: ").append(toIndentedString(titel)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    testFuer: ").append(toIndentedString(testFuer)).append("\n");
+    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    aktiv: ").append(toIndentedString(aktiv)).append("\n");
     sb.append("}");
     return sb.toString();

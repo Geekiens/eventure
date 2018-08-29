@@ -8,15 +8,16 @@ import { Email, EmailService } from '@app/core/services/email.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: "addEmailDialog",
-  templateUrl: "./addEmailDialog.component.html",
-  styleUrls: ["./addEmailDialog.component.scss"]
+  selector: "editEmailDialog",
+  templateUrl: "./editEmailDialog.component.html",
+  styleUrls: ["./editEmailDialog.component.scss"]
 })
-export class AddEmailDialogComponent implements OnInit {
+export class EditEmailDialogComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   rootEmail: Email;
   rootAntworten: Antwort[];
+
   erscheintDirekt = false;
   punkte: number[] = [0, 0, 0, 0, 0, 0];
   maxPunkte: number[] = [0, 0, 0, 0, 0, 0];
@@ -37,8 +38,25 @@ export class AddEmailDialogComponent implements OnInit {
   selection: TreeNode;
   parentAntwort: Antwort;
   currentAntwort: Antwort = { id: '0', titel: '', text: '', punkte: this.punkte };
+  alteEmail: Email;
+  onlyEdit = false;
 
-  constructor(public dialogRef: MatDialogRef<AddEmailDialogComponent>, private emailService: EmailService, private _formBuilder: FormBuilder, notificationsService: NotificationsService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditEmailDialogComponent>, private emailService: EmailService, private _formBuilder: FormBuilder, notificationsService: NotificationsService) {
+    this.onlyEdit = data.onlyEdit;
+    this.alteEmail = data.alteEmail;
+    this.email = data.alteEmail;
+    this.titel = this.email.titel;
+    this.text = this.email.text;
+    this.absender = this.email.absender;
+    this.erscheintDirekt = this.email.erscheintDirekt;
+    this.erscheintNachMS = this.email.erscheintNachMS;
+    this.punkte = this.email.punkte;
+    this.maxPunkte = this.email.punkte;
+    this.antwortenPunkte = this.email.antwortenPunkte;
+    this.weiterleitenPunkte = this.email.weiterleitenPunkte;
+    this.loeschenPunkte = this.email.loeschenPunkte;
+    this.absendeDatum = this.email.absendeDatum;
+    this.antworten = this.email.antworten;
   }
 
   buildEmail() {
@@ -50,7 +68,6 @@ export class AddEmailDialogComponent implements OnInit {
       antwortenPunkte: this.antwortenPunkte,
       erscheintDirekt: this.erscheintDirekt,
       erscheintNachMS: this.erscheintNachMS,
-      id: '0',
       loeschenPunkte: this.loeschenPunkte,
       prioritaet: 'string',
       punkte: this.maxPunkte,
@@ -105,7 +122,6 @@ export class AddEmailDialogComponent implements OnInit {
       treeString = treeString + this.generateChildren(this.antworten);
     }
     treeString = treeString + ']}]';
-    console.log(treeString);
     this.emailBaum = JSON.parse(treeString);
 
     return this.emailBaum;
@@ -116,18 +132,13 @@ export class AddEmailDialogComponent implements OnInit {
       this.buildEmail();
       this.rootEmail = this.email;
     } else {
-      console.log(this.parentAntwort);
       this.buildEmail();
       this.parentAntwort.folgeMail = this.email;
-      console.log(this.rootEmail);
-      console.log(this.parentAntwort);
+
     }
-    console.log(this.rootEmail);
     this.rootEmail.antworten.forEach(antwort => {
-      console.log(antwort);
       this.findAntwort(antwort, event);
     });
-    console.log(event.node);
   }
   findAntwort(antwort: Antwort, event) {
     if (antwort.titel === event.node.label) {
@@ -143,7 +154,6 @@ export class AddEmailDialogComponent implements OnInit {
       this.maxPunkte = [0, 0, 0, 0, 0, 0];
       this.text = '';
       this.weiterleitenPunkte = [0, 0, 0, 0, 0, 0];
-      console.log('hit');
     } else if (antwort.folgeMail !== undefined && antwort.folgeMail.antworten !== undefined) {
       antwort.folgeMail.antworten.forEach(element => {
         this.findAntwort(element, event);
@@ -152,7 +162,6 @@ export class AddEmailDialogComponent implements OnInit {
   }
 
   optionClicked(option: Antwort) {
-    console.log(option);
     this.currentAntwort = option;
     this.punkte = option.punkte;
     this.editOption = true;
@@ -179,11 +188,13 @@ export class AddEmailDialogComponent implements OnInit {
       this.buildEmail();
       this.rootEmail = this.email;
     }
-
+    if (this.onlyEdit) {
+      console.log('hit');
+      this.alteEmail.aktiv = false;
+      this.emailService.updateEmail(this.alteEmail);
+    }
     this.emailService.createEmail(this.rootEmail);
-
     this.closeDialog();
-
   }
 
   closeDialog() {
@@ -207,7 +218,6 @@ export class AddEmailDialogComponent implements OnInit {
 
     if (antwortOption.titel !== "" && antwortOption.titel !== undefined) {
       this.antworten.push(antwortOption);
-      console.log(this.antworten);
     }
     this.punkte = [0, 0, 0, 0, 0, 0, 0];
     this.currentAntwort = { id: '0', titel: '', text: '', punkte: this.punkte };
@@ -220,7 +230,6 @@ export class AddEmailDialogComponent implements OnInit {
     this.generateTree();
 
 
-    console.log(this.antworten);
   }
 
   ngOnInit() {

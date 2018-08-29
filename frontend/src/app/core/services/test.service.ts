@@ -9,6 +9,8 @@ import { Email } from '@app/core/services/email.service';
 export class TestService {
   //private testUrl = 'localhost:8080/assessment';
   private newTestSource = new BehaviorSubject<Test>(null);
+  private updatedTestSource = new BehaviorSubject<Test>(null);
+
 
   newtest = this.newTestSource.asObservable();
 
@@ -28,6 +30,15 @@ export class TestService {
       });
   }
 
+  public getTestByID(id: number) {
+    const httpOptions = {
+        headers: new HttpHeaders({
+          'Accept': 'application/json'
+        })
+      };
+      return this.http.get<Test>(('http://localhost:8080/assessment/getTestByID?id=' + id), httpOptions);
+    }
+
   public getTests() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -37,6 +48,20 @@ export class TestService {
     return this.http.get<Test[]>('http://localhost:8080/assessment/getTests', httpOptions);
   }
 
+  public updateTest(test: Test) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      })
+    };
+    return this.http.post<Test>('http://localhost:8080/assessment/updateTest', test, httpOptions)
+      .subscribe(resTest => {
+        this.updatedTestSource.next(resTest);
+        this.updatedTestSource.next(null);
+      });
+  }
+
 }
 export interface Test {
   titel: String;
@@ -44,7 +69,11 @@ export interface Test {
   position?: String;
   beschreibung?: String;
   kontext?: String;
+  aktiv?: boolean;
+  durchfuehrungen?: number;
+  durchschnitt?: number[];
   emails?: Email[];
+  anrufe?: String[];
   id?: number;
 }
 

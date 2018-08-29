@@ -44,13 +44,14 @@ export class BewerberVerwaltungComponent implements OnInit {
   data: number[] = [];
   chartType: String = 'pie';
 
-  pruefungenLabels = ['Offen', 'Bearbeitet'];
+  pruefungenChartType: String = 'pie';
+  pruefungenLabels = ['Offen', 'Bearbeitet', 'Abgeschlossen'];
   pruefungenData: number[] = [];
   pruefungenChartColor: any[] = [{
     hoverBorderColor: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'],
     hoverBorderWidth: 0,
-    backgroundColor: ["#3232ff", "#ffff00"],
-    hoverBackgroundColor: ["#0080ff", "#ffff44"]
+    backgroundColor: ["#3232ff", "#ffff00", "#009900"],
+    hoverBackgroundColor: ["#0080ff", "#ffff44", "#00b200"]
 }];
 
   constructor (private bewerberService: BewerberService, public dialog: MatDialog, public addTestToBewerberDialog: MatDialog, private router: Router) { }
@@ -111,9 +112,12 @@ export class BewerberVerwaltungComponent implements OnInit {
   }
 
   evaluateTest(pruefung: Pruefung) {
-    this.router.navigate(['bewerberVerwaltung/bewerten'], {queryParams: {id: pruefung.id }
-      });
-
+    if (pruefung.status === 'abgeschlossen') {
+      this.router.navigate(['bewerberVerwaltung/ergebnis'], {queryParams: {id: pruefung.id }});
+    }
+    if (pruefung.status === 'bearbeitet') {
+      this.router.navigate(['bewerberVerwaltung/bewerten'], {queryParams: {id: pruefung.id }});
+    }
   }
 
 
@@ -171,7 +175,7 @@ export class BewerberVerwaltungComponent implements OnInit {
       this.displayedBewerber = this.bewerber;
       this.showAllBewerber = true;
       this.data = [0, 0, 0, 0];
-      this.pruefungenData = [0, 0];
+      this.pruefungenData = [0, 0, 0];
       this.bewerber.forEach( b => {
         switch (b.status) {
           case 'angenommen': this.data[0] = this.data[0] + 1;
@@ -183,12 +187,16 @@ export class BewerberVerwaltungComponent implements OnInit {
           default:
             break;
         }
+        
         b.pruefungen.forEach(p => {
           switch (p.status) {
             case 'offen': this.pruefungenData[0] = this.pruefungenData[0] + 1;
               break;
             case 'bearbeitet': this.pruefungenData[1] = this.pruefungenData[1] + 1;
               break;
+              case 'abgeschlossen': this.pruefungenData[2] = this.pruefungenData[2] + 1;
+              break;
+              
             default:
               break;
           }

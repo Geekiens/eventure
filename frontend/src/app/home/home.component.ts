@@ -20,7 +20,7 @@ import { AuthenticationService } from '@app/core/authentication/authentication.s
 export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild(CountdownComponent) counter: CountdownComponent;
   @ViewChild('video') video: any;
-  config: String = '{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
+ // config: String = '{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1180; 1199], demand: true}';
   quote: string;
   timer = 1200;
   isLoading: boolean;
@@ -48,12 +48,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   returnConfig() {
     console.log('test');
     if (this.selectedPruefung) {
-      //return '{leftTime: ' +  this.selectedPruefung.test.zeit + ', notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}'
-      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
-
+      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1180, 1199], demand: true}';
     }
     else {
-      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}';
+      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1180, 1199], demand: true}';
     }
   }
 
@@ -111,9 +109,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
       .then(this.successCallback.bind(this), this.errorCallback.bind(this));
-
-      
-      
   }
 
 
@@ -121,37 +116,48 @@ export class HomeComponent implements OnInit, AfterViewInit {
   stopRecording() {
     this.testRecord = false;
     let recordRTC = this.recordRTC;
+    console.log(this.recordRTC.getBlob());
     recordRTC.stopRecording(this.processVideo.bind(this));
     let stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
+    console.log(this.recordRTC.getBlob());
+
   }
 
   download() {
     this.recordRTC.save('video.webm');
   }
 
-
-beendePruefung() {
-  this.pruefungsService.getPruefungById(this.selectedPruefung.id).subscribe( p => {
-    this.selectedPruefung = p;
-    this.selectedPruefung.status = 'bearbeitet';
-    this.selectedPruefung.ergebnis.verbleibendeZeit = this.verbleibendeZeit; // timer Zeit einfügen 
-    this.pruefungsService.updatePruefung(this.selectedPruefung).subscribe( p2 => {
-      console.log('test');
-    });
-  });
-
-}
-
-
-  startTimer() {
-    console.log(this.selectedPruefung);
-    this.counter.begin();
-    this.showInbox = true;
+  save() {
+    this.selectedPruefung.ergebnis.videoPfad =  this.recordRTC.getBlob();
+    console.log('p');
+    this.recordRTC.getDataURL(dataURL => {
+      this.selectedPruefung.ergebnis.videoPfad = dataURL;
+      this.pruefungsService.updatePruefung(this.selectedPruefung).subscribe( p2 => {
+      });
+    })
+    ;
+  
   }
 
 
+beendePruefung() {
+  console.log('beenden');
+  this.pruefungsService.getPruefungById(this.selectedPruefung.id).subscribe( p => {
+    this.selectedPruefung = p;
+    this.selectedPruefung.status = 'bearbeitet';
+    this.selectedPruefung.ergebnis.verbleibendeZeit = this.verbleibendeZeit;
+ // timer Zeit einfügen 
+    this.save();
+
+  });
+}
+
+  startTimer() {
+    this.counter.begin();
+    this.showInbox = true;
+  }
 
   reminderForLeftTime(timeLeft: string) {
     this.notificationsService.info('Sie haben noch', timeLeft, {
@@ -176,11 +182,11 @@ beendePruefung() {
 
   notified(event: any) {
     console.log(event / 1000 );
-    const time = event / 1000;
+    let time = event / 1000;
     this.verbleibendeZeit = time;
 
     switch (time) {
-      case 1190: 
+      case 1180: this.reminderForLeftTime('15 Minuten');  break;
       case 900: this.reminderForLeftTime('15 Minuten'); break;
       case 600: this.reminderForLeftTime('10 Minuten'); break;
       case 300: this.reminderForLeftTime('5 Minuten'); break;
@@ -214,7 +220,7 @@ beendePruefung() {
       .pipe(finalize(() => { this.isLoading = false; }))
       .subscribe((quote: string) => { this.quote = quote; });
 
-      
+
     this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
       this.bewerber = b;
       console.log(b);

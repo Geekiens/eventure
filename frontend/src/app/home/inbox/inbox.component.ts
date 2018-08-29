@@ -43,7 +43,7 @@ export class InboxComponent implements OnInit {
   antwort: String = '';
   titelAntwort: String = '';
 
-  ergebnis: Ergebnis = {videoPfad: 'Dummy'};
+  ergebnis: Ergebnis = {verbleibendeZeit: 0};
   bewerberReaktion: BewerberReaktion = null;
   weiterleiten = false;
   weiterleitenPersonen: String[] = ['Softwarearchitekt', 'Studentischer Entwickler', 'Direkter Vorgesetzter', 'Personalabteilung', 'Kunde', 'Projektleiter'];

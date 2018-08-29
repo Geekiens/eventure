@@ -22,6 +22,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
@@ -51,9 +52,16 @@ public class GetTestsApiController implements GetTestsApi {
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS");
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+            List<Test> alleTests = (List<Test>) testRepository.findAll();
+            List<Test> aktiveTests = new ArrayList<Test>();
+            for (Test test : alleTests){
+                if (test.getAktiv()) {
+                    aktiveTests.add(test);
+                }
+            }
             return ResponseEntity.ok()
                     .headers(headers)
-                    .body((List<Test>) testRepository.findAll());
+                    .body((List<Test>) aktiveTests);
         }
 
         return new ResponseEntity<List<Test>>(HttpStatus.BAD_REQUEST);

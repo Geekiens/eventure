@@ -22,6 +22,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
@@ -31,7 +32,7 @@ public class GetEmailApiController implements GetEmailApi {
     private static final Logger log = LoggerFactory.getLogger(GetEmailApiController.class);
 
     @Autowired
-    private EmailRepository bewerberRepository;
+    private EmailRepository emailRepository;
 
     private final ObjectMapper objectMapper;
 
@@ -51,9 +52,16 @@ public class GetEmailApiController implements GetEmailApi {
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS");
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+            List<Email> alleEmails = (List<Email>) emailRepository.findAll();
+            List<Email> aktiveEmails = new ArrayList<Email>();
+            for (Email email : alleEmails){
+                if (email.getAktiv()) {
+                    aktiveEmails.add(email);
+                }
+            }
             return ResponseEntity.ok()
                     .headers(headers)
-                    .body((List<Email>) bewerberRepository.findAll());
+                    .body((List<Email>) aktiveEmails);
         }
 
         return new ResponseEntity<List<Email>>(HttpStatus.BAD_REQUEST);

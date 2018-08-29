@@ -188,6 +188,123 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Anrufe
+            </mat-panel-title>
+            <mat-panel-description>
+              Abgelehnte und Angenommene Anrufe
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+  
+          <div *ngFor="let anruf of pruefung.test.anrufe; let i = index">
+            <span style="font-size: 1.3em; width:100%" >    
+              <i *ngIf="this.pruefung.ergebnis.angenommeneAnrufe[i]" style="color:green; font-size: 1.3em;" class="material-icons">phone</i> 
+              <i *ngIf="!this.pruefung.ergebnis.angenommeneAnrufe[i]" style="color:red; font-size: 1.3em;" class="material-icons">phone</i> 
+              {{anruf}}</span>
+        
+          
+          </div>
+
+            <div style="clear: both;"></div>
+            <div style="width: 50%; float: left;">
+              <div style="font-size: 1.3em; width: 80%; float: left;">
+                <div style="display: inline-bock; margin-top: 17px;">Sozialkompetenz </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Delegationsbereitschaft </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Verantwortungsbewusstsein </div>
+  
+              </div>
+  
+              <div style="float:left;">
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=anrufenPunkte[0] matInput>
+                </mat-form-field> / {{anrufenMaxPunkte[0]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=anrufenPunkte[1] matInput>
+                </mat-form-field> / {{anrufenMaxPunkte[1]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=anrufenPunkte[2] matInput>
+                </mat-form-field> / {{anrufenMaxPunkte[2]}}
+  
+  
+              </div>
+  
+            </div>
+  
+  
+            <div style="width: 50%; float: left;">
+              <div style="font-size: 1.3em; width: 80%; float: left;">
+                <div style="display: inline-bock; margin-top: 17px;">Analytische Fähigkeiten </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Arbeitsorganisation </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Konzentrationsfähigkeit </div>
+              </div>
+  
+              <div style="float:left;">
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=anrufenPunkte[3] matInput>
+                </mat-form-field> / {{anrufenMaxPunkte[3]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=anrufenPunkte[4] matInput>
+                </mat-form-field> / {{anrufenMaxPunkte[4]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=anrufenPunkte[5] matInput>
+                </mat-form-field> / {{anrufenMaxPunkte[5]}}
+  
+              </div>
+  
+            </div>
+  
+            <div style="clear: both;"></div>
+  
+
+  
+        </mat-expansion-panel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -197,7 +314,76 @@
             Aufzeichnung des Tests als Video (Bewertung erforderlich)
           </mat-panel-description>
         </mat-expansion-panel-header>
-        VIDEO EINFÜGEN
+
+        <div>
+        <video #video class="video"></video>
+      </div>
+
+      <div style="margin-top: 20px;">
+
+
+          <div style="width: 50%; float: left;">
+              <div style="font-size: 1.3em; width: 80%; float: left;">
+                <div style="display: inline-bock; margin-top: 17px;">Sozialkompetenz </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Delegationsbereitschaft </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Verantwortungsbewusstsein </div>
+  
+              </div>
+  
+              <div style="float:left;">
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=videoPunkte[0] matInput>
+                </mat-form-field> / {{videoMaxPunkte[0]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=videoPunkte[1] matInput>
+                </mat-form-field> / {{videoMaxPunkte[1]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=videoPunkte[2] matInput>
+                </mat-form-field> / {{videoMaxPunkte[2]}}
+  
+  
+              </div>
+  
+            </div>
+  
+  
+            <div style="width: 50%; float: left;">
+              <div style="font-size: 1.3em; width: 80%; float: left;">
+                <div style="display: inline-bock; margin-top: 17px;">Analytische Fähigkeiten </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Arbeitsorganisation </div>
+                <br>
+                <div style="display: inline-bock; margin-top: 17px;">Konzentrationsfähigkeit </div>
+              </div>
+  
+              <div style="float:left;">
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=videoPunkte[3] matInput>
+                </mat-form-field> / {{videoMaxPunkte[3]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=videoPunkte[4] matInput>
+                </mat-form-field> / {{videoMaxPunkte[4]}}
+                <br>
+                <mat-form-field style="width:25px;">
+                  <input number [(ngModel)]=videoPunkte[5] matInput>
+                </mat-form-field> / {{videoMaxPunkte[5]}}
+  
+              </div>
+  
+            </div>
+  
+            <div style="clear: both;"></div>
+
+
+
+
+      </div>
+
       </mat-expansion-panel>
 
       
@@ -402,8 +588,9 @@
               Berechnung des Testergebnis anfordern
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <button style="width:100%; margin-top:20px;" (click)="berechneErgebnis()" mat-raised-button color="primary">Ergebnis berechnen</button>
-          
+          <button *ngIf="!ergebnisBerechnet" style="width:100%; margin-top:20px;" (click)="berechneErgebnis()" mat-raised-button color="primary">Ergebnis berechnen</button>
+          <button *ngIf="ergebnisBerechnet" style="width:100%; margin-top:20px;" (click)="back()" mat-raised-button color="primary">Zurück zur Bewerberübersicht</button>
+
           <div *ngIf="ergebnisBerechnet" style="font-size: 1.1em; margin-top: 20px; width: 40vw;">
               <span style="color: lightgrey; display: inline-block; width: 40%;">Kompetenz</span>
               <span style="color: lightgrey; display: inline-block; width: 20%;">Summe</span>

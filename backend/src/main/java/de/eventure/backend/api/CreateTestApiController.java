@@ -48,6 +48,7 @@ public class CreateTestApiController implements CreateTestApi {
         String accept = request.getHeader("Accept");
         String content = request.getHeader("Content-Type");
         if (accept != null && accept.contains("application/json") && content != null && content.contains("application/json")) {
+            test.setAktiv(true);
             test = testRepository.save(test);
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");

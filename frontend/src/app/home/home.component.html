@@ -1,3 +1,6 @@
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
+
 <div class="container">
   <mat-card>
     <div>
@@ -16,7 +19,7 @@
           </mat-form-field>
         <button style="margin-right:15px" *ngIf="!testCompleted" [disabled]="showInbox" (click)="startTimer()" mat-raised-button
         color="primary">Test starten</button>
-      <countdown [config]='{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1199], demand: true}' (finished)="onFinished()"
+      <countdown [config]='{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1180, 1199], demand: true}' (finished)="onFinished()"
         (start)="onTimerStarted()" (notify)="notified($event)">
         $!m!:$!s!
       </countdown>
@@ -24,6 +27,7 @@
     </div>
 
       <div *ngIf="!testCompleted && !showInbox && testRecord">
+        
         <div style="margin-top: 20px;">
           <video #video class="video"></video>
         </div>

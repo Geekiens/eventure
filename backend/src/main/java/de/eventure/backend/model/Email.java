@@ -32,7 +32,7 @@ public class Email   {
   private String absender = null;
 
   @JsonProperty("absendeDatum")
-  private String absendeDatum = null;
+  private int absendeDatum = 0;
 
   @JsonProperty("antwortenPunkte")
   @Valid
@@ -136,7 +136,7 @@ public class Email   {
     this.absender = absender;
   }
 
-  public Email absendeDatum(String absendeDatum) {
+  public Email absendeDatum(int absendeDatum) {
     this.absendeDatum = absendeDatum;
     return this;
   }
@@ -148,11 +148,11 @@ public class Email   {
   @ApiModelProperty(value = "")
 
 
-  public String getAbsendeDatum() {
+  public int getAbsendeDatum() {
     return absendeDatum;
   }
 
-  public void setAbsendeDatum(String absendeDatum) {
+  public void setAbsendeDatum(int absendeDatum) {
     this.absendeDatum = absendeDatum;
   }
 

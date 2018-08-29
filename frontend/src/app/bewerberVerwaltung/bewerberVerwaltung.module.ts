@@ -9,6 +9,8 @@ import { BewerberVerwaltungRoutingModule } from '@app/bewerberVerwaltung/bewerbe
 import { BewerberVerwaltungComponent } from '@app/bewerberVerwaltung/bewerberVerwaltung.component';
 import { AddBewerberDialogComponent } from '@app/bewerberVerwaltung/addBewerberDialog/addBewerberDialog.component';
 import { EvaluateTestComponent } from '@app/bewerberVerwaltung/evaluateTest/evaluateTest.component';
+import { ShowResultsComponent } from '@app/bewerberVerwaltung/showResults/showResults.component';
+
 
 import { TestService } from '@app/core/services/test.service';
 import { BewerberService } from '@app/core/services/bewerber.service';
@@ -35,6 +37,7 @@ import { EditTestOfBewerberComponent } from '@app/bewerberVerwaltung/editTestOfB
   declarations: [
     BewerberVerwaltungComponent,
     EvaluateTestComponent,
+    ShowResultsComponent,
     AddBewerberDialogComponent,
     EditTestOfBewerberComponent
   ],

@@ -37,8 +37,10 @@
             {{email.absender}}
           </div>
           <div style="text-align: right">
-            {{email.absendeDatum}}
-          </div>
+              <span  *ngIf="email.absendeDatum == 0">Heute</span>
+              <span  *ngIf="email.absendeDatum == 1">Gestern</span>
+              <span  *ngIf="email.absendeDatum > 1">Vor {{email.absendeDatum}} Tagen</span>    
+             </div>    
         </div>
         <div class="">
           <div class="text-div">
@@ -57,8 +59,9 @@
       <mat-card-content>
         <mat-card-title>
           <span style="display: inline-block; width: 70%; ">Von: {{selectedEmail.absender}}</span>
-          <span>{{selectedEmail.absendeDatum}}</span>
-          <br> {{selectedEmail.titel}}
+          <span  *ngIf="selectedEmail.absendeDatum === 0">Heute</span>
+          <span  *ngIf="selectedEmail.absendeDatum === 1">Gestern</span>
+          <span  *ngIf="selectedEmail.absendeDatum > 1">Vor {{selectedEmail.absendeDatum}} Tagen</span>          <br> {{selectedEmail.titel}}
         </mat-card-title>
         <mat-card-subtitle>
           <div *ngIf="eingang" style="font-size: 1.2em">

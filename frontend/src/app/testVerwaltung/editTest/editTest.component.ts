@@ -1,12 +1,9 @@
-import { Input, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
 import { Email, EmailService } from '@app/core/services/email.service';
 import { Test, TestService } from '@app/core/services/test.service';
-import { Router} from '@angular/router';
-import {FormControl} from '@angular/forms';
-
-
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
@@ -14,71 +11,77 @@ import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDia
 import { EditEmailDialogComponent } from '@app/testVerwaltung/newTest/editEmailDialog/editEmailDialog.component';
 
 
-import { RouterInitializer } from '@angular/router/src/router_module';
-
 
 
 
 
 
 @Component({
-  selector: 'app-new-test',
-  templateUrl: './newTest.component.html',
-  styleUrls: ['./newTest.component.scss']
+  selector: 'app-edit-test',
+  templateUrl: './editTest.component.html',
+  styleUrls: ['./editTest.component.scss']
 })
-export class NewTestComponent implements OnInit {
+export class EditTestComponent implements OnInit {
+  position: String = '';
+  beschreibung: String = '';
+  kontext: String = '';
 
-  @Input() titel: String = '';
-  @Input() zeit: number;
-  @Input() position: String = '';
-  @Input() beschreibung: String = '';
-  @Input() kontext: String = '';
+  id: any;
 
-
-
-  //selectedAnrufe = new FormControl();
-  selectedAnrufe: string[] = [];
-  anrufe: string[] = ['Anrufer 1', 'Anrufer 2', 'Anrufer 3', 'Anrufer 4', 'Anrufer 4', 'Anrufer 5'];
+  test: Test;
+  alterTest: Test;
 
   showMailText = false;
   emails: Email[];
   allEmails: Email[];
-  @Input() testEmails: Email[] = [];
+  testEmails: Email[] = [];
   selectedEmail: Email = null;
   hasAnswers = false;
   showAnswer = false;
   emailSelection: Email[] = [];
+  
 
-  constructor(private router: Router, private testService: TestService, private emailService: EmailService, private notificationsService: NotificationsService, public dialog: MatDialog, public editDialog: MatDialog) { }
+  anrufe: string[] = ['Anrufer 1', 'Anrufer 2', 'Anrufer 3', 'Anrufer 4', 'Anrufer 4', 'Anrufer 5'];
+
+
+  constructor(private router: Router, private route: ActivatedRoute, private testService: TestService, private emailService: EmailService, private notificationsService: NotificationsService, public dialog: MatDialog, public editDialog: MatDialog) {
+    this.route.queryParams.subscribe(params => {
+      const id = params['id'];
+      this.testService.getTestByID(id).subscribe(test => {
+        this.test = test;
+        this.alterTest = test;
+        this.testEmails = test.emails;
+
+      });
+    });
+
+  }
 
   saveTest() {
-    console.log(this.selectedAnrufe);
     const test: Test = {
-      titel: this.titel,
-      zeit: this.zeit,
-      position: this.position,
-      beschreibung: this.beschreibung,
-      kontext: this.kontext,
-      anrufe: this.selectedAnrufe,
-      emails: this.testEmails
+      titel: this.test.titel,
+      zeit: this.test.zeit,
+      position: this.test.position,
+      beschreibung: this.test.beschreibung,
+      kontext: this.test.kontext,
+      emails: this.testEmails,
+      anrufe: this.test.anrufe
     };
+
+    this.alterTest.aktiv = false;
+    this.testService.updateTest(this.alterTest);
     this.testService.createTest(test);
 
-    this.titel = this.position =  this.beschreibung = this.kontext = '';
-    this.zeit = null;
+
+    this.test.titel = this.test.position =  this.test.beschreibung = this.test.kontext = '';
+    this.test.zeit = null;
     this.testEmails = [];
     this.emailService.getEmails().subscribe(emails => {
-      this.emails = [];
-      emails.forEach( e => {
-        if (this.testEmails.indexOf(e) === -1) {
-          this.emails.push(e);
-        }
-      });
       this.emails = emails;
     });
 
 
-    this.notificationsService.success('Test gespeichert', '', {
+    this.notificationsService.success('Test bearbeitet', '', {
       timeOut: 4000,
       showProgressBar: false,
       pauseOnHover: true,
@@ -87,6 +90,20 @@ export class NewTestComponent implements OnInit {
 
     this.router.navigate(['testVerwaltung']);
 
+  }
+
+  editEmail(email) {
+    let editDialogRef = this.editDialog.open(EditEmailDialogComponent, {
+      width: '80vw',
+      data: { alteEmail: email, onlyEdit: true }
+    });
+
+    editDialogRef.afterClosed().subscribe(result => {
+      this.emailService.getEmails().subscribe(emails => {
+        this.handleFilter(emails);
+        this.emailSelection = [];
+      });
+    });
   }
 
   addEmailstoTest() {
@@ -118,8 +135,7 @@ export class NewTestComponent implements OnInit {
       });
     });
   }
-
-  }
+}
 
 
   addToSelection(event, email) {
@@ -133,19 +149,6 @@ export class NewTestComponent implements OnInit {
 
   }
 
-  editEmail(email) {
-    let editDialogRef = this.editDialog.open(EditEmailDialogComponent, {
-      width: '80vw',
-      data: { alteEmail: email, onlyEdit: true }
-    });
-
-    editDialogRef.afterClosed().subscribe(result => {
-      this.emailService.getEmails().subscribe(emails => {
-        this.handleFilter(emails);
-        this.emailSelection = [];
-      });
-    });
-  }
   createEmail() {
     let dialogRef = this.dialog.open(AddEmailDialogComponent, {
       width: '80vw',
@@ -156,7 +159,11 @@ export class NewTestComponent implements OnInit {
       this.emailService.getEmails().subscribe(emails => {
         this.handleFilter(emails);
         this.emailSelection = [];
+
       });
+
+      console.log(this.emails);
+        console.log(this.testEmails);
     });
 
 
@@ -176,7 +183,6 @@ export class NewTestComponent implements OnInit {
     this.emails = [];
     emails.forEach(email => {
         if (this.containsEmail(email)) {
-          console.log('Test');
           test.push(email);
         } else {
           this.emails.push(email);
@@ -184,6 +190,7 @@ export class NewTestComponent implements OnInit {
         });
         this.testEmails = test;
   }
+
   emailClicked(email: Email) {
       this.showAnswer = true;
       this.selectedEmail = email;

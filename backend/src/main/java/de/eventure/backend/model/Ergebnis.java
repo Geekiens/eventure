@@ -22,13 +22,26 @@ import javax.validation.constraints.*;
 @Entity
 public class Ergebnis   {
   @JsonProperty("videoPfad")
-  private String videoPfad = null;
+  @Lob
+  private String videoPfad;
 
 
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   @JsonProperty("id")
   private Long id = null;
+
+  @JsonProperty("punkteKalender")
+  @Valid
+  private int[] punkteKalender;
+
+  @JsonProperty("punkteAnrufer")
+  @Valid
+  private int[] punkteAnrufer;
+
+  @JsonProperty("punkteVideo")
+  @Valid
+  private int[] punkteVideo;
 
   @JsonProperty("punkteAntworten")
   @Valid
@@ -52,6 +65,9 @@ public class Ergebnis   {
 
   @JsonProperty("verbleibendeZeit")
   private Integer verbleibendeZeit = null;
+
+  @JsonProperty("angenommeneAnrufe")
+  private boolean[] angenommeneAnrufe = {false, false, false, false, false, false};
 
   @JsonProperty("kalendereintraege")
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -164,6 +180,38 @@ public class Ergebnis   {
     this.punkteAntworten = punkteAntworten;
   }
 
+  public int[] getPunkteAnrufer() {
+    return punkteAnrufer;
+  }
+
+  public void setPunkteAnrufer(int[] punkteAnrufer) {
+    this.punkteAnrufer = punkteAnrufer;
+  }
+
+  public boolean[] getAngenommeneAnrufe() {
+    return angenommeneAnrufe;
+  }
+
+  public void setAngenommeneAnrufe(boolean[] angenommeneAnrufe) {
+    this.angenommeneAnrufe = angenommeneAnrufe;
+  }
+
+  public int[] getPunkteVideo() {
+    return punkteVideo;
+  }
+
+  public void setPunkteVideo(int[] punkteVideo) {
+    this.punkteVideo = punkteVideo;
+  }
+
+  public int[] getPunkteKalender() {
+    return punkteKalender;
+  }
+
+  public void setPunkteKalender(int[] punkteKalender) {
+    this.punkteKalender = punkteKalender;
+  }
+
   public int[] getPunkteOptionen() {
     return punkteOptionen;
   }
@@ -196,6 +244,8 @@ public class Ergebnis   {
     this.punkteSumme = punkteSumme;
   }
 
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -205,23 +255,20 @@ public class Ergebnis   {
       return false;
     }
     Ergebnis ergebnis = (Ergebnis) o;
-    return Objects.equals(this.videoPfad, ergebnis.videoPfad) &&
-        Objects.equals(this.verbleibendeZeit, ergebnis.verbleibendeZeit) &&
-            Objects.equals(this.id, ergebnis.id) &&
+        return Objects.equals(this.verbleibendeZeit, ergebnis.verbleibendeZeit) &&
+                Objects.equals(this.id, ergebnis.id) &&
         Objects.equals(this.bewerberReaktionen, ergebnis.bewerberReaktionen);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(videoPfad, verbleibendeZeit, bewerberReaktionen);
+    return Objects.hash(verbleibendeZeit, bewerberReaktionen);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Ergebnis {\n");
-    
-    sb.append("    videoPfad: ").append(toIndentedString(videoPfad)).append("\n");
     sb.append("    verbleibendeZeit: ").append(toIndentedString(verbleibendeZeit)).append("\n");
     sb.append("    bewerberReaktion: ").append(toIndentedString(bewerberReaktionen)).append("\n");
     sb.append("}");
