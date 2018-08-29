@@ -27,13 +27,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   showInbox = false;
   testCompleted = false;
   testRecord = false;
-  anrufAnzeigen = true;
+  anrufAnzeigen = false;
   private stream: MediaStream;
   private recordRTC: any;
   bewerber: Bewerber;
   selectedPruefung: Pruefung;
   pruefungen: Pruefung[] = [];
   verbleibendeZeit: number;
+  anrufer: String = '';
 
   constructor(private pruefungsService: PruefungService, private ergebnisService: ErgebnisService, private bewerberService: BewerberService, private authenticationService: AuthenticationService, private quoteService: QuoteService, private notificationsService: NotificationsService) { }
 
@@ -176,8 +177,9 @@ beendePruefung() {
 
   }
 
-  callIncome() {
+  callIncome(anrufer) {
     this.anrufAnzeigen = true;
+    this.anrufer = anrufer;
   }
 
   notified(event: any) {
@@ -186,14 +188,32 @@ beendePruefung() {
     this.verbleibendeZeit = time;
 
     switch (time) {
-      case 1180: this.reminderForLeftTime('15 Minuten');  break;
+      case 1180: if (this.selectedPruefung.test.anrufe[0]) {
+        this.callIncome(this.selectedPruefung.test.anrufe[0]);
+        } break;
+      case 1060: if (this.selectedPruefung.test.anrufe[1]) {
+        this.callIncome(this.selectedPruefung.test.anrufe[1]);
+        } break;
       case 900: this.reminderForLeftTime('15 Minuten'); break;
+      case 800: if (this.selectedPruefung.test.anrufe[2]) {
+        this.callIncome(this.selectedPruefung.test.anrufe[2]);
+        } break;
       case 600: this.reminderForLeftTime('10 Minuten'); break;
+      case 700: if (this.selectedPruefung.test.anrufe[3]) {
+        this.callIncome(this.selectedPruefung.test.anrufe[3]);
+        } break;
+      case 500: if (this.selectedPruefung.test.anrufe[4]) {
+        this.callIncome(this.selectedPruefung.test.anrufe[4]);
+        } break;
       case 300: this.reminderForLeftTime('5 Minuten'); break;
+      case 250: if (this.selectedPruefung.test.anrufe[5]) {
+        this.callIncome(this.selectedPruefung.test.anrufe[5]);
+        } break;
       case 120: this.reminderForLeftTime('2 Minuten'); break;
       case 60: this.reminderForLeftTime('1 Minute'); break;
       case 30: this.reminderForLeftTime('30 Sekunden'); break;
     }
+
   }
   onTimerStarted() {
     this.notificationsService.info('Viel Erfolg!', 'Sie haben 20 Minuten Zeit', {

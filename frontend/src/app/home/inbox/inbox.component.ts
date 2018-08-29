@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 import { finalize } from 'rxjs/operators';
 import { NotificationsService } from 'angular2-notifications';
@@ -26,6 +26,9 @@ export class InboxComponent implements OnInit {
   antwortText = '';
   @Input() anrufAnzeigen: boolean;
   @Input() pruefung: Pruefung;
+  @Input() anrufer = 'Chuck';
+  @Output() resetAnrufAnzeigen = new EventEmitter();
+
   beantworteteEmails: Email [] = [];
   emails: Email[];
   selectedEmail: Email = null;
@@ -42,25 +45,36 @@ export class InboxComponent implements OnInit {
   showAntwortText = false;
   antwort: String = '';
   titelAntwort: String = '';
+  anrufNummer = 0;
 
   ergebnis: Ergebnis = {verbleibendeZeit: 0};
   bewerberReaktion: BewerberReaktion = null;
   weiterleiten = false;
   weiterleitenPersonen: String[] = ['Softwarearchitekt', 'Studentischer Entwickler', 'Direkter Vorgesetzter', 'Personalabteilung', 'Kunde', 'Projektleiter'];
   selectedPerson: String;
-  anrufer = 'Chuck';
   //showAnruf = false;
 
   constructor(private pruefungService: PruefungService, private ergebnisService: ErgebnisService, private notificationsService: NotificationsService, public dialog: MatDialog, public confDialog: MatDialog) { }
 
   acceptCall() {
+    this.resetAnrufAnzeigen.emit();
     const audio = new Audio();
     audio.src = '../../../../assets/' + this.anrufer + '.mp3';
     audio.load();
     audio.play();
+    this.ergebnis.angenommeneAnrufe[this.anrufNummer] = true;
+    this.ergebnisService.updateErgebnis(this.ergebnis).subscribe(e => {
+      this.ergebnis = e;
+    });
+    this.anrufNummer ++;
+    setTimeout(() => {
+      this.anrufAnzeigen = false;
+    }, 5000);
   }
-  
+
   declineCall() {
+    this.resetAnrufAnzeigen.emit();
+    this.anrufNummer ++;
     this.anrufAnzeigen = false;
   }
 

@@ -19,8 +19,8 @@
           </mat-form-field>
         <button style="margin-right:15px" *ngIf="!testCompleted" [disabled]="showInbox" (click)="startTimer()" mat-raised-button
         color="primary">Test starten</button>
-      <countdown [config]='{leftTime: 1200, notify: [30, 60, 120, 300, 600, 900, 1180, 1199], demand: true}' (finished)="onFinished()"
-        (start)="onTimerStarted()" (notify)="notified($event)">
+      <countdown [config]='{leftTime: 1200, notify: [30, 60, 120, 250, 300, 500, 600, 700, 800, 900, 930, 1060, 1180, 1199], demand: true}' (finished)="onFinished()"
+        (start)="onTimerStarted()" (notify)="notified($event)"> 
         $!m!:$!s!
       </countdown>
       <button style="margin-left:15px" *ngIf="!testCompleted && showInbox" (click)="stopTest()" mat-raised-button color="warn">Test abschließen</button>
@@ -49,7 +49,7 @@
       <br>
 
     </div>
-    <app-inbox *ngIf="!testCompleted && showInbox" [pruefung]="selectedPruefung" [anrufAnzeigen]="anrufAnzeigen"></app-inbox>
+    <app-inbox *ngIf="!testCompleted && showInbox" (resetAnrufAnzeigen)="anrufAnzeigen=false; console.log('Test')" [pruefung]="selectedPruefung" [anrufer]="anrufer" [anrufAnzeigen]="anrufAnzeigen"></app-inbox>
 
 
     <mat-card-content>
