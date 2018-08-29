@@ -27,10 +27,9 @@
             </mat-expansion-panel-header>
             <div style ="text-align:left">
             Enthält <b>{{showTest.test?.emails?.length}}</b> Emails <br>
-            Zeitlimit: 
-            <mat-form-field>
-              <input matInput value="{{showTest.test.zeit}}">
-            </mat-form-field>
+            Enthält <b>{{showTest.test?.anrufe?.length}}</b> Telefonate <br>
+
+            Zeitlimit: {{showTest.test?.zeit}}
             <br>
             Position: {{showTest.test?.position}}
           </div>

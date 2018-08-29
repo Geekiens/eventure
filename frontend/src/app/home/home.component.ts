@@ -97,7 +97,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   startRecording() {
-    this.testRecord = true;
     const mediaConstraints: any = {
 
       video: {
@@ -112,18 +111,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
       .then(this.successCallback.bind(this), this.errorCallback.bind(this));
   }
 
+  startTestaufnahme() {
+    this.testRecord = true;
+    this.startRecording();
+  }
 
-
-  stopRecording() {
+  stopTestaufnahme() {
     this.testRecord = false;
     let recordRTC = this.recordRTC;
-    console.log(this.recordRTC.getBlob());
     recordRTC.stopRecording(this.processVideo.bind(this));
     let stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
-    console.log(this.recordRTC.getBlob());
+  }
 
+
+
+  stopRecording() {
+    let recordRTC = this.recordRTC;
+    recordRTC.stopRecording(this.processVideo.bind(this));
+    let stream = this.stream;
+    stream.getAudioTracks().forEach(track => track.stop());
+    stream.getVideoTracks().forEach(track => track.stop());
   }
 
   download() {
@@ -131,20 +140,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   save() {
-    this.selectedPruefung.ergebnis.videoPfad =  this.recordRTC.getBlob();
     console.log('p');
-    this.recordRTC.getDataURL(dataURL => {
-      this.selectedPruefung.ergebnis.videoPfad = dataURL;
-      this.pruefungsService.updatePruefung(this.selectedPruefung).subscribe( p2 => {
+    this.recordRTC.getBlob();    
+    setTimeout( () => {
+      console.log('p2');
+      this.recordRTC.getDataURL(dataURL => {
+        console.log('test');
+        this.selectedPruefung.ergebnis.videoPfad = dataURL;
+        this.pruefungsService.updatePruefung(this.selectedPruefung).subscribe( p2 => {
+        });
       });
-    })
-    ;
+    }, 1000);
   
   }
 
 
 beendePruefung() {
   console.log('beenden');
+  this.stopRecording();
+
   this.pruefungsService.getPruefungById(this.selectedPruefung.id).subscribe( p => {
     this.selectedPruefung = p;
     this.selectedPruefung.status = 'bearbeitet';
@@ -216,6 +230,7 @@ beendePruefung() {
 
   }
   onTimerStarted() {
+    this.startRecording();
     this.notificationsService.info('Viel Erfolg!', 'Sie haben 20 Minuten Zeit', {
       timeOut: 10000,
       showProgressBar: false,

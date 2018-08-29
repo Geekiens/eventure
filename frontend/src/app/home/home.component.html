@@ -8,8 +8,8 @@
         Keine Prüfungen vorhanden.
         </div>
         <div *ngIf="pruefungen.length > 0">
-        <button *ngIf="!testCompleted && !showInbox && !testRecord" mat-raised-button color="primary" (click)="startRecording()"> Testaufnahme starten </button>
-        <button *ngIf="!testCompleted && !showInbox && testRecord" mat-raised-button color="primary" (click)="stopRecording()"> Testaufnahme beenden</button>
+        <button *ngIf="!testCompleted && !showInbox && !testRecord" mat-raised-button color="primary" (click)="startTestaufnahme()"> Testaufnahme starten </button>
+        <button *ngIf="!testCompleted && !showInbox && testRecord" mat-raised-button color="primary" (click)="stopTestaufnahme()"> Testaufnahme beenden</button>
         <mat-form-field *ngIf="!testCompleted && !showInbox" >
             <mat-select [(ngModel)]="selectedPruefung" placeholder="Prüfung wählen">
               <mat-option *ngFor="let pruefung of pruefungen" [value]="pruefung">
