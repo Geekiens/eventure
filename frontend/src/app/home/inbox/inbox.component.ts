@@ -12,6 +12,7 @@ import { ErgebnisService, Ergebnis, BewerberReaktion, Kalendereintrag } from '@a
 
 import { Email, Antwort } from '@app/core/services/email.service';
 import { element } from 'protractor';
+import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 
 
 
@@ -27,6 +28,14 @@ export class InboxComponent implements OnInit {
   @Input() anrufAnzeigen: boolean;
   @Input() pruefung: Pruefung;
   @Input() anrufer = 'Chuck';
+  @Input()
+  public set emailReminder(val: number) {
+    this.emailsNachStart.forEach( e => {
+      if (e.erscheintNachMS === val) {
+        this.displayedMails.unshift(e);
+      }
+    });
+  }
   @Output() resetAnrufAnzeigen = new EventEmitter();
 
   beantworteteEmails: Email [] = [];
@@ -40,6 +49,7 @@ export class InboxComponent implements OnInit {
   eingang = true;
   ausgang = false;
   weitergeleitet = false;
+  emailsNachStart: Email[] = [];
   geloescht = false;
   showAnswer = false;
   showAntwortText = false;
@@ -198,11 +208,13 @@ showAusgang() {
   this.weitergeleitet = false;
   this.geloescht = false;
   let mails: Email[] = [];
-  this.ergebnis.bewerberReaktionen.forEach( reakt => {
-    if (reakt.reaktionsArt === 'option' || reakt.reaktionsArt === 'antwort') {
-      mails.push(reakt.email);
-    }
-  });
+  if (this.ergebnis.bewerberReaktionen) {
+    this.ergebnis.bewerberReaktionen.forEach( reakt => {
+      if (reakt.reaktionsArt === 'option' || reakt.reaktionsArt === 'antwort') {
+        mails.push(reakt.email);
+      }
+    });
+  }
   this.displayedMails = mails;
 }
 
@@ -212,11 +224,13 @@ showWeiterleiten() {
   this.weitergeleitet = true;
   this.geloescht = false;
   let mails: Email[] = [];
-  this.ergebnis.bewerberReaktionen.forEach( reakt => {
-    if (reakt.reaktionsArt === 'weiterleiten') {
-      mails.push(reakt.email);
-    }
-  });
+  if (this.ergebnis.bewerberReaktionen) {
+    this.ergebnis.bewerberReaktionen.forEach( reakt => {
+      if (reakt.reaktionsArt === 'weiterleiten') {
+        mails.push(reakt.email);
+      }
+    });
+  }
   this.displayedMails = mails;
 }
 
@@ -279,6 +293,9 @@ mailLoeschen() {
   }
 
   sendOption(i) {
+    if (this.selectedEmail.antworten[i].folgeMail) {
+      this.displayedMails.unshift(this.selectedEmail.antworten[i].folgeMail);
+    }
     this.bewerberReaktion = {
       reaktionsArt: 'option',
       email: this.selectedEmail,
@@ -310,12 +327,29 @@ mailLoeschen() {
     this.pruefungService.updatePruefung(this.pruefung).subscribe( p => {
       this.ergebnis = p.ergebnis;
     });
+ 
+
+    this.emails = this.pruefung.test.emails;
+    this.displayedMails = [];
+    let emailsNachStart: Email[] = [];
+    this.emails.forEach( email => {
+      
+      if (!email.erscheintDirekt) {
+        emailsNachStart.push(email);
+      }
+      else {
+        this.displayedMails.push(email);
+      }
+    });
+    this.emailsNachStart = emailsNachStart;
+    this.displayedMails.sort((e1, e2) =>  e1.absendeDatum - e2.absendeDatum);
+    
 /*
     this.ergebnisService.createErgebnis(this.ergebnis).subscribe(e => {
       this.ergebnis = e;
     });
 */
-    this.displayedMails = this.emails = this.pruefung.test.emails;
+    //this.displayedMails = this.emails = this.pruefung.test.emails;
   }
 
 }

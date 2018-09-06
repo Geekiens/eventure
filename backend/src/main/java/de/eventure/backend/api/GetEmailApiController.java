@@ -55,8 +55,9 @@ public class GetEmailApiController implements GetEmailApi {
             List<Email> alleEmails = (List<Email>) emailRepository.findAll();
             List<Email> aktiveEmails = new ArrayList<Email>();
             for (Email email : alleEmails){
-                if (email.getAktiv()) {
+                if (email.getAktiv() && !email.getIstFolgemail()) {
                     aktiveEmails.add(email);
+
                 }
             }
             return ResponseEntity.ok()

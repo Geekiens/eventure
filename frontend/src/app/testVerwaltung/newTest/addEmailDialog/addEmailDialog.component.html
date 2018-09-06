@@ -12,13 +12,13 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field style="width:90%;">
-                    <input matInput [(ngModel)]="absendeDatum" placeholder="Absendedatum (Tage vor Test)" required>
+                    <input matInput [readonly]="!erscheintDirekt" [(ngModel)]="absendeDatum" placeholder="Absendedatum (Tage vor Test)" required>
                 </mat-form-field>
                 <br>
                 <br>
 
                 <div style="width: 90%;">
-                    <mat-checkbox [color]="'primary'" [(ngModel)]="erscheintDirekt">Die Email soll direkt zum Start des Tests im Postkorb liegen</mat-checkbox>
+                    <mat-checkbox [color]="'primary'" (change)="erscheintDirektChanged()" [(ngModel)]="erscheintDirekt">Die Email soll direkt zum Start des Tests im Postkorb liegen</mat-checkbox>
                 </div>
                 <mat-form-field *ngIf="!erscheintDirekt" style="width:90%;">
                     <input matInput [(ngModel)]="erscheintNachMS" placeholder="Email erscheint ... Minuten nach Testbeginn">
@@ -251,7 +251,7 @@
                     </mat-form-field>
 
                     <div style="width: 90%;">
-                        <mat-checkbox [color]="'primary'" [(ngModel)]="hatFolgemail">Die Antwortoption löst eine automatische Folgemail des Systems aus</mat-checkbox>
+                        <mat-checkbox [color]="'primary'" (change)="setTitelFolgemail()" [(ngModel)]="hatFolgemail">Die Antwortoption löst eine automatische Folgemail des Systems aus</mat-checkbox>
                     </div>
 
                     <mat-form-field *ngIf="hatFolgemail" style="width:90%;">

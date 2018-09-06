@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   timer = 1200;
   isLoading: boolean;
   showInbox = false;
+  emailReminder = 0;
   testCompleted = false;
   testRecord = false;
   anrufAnzeigen = false;
@@ -47,12 +48,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   returnConfig() {
-    console.log('test');
     if (this.selectedPruefung) {
-      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1180, 1199], demand: true}';
+      return '{leftTime: 12000, notify: [30, 60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1180, 1199], demand: true}';
     }
     else {
-      return '{leftTime: 12000, notify: [30, 60, 120, 300, 600, 900, 1180, 1199], demand: true}';
+      return '{leftTime: 12000, notify: [30, 60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1180, 1199], demand: true}';
     }
   }
 
@@ -140,12 +140,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   save() {
-    console.log('p');
     this.recordRTC.getBlob();    
     setTimeout( () => {
-      console.log('p2');
       this.recordRTC.getDataURL(dataURL => {
-        console.log('test');
         this.selectedPruefung.ergebnis.videoPfad = dataURL;
         this.pruefungsService.updatePruefung(this.selectedPruefung).subscribe( p2 => {
         });
@@ -156,7 +153,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
 beendePruefung() {
-  console.log('beenden');
   this.stopRecording();
 
   this.pruefungsService.getPruefungById(this.selectedPruefung.id).subscribe( p => {
@@ -197,10 +193,11 @@ beendePruefung() {
   }
 
   notified(event: any) {
-    console.log(event / 1000 );
     let time = event / 1000;
     this.verbleibendeZeit = time;
-
+    if (time % 60 === 0) {
+      this.emailReminder = 20 - time / 60;
+    }
     switch (time) {
       case 1180: if (this.selectedPruefung.test.anrufe[0]) {
         this.callIncome(this.selectedPruefung.test.anrufe[0]);
@@ -258,7 +255,6 @@ beendePruefung() {
 
     this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
       this.bewerber = b;
-      console.log(b);
       let pruefungen: Pruefung[] = [];
       if (this.bewerber.pruefungen !== undefined ) {
         this.bewerber.pruefungen.forEach( p => {

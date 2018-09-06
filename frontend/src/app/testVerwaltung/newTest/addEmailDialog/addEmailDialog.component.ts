@@ -17,7 +17,7 @@ export class AddEmailDialogComponent implements OnInit {
   secondFormGroup: FormGroup;
   rootEmail: Email;
   rootAntworten: Antwort[];
-  erscheintDirekt = false;
+  erscheintDirekt = true;
   punkte: number[] = [0, 0, 0, 0, 0, 0];
   maxPunkte: number[] = [0, 0, 0, 0, 0, 0];
   antwortenPunkte: number[] = [0, 0, 0, 0, 0, 0];
@@ -89,6 +89,13 @@ export class AddEmailDialogComponent implements OnInit {
    }
    return treeString;
   }
+
+  erscheintDirektChanged() {
+    if (!this.erscheintDirekt) {
+      this.absendeDatum = 0;
+    }
+  }
+
   generateTree() {
     this.buildEmail();
     let treeString: string = '';
@@ -129,6 +136,13 @@ export class AddEmailDialogComponent implements OnInit {
     });
     console.log(event.node);
   }
+  
+  setTitelFolgemail() {
+    if (this.hatFolgemail) {
+    this.titelFolgemail = 'Aw: Aw: ' + this.titel;
+    }
+  }
+
   findAntwort(antwort: Antwort, event) {
     if (antwort.titel === event.node.label) {
       this.parentAntwort = antwort; // parentAntwort
@@ -201,7 +215,7 @@ export class AddEmailDialogComponent implements OnInit {
     antwortOption.id = '0';
     if (this.hatFolgemail) {
       
-      const folgeMail: Email = {titel: this.titelFolgemail};
+      const folgeMail: Email = {titel: this.titelFolgemail, istFolgemail: true };
       antwortOption.folgeMail = folgeMail;
     }
 
@@ -212,7 +226,7 @@ export class AddEmailDialogComponent implements OnInit {
     this.punkte = [0, 0, 0, 0, 0, 0, 0];
     this.currentAntwort = { id: '0', titel: '', text: '', punkte: this.punkte };
     this.hatFolgemail = false;
-    this.titelFolgemail = '';
+    this.titelFolgemail = 'Aw: Aw: ' + this.titel;;
     if (this.rootEmail !== undefined) {
       this.buildEmail();
       this.parentAntwort.folgeMail = this.email;

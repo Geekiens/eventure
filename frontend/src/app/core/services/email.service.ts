@@ -88,6 +88,7 @@ export interface Email {
   absendeDatum?: number;
   prioritaet?: string;
   erscheintDirekt?: boolean;
+  istFolgemail?: boolean;
   erscheintNachMS?: number;
   antworten?: Antwort[];
   id?: string;

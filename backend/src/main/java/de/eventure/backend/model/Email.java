@@ -58,6 +58,9 @@ public class Email   {
   @JsonProperty("erscheintDirekt")
   private Boolean erscheintDirekt = null;
 
+  @JsonProperty("istFolgemail")
+  private Boolean istFolgemail = false;
+
   @JsonProperty("erscheintNachMS")
   private Integer erscheintNachMS = null;
 
@@ -194,6 +197,14 @@ public class Email   {
 
   public void setErscheintDirekt(Boolean erscheintDirekt) {
     this.erscheintDirekt = erscheintDirekt;
+  }
+
+  public Boolean getIstFolgemail() {
+    return istFolgemail;
+  }
+
+  public void setIstFolgemail(Boolean istFolgemail) {
+    this.istFolgemail = istFolgemail;
   }
 
   public Email erscheintNachMS(Integer erscheintNachMS) {

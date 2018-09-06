@@ -18,7 +18,7 @@ export class EditEmailDialogComponent implements OnInit {
   rootEmail: Email;
   rootAntworten: Antwort[];
 
-  erscheintDirekt = false;
+  erscheintDirekt = true;
   punkte: number[] = [0, 0, 0, 0, 0, 0];
   maxPunkte: number[] = [0, 0, 0, 0, 0, 0];
   antwortenPunkte: number[] = [0, 0, 0, 0, 0, 0];
@@ -75,9 +75,14 @@ export class EditEmailDialogComponent implements OnInit {
       titel: this.titel,
       weiterleitenPunkte: this.weiterleitenPunkte
     };
-
-
   }
+
+  erscheintDirektChanged() {
+    if (this.erscheintDirekt) {
+      this.absendeDatum = 0;
+    }
+  }
+  
   generateChildren(antworten: Antwort[]) {
     let first = true;
     let treeString: String = '';
@@ -212,7 +217,7 @@ export class EditEmailDialogComponent implements OnInit {
     antwortOption.id = '0';
     if (this.hatFolgemail) {
       
-      const folgeMail: Email = {titel: this.titelFolgemail};
+      const folgeMail: Email = {titel: this.titelFolgemail, istFolgemail: true};
       antwortOption.folgeMail = folgeMail;
     }
 
@@ -230,6 +235,12 @@ export class EditEmailDialogComponent implements OnInit {
     this.generateTree();
 
 
+  }
+
+  setTitelFolgemail() {
+    if (this.hatFolgemail) {
+    this.titelFolgemail = 'Aw: Aw: ' + this.titel;
+    }
   }
 
   ngOnInit() {

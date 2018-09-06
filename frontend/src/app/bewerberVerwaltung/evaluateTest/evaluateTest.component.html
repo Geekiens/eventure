@@ -410,8 +410,10 @@
                 <mat-card-content>
                   <mat-card-title>
                     <span style="display: inline-block; width: 70%; ">Von: {{weitergeleiteteMail?.email?.absender}}</span>
-                    <span>{{weitergeleiteteMail?.email?.absendeDatum}}</span>
-                    <br> {{weitergeleiteteMail?.email?.titel}}
+                    <span  *ngIf="weitergeleiteteMail?.email?.absendeDatum == 0">Heute</span>
+                    <span  *ngIf="weitergeleiteteMail?.email?.absendeDatum == 1">Gestern</span>
+                    <span  *ngIf="weitergeleiteteMail?.email?.absendeDatum > 1">Vor {{weitergeleiteteMail?.email?.absendeDatum}} Tagen</span>  
+                                        <br> {{weitergeleiteteMail?.email?.titel}}
                   </mat-card-title>
                   <mat-card-subtitle>
   
@@ -506,7 +508,10 @@
               <mat-card-content>
                 <mat-card-title>
                   <span style="display: inline-block; width: 70%; ">Von: {{antwort?.email?.absender}}</span>
-                  <span>{{antwort?.email?.absendeDatum}}</span>
+                  <span  *ngIf="antwort?.email?.absendeDatum == 0">Heute</span>
+                  <span  *ngIf="antwort?.email?.absendeDatum == 1">Gestern</span>
+                  <span  *ngIf="antwort?.email?.absendeDatum > 1">Vor {{antwort?.email?.absendeDatum}} Tagen</span>     
+                                 
                   <br> {{antwort?.email?.titel}}
                 </mat-card-title>
                 <mat-card-subtitle>

@@ -7,10 +7,10 @@
         <button style="width:90%; margin-left: 5%;" (click)="openCalendar()" mat-raised-button color="primary">
           Kalender öffnen</button>
         <br>
-        <span (click)="showEingang()" style="margin-top: 25px; display: inline-block;"> Posteingang</span>
-        <br> <span (click)="showAusgang()">Postausgang</span>
-        <br> <span (click)="showWeiterleiten()">Weitergeleitet</span>
-        <br> <span (click)="showGeloescht()">Gelöscht</span>  
+        <div (click)="showEingang()" [className]="eingang ? 'activeMails' : 'inactiveMails'" style="margin-top:20px;" > Posteingang</div>
+        <div (click)="showAusgang()" [className]="ausgang ? 'activeMails' : 'inactiveMails'" >Postausgang</div>
+        <div (click)="showWeiterleiten()" [className]="weitergeleitet ? 'activeMails' : 'inactiveMails'">Weitergeleitet</div>
+        <div (click)="showGeloescht()" [className]="geloescht ? 'activeMails' : 'inactiveMails'">Gelöscht</div>  
         <br>
 
         <div *ngIf="anrufAnzeigen" style="margin-top: 25vh; padding: 10px 15px 10px 15px; background-image:linear-gradient(to bottom,  blue 0%,black 70%);">

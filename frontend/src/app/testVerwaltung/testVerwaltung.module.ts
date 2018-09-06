@@ -8,6 +8,8 @@ import { TestVerwaltungRoutingModule } from '@app/testVerwaltung/testVerwaltung-
 import { TestVerwaltungComponent } from '@app/testVerwaltung/testVerwaltung.component';
 import { NewTestComponent } from '@app/testVerwaltung/newTest/newTest.component';
 import { EditTestComponent } from '@app/testVerwaltung/editTest/editTest.component';
+import { ConfirmationDialogComponent } from '@app/testVerwaltung/confirmationDialog/confirmationDialog.component';
+
 
 import { AddEmailDialogComponent } from '@app/testVerwaltung/newTest/addEmailDialog/addEmailDialog.component';
 import { EditEmailDialogComponent } from '@app/testVerwaltung/newTest/editEmailDialog/editEmailDialog.component';
@@ -40,13 +42,14 @@ import {TreeModule} from 'primeng/tree';
     NewTestComponent,
     EditTestComponent,
     AddEmailDialogComponent,
-    EditEmailDialogComponent
+    EditEmailDialogComponent,
+    ConfirmationDialogComponent
   ],
   providers: [
     EmailService,
     TestService
   ],
-  entryComponents: [AddEmailDialogComponent, EditEmailDialogComponent],
+  entryComponents: [AddEmailDialogComponent, EditEmailDialogComponent, ConfirmationDialogComponent],
 
 
 })

@@ -32,6 +32,9 @@
             Zeitlimit: {{showTest.test?.zeit}}
             <br>
             Position: {{showTest.test?.position}}
+            <br>
+            <span style="color:red" (click)="loeschenClicked()">Test Löschen</span>
+
           </div>
       
           </mat-expansion-panel>
@@ -56,20 +59,19 @@
                
         <div class="">
           <div class="text-div">
-            {{email.absender}}
-          </div>
-          <div style="text-align: right">
-              <span  *ngIf="email.absendeDatum == 0">Heute</span>
+            <span style="display:inline-block; width: 70%">{{email.absender}}</span>
+          <!--</div>
+          <div style="text-align: right"> -->
+              <span style="width:29%; display: inline-block; text-align: right;" *ngIf="email.absendeDatum == 0">Heute</span>
               <span  *ngIf="email.absendeDatum == 1">Gestern</span>
-              <span  *ngIf="email.absendeDatum > 1">Vor {{email.absendeDatum}} Tagen</span>            </div>
+              <span  *ngIf="email.absendeDatum > 1">Vor {{email.absendeDatum}} Tagen</span>
+                        </div>
         </div>
         <div class="">
           <div class="text-div">
           {{email.titel}}
           </div>
-          <div style="font-size: 0.8em; color:grey;"class="text-div">
-                  {{email.text}}
-          </div>
+
         </div>
       </mat-card>
       </div>

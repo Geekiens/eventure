@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Löschen bestätigen</h2>
+<mat-dialog-content>Wollen sie {{data.titel}} wirklich löschen?</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" mat-dialog-close>Nein</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Ja</button>
+</mat-dialog-actions>
