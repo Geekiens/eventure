@@ -5,6 +5,7 @@ import { NotificationsService } from 'angular2-notifications';
 
 import { SelectDateDialogComponent } from '@app/home/inbox/selectDateDialog/selectDateDialog.component';
 import { ConfirmationDialogComponent } from '@app/home/inbox/confirmationDialog/confirmationDialog.component';
+import { ContextDialogComponent } from '@app/home/inbox/contextDialog/contextDialog.component';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { PruefungService, Pruefung } from '@app/core/services/pruefung.service';
@@ -64,7 +65,7 @@ export class InboxComponent implements OnInit {
   selectedPerson: String;
   //showAnruf = false;
 
-  constructor(private pruefungService: PruefungService, private ergebnisService: ErgebnisService, private notificationsService: NotificationsService, public dialog: MatDialog, public confDialog: MatDialog) { }
+  constructor(private pruefungService: PruefungService, private ergebnisService: ErgebnisService, private notificationsService: NotificationsService, public dialog: MatDialog, public confDialog: MatDialog, public contextDialog: MatDialog) { }
 
   acceptCall() {
     this.resetAnrufAnzeigen.emit();
@@ -129,9 +130,20 @@ export class InboxComponent implements OnInit {
   }
 
   openCalendar() {
+    
     let dialogRef = this.dialog.open(SelectDateDialogComponent, {
       width: '50vw',
-      data: {  }
+      data: { ergebnis: this.ergebnis, titel: ''}
+    });
+
+
+  }
+
+  toogleContext() {
+    console.log(this.pruefung.test.kontext);
+    let dialogRef = this.contextDialog.open(ContextDialogComponent, {
+      width: '50vw',
+      data: { kontext: this.pruefung.test.kontext}
     });
   }
 
@@ -155,6 +167,12 @@ export class InboxComponent implements OnInit {
   aufTerminClicked() {
     let dialogRef = this.dialog.open(SelectDateDialogComponent, {
       data: {ergebnis: this.ergebnis, titel: this.selectedEmail.titel }, width: '50vw'
+    });
+    dialogRef.afterClosed().subscribe(() => {
+
+      this.pruefungService.getPruefungById(this.pruefung.id).subscribe( p => {
+        this.pruefung = p;
+      });
     });
   }
 

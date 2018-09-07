@@ -4,8 +4,13 @@
 
     <mat-card style="height:68vh">
       <mat-card-title>
-        <button style="width:90%; margin-left: 5%;" (click)="openCalendar()" mat-raised-button color="primary">
-          Kalender öffnen</button>
+
+        <button style="width:75%; margin-left: 5%; float:left;" (click)="openCalendar()" mat-raised-button color="primary">
+          Kalender öffnen
+        </button>
+        <i style="float:right; margin-top:0.2em" (click)="toogleContext()" class="material-icons">
+            input
+        </i>
         <br>
         <div (click)="showEingang()" [className]="eingang ? 'activeMails' : 'inactiveMails'" style="margin-top:20px;" > Posteingang</div>
         <div (click)="showAusgang()" [className]="ausgang ? 'activeMails' : 'inactiveMails'" >Postausgang</div>
@@ -13,7 +18,7 @@
         <div (click)="showGeloescht()" [className]="geloescht ? 'activeMails' : 'inactiveMails'">Gelöscht</div>  
         <br>
 
-        <div *ngIf="anrufAnzeigen" style="margin-top: 25vh; padding: 10px 15px 10px 15px; background-image:linear-gradient(to bottom,  blue 0%,black 70%);">
+        <div *ngIf="anrufAnzeigen" style="margin-top: 20vh; padding: 10px 15px 10px 15px; background-image:linear-gradient(to bottom,  blue 0%,black 70%);">
           <span style="color:white;">{{anrufer}}</span>  <br>
           <i (click)="acceptCall()" style="color:green; font-size: 2.5em;" class="material-icons">
             call

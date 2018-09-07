@@ -9,19 +9,19 @@
     <a class="brand" href="https://github.com/Geekiens/eventure" translate>APP_NAME</a>
     <button mat-button routerLink="/home" routerLinkActive="active">
       <mat-icon>home</mat-icon>
-      <span translate>Test durchführen</span>
+      <span translate>Take Test</span>
     </button>
     <button mat-button routerLink="/about" routerLinkActive="active">
       <mat-icon>info</mat-icon>
       <span translate>About</span>
     </button>
-    <button mat-button routerLink="/bewerberVerwaltung" routerLinkActive="active">
+    <button *ngIf="user === 'admin'" mat-button routerLink="/bewerberVerwaltung" routerLinkActive="active">
       <mat-icon>person</mat-icon>
-      <span translate>Bewerber verwalten</span>
+      <span translate>Manage Applicants</span>
     </button>
-    <button mat-button routerLink="/testVerwaltung" routerLinkActive="active">
+    <button *ngIf="user === 'admin'" mat-button routerLink="/testVerwaltung" routerLinkActive="active">
       <mat-icon>note</mat-icon>
-      <span translate>Tests verwalten</span>
+      <span translate>Manage Tests</span>
     </button>
   </div>
   <span fxFlex></span>

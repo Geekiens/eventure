@@ -14,13 +14,16 @@ import { I18nService } from '@app/core/i18n.service';
 export class HeaderComponent implements OnInit {
 
   @Input() sidenav: MatSidenav;
+  user: string;
 
   constructor(private router: Router,
               private titleService: Title,
               private authenticationService: AuthenticationService,
               private i18nService: I18nService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.user = this.authenticationService.credentials.username;
+  }
 
   setLanguage(language: string) {
     this.i18nService.language = language;

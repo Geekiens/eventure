@@ -21,7 +21,6 @@ export class SelectDateDialogComponent implements OnInit {
 
   constructor(private ergebnisService: ErgebnisService, public dialogRef: MatDialogRef<SelectDateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-
     }
 
     sendKalendereintrag() {
@@ -42,15 +41,16 @@ export class SelectDateDialogComponent implements OnInit {
         this.data.ergebnis.kalendereintraege = [];
       }
       ergebnis.kalendereintraege.push(this.kalendereintrag);
-      this.ergebnisService.updateErgebnis(ergebnis).subscribe( e => {
+        this.ergebnisService.updateErgebnis(ergebnis).subscribe( e => {
       });
       this.dialogRef.close();
 
     }
 
     update() {
+    console.log(this.kalendereintraege);
     if (this.kalendereintraege) {
-     this.kalendereintraege.forEach(k => {
+      this.kalendereintraege.forEach(k => {
         switch (k.tag) {
           case '1':
               this.tag1.push(k);
@@ -68,7 +68,7 @@ export class SelectDateDialogComponent implements OnInit {
       this.tag1 = this.sortiere(this.tag1);
       this.tag2 = this.sortiere(this.tag2);
       this.tag3 = this.sortiere(this.tag3);
-    }
+      }
     }
 
     sortiere(arr: Kalendereintrag[]) {
@@ -86,7 +86,18 @@ export class SelectDateDialogComponent implements OnInit {
       return retArr;
     }
 
+    nullErgaenzen(minuten) {
+      if (minuten === '0') {
+        return '00';
+      }
+      else {
+        return minuten;
+      }
+    }
+
     ngOnInit() {
+      console.log(this.data.ergebnis);
+    
       this.kalendereintraege = this.data.ergebnis.kalendereintraege;
       this.update();
       this.von.setHours(12, 0);

@@ -1,0 +1,24 @@
+.kalenderElement {
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-top: 0.2em;
+    text-align:left;
+    height: 1.5em; 
+    background: #3968af; 
+    color: white; 
+    margin-left: 5%; 
+    width: 90%; 
+    border-radius: 5px;
+}
+
+.kalenderTag {
+    height:250px;
+    width: 90%; 
+    background: #cccccc;
+}
+
+.kalenderTagWrapper {
+    float: left; 
+    width: 33%; 
+    text-align: center;
+}

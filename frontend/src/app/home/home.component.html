@@ -8,17 +8,17 @@
         Keine Prüfungen vorhanden.
         </div>
         <div *ngIf="pruefungen.length > 0">
-        <button *ngIf="!testCompleted && !showInbox && !testRecord" mat-raised-button color="primary" (click)="startTestaufnahme()"> Testaufnahme starten </button>
+        <button *ngIf="!testCompleted && !showInbox && !testRecord" mat-raised-button color="primary" (click)="startTestaufnahme()"> <span translate>Test Camera</span> </button>
         <button *ngIf="!testCompleted && !showInbox && testRecord" mat-raised-button color="primary" (click)="stopTestaufnahme()"> Testaufnahme beenden</button>
         <mat-form-field *ngIf="!testCompleted && !showInbox" >
-            <mat-select [(ngModel)]="selectedPruefung" placeholder="Prüfung wählen">
+            <mat-select [(ngModel)]="selectedPruefung" [placeholder]="'Choose Test' | translate">
               <mat-option *ngFor="let pruefung of pruefungen" [value]="pruefung">
                 {{pruefung.test?.titel}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         <button style="margin-right:15px" *ngIf="!testCompleted" [disabled]="showInbox" (click)="startTimer()" mat-raised-button
-        color="primary">Test starten</button>
+        color="primary"><span translate>Start Test</span></button>
 
         
       <countdown [config]='{leftTime: 1200, notify: [30, 60, 120, 180, 240, 250, 300, 360, 420, 480, 500, 540, 600, 660, 700, 720, 780, 800, 840, 900, 930, 960, 1020, 1060, 1080, 1140, 1180, 1199], demand: true}' (finished)="onFinished()"

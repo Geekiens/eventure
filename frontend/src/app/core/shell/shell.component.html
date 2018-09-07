@@ -5,11 +5,19 @@
         <mat-list>
           <mat-divider></mat-divider>
           <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="sidenav.close()">
-            <span translate>Test durchführen</span>
+            <span translate>Take Test</span>
           </a>
           <mat-divider></mat-divider>
           <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="sidenav.close()">
             <span translate>About</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item *ngIf="user === 'admin'" routerLink="/bewerberVerwaltung" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Manage Applicants</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item *ngIf="user === 'admin'" routerLink="/testVerwaltung" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Manage Tests</span>
           </a>
           <mat-divider></mat-divider>
         </mat-list>
