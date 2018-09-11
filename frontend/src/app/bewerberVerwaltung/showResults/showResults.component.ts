@@ -76,11 +76,18 @@ export class ShowResultsComponent implements OnInit {
         console.log(p);
         this.durchschnittlichePunkte = p.test.durchschnitt;
         this.berechneMaximalePunkte(p);
+
       });
     });
   }
-  
 
+  chartHovered(test) {
+    console.log('Todo');
+  }
+
+  chartClicked(test) {
+    console.log('Todo');
+  }
 
   berechneMaximalePunkte(p: Pruefung) {
     p.test.emails.forEach( e => {

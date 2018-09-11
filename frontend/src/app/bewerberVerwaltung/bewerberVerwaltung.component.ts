@@ -77,6 +77,8 @@ export class BewerberVerwaltungComponent implements OnInit {
     this.updateDisplayedBewerber();
   }
 
+
+
   updateDisplayedBewerber() {
     if (this.showAllBewerber) {
       this.displayedBewerber = this.bewerber;
