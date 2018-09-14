@@ -173,7 +173,7 @@ export class EvaluateTestComponent implements OnInit {
     this.ergebnisBerechnet = true;
     for (let index = 0; index <= 5; index++) {
       this.punkteSumme[index] = Number(this.punkteWeiterleiten[index]) + Number(this.punkteAntworten[index]) + Number(this.videoPunkte[index]) +
-                                Number(this.loeschenPunkte[index]) + Number(this.kalenderPunkte[index]) + Number(this.optionPunkte[index])
+                                Number(this.loeschenPunkte[index]) + Number(this.kalenderPunkte[index]) + Number(this.optionPunkte[index]) +
                                 Number(this.anrufenPunkte[index]);
                               }
     this.pruefung.ergebnis.punkteAnrufer = this.anrufenPunkte;
@@ -211,6 +211,7 @@ export class EvaluateTestComponent implements OnInit {
         this.weitergeleiteteMail = this.weitergeleiteteMails[this.index];
       } else {
         this.allWeitergeleitetEvaluated = true;
+        console.log('Alle Weitergeleiteten fertig');
       }
     }
   }

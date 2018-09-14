@@ -140,7 +140,6 @@ export class InboxComponent implements OnInit {
   }
 
   toogleContext() {
-    console.log(this.pruefung.test.kontext);
     let dialogRef = this.contextDialog.open(ContextDialogComponent, {
       width: '50vw',
       data: { kontext: this.pruefung.test.kontext}
@@ -201,6 +200,13 @@ export class InboxComponent implements OnInit {
       this.emails.splice(index, 1);
     }
   });
+  this.displayedMails.forEach(element => {
+    if (this.selectedEmail.id === element.id) {
+      let index2 = this.displayedMails.indexOf(element);
+      this.displayedMails.splice(index2, 1);
+    }
+  });
+  
   this.showMailText = false;
 
 }
@@ -277,6 +283,12 @@ mailLoeschen() {
       this.emails.splice(index, 1);
     }
   });
+  this.displayedMails.forEach(element => {
+    if (this.selectedEmail.id === element.id) {
+      let index2 = this.displayedMails.indexOf(element);
+      this.displayedMails.splice(index2, 1);
+    }
+  });
   this.showMailText = false;
 
 }
@@ -306,13 +318,37 @@ mailLoeschen() {
         this.emails.splice(index, 1);
       }
     });
+    this.displayedMails.forEach(element => {
+      if (this.selectedEmail.id === element.id) {
+        let index2 = this.displayedMails.indexOf(element);
+        this.displayedMails.splice(index2, 1);
+      }
+    });
     this.showMailText = false;
 
   }
 
   sendOption(i) {
     if (this.selectedEmail.antworten[i].folgeMail) {
-      this.displayedMails.unshift(this.selectedEmail.antworten[i].folgeMail);
+     // this.displayedMails.unshift(this.selectedEmail.antworten[i].folgeMail);
+      let email = {
+        titel: this.selectedEmail.antworten[i].folgeMail.titel,
+        text: this.selectedEmail.antworten[i].folgeMail.text,
+        absender: this.selectedEmail.antworten[i].folgeMail.absender,
+        absendeDatum: this.selectedEmail.antworten[i].folgeMail.absendeDatum,
+        aktiv: true,
+        prioritaet: this.selectedEmail.antworten[i].folgeMail.prioritaet,
+        erscheintDirekt: this.selectedEmail.antworten[i].folgeMail.erscheintDirekt,
+        istFolgemail: true,
+        erscheintNachMS: this.selectedEmail.antworten[i].folgeMail.erscheintNachMS,
+        antworten: this.selectedEmail.antworten[i].folgeMail.antworten,
+        punkte: this.selectedEmail.antworten[i].folgeMail.punkte,
+        antwortenPunkte: this.selectedEmail.antworten[i].folgeMail.antwortenPunkte,
+        weiterleitenPunkte: this.selectedEmail.antworten[i].folgeMail.weiterleitenPunkte,
+        loeschenPunkte: this.selectedEmail.antworten[i].folgeMail.loeschenPunkte
+      }
+      this.displayedMails.unshift(email);
+      console.log(this.displayedMails);
     }
     this.bewerberReaktion = {
       reaktionsArt: 'option',
@@ -337,6 +373,15 @@ mailLoeschen() {
         this.emails.splice(index, 1);
       }
     });
+
+    
+    this.displayedMails.forEach(element => {
+      if (this.selectedEmail.id === element.id) {
+        let index2 = this.displayedMails.indexOf(element);
+        this.displayedMails.splice(index2, 1);
+      }
+    });
+
     this.showMailText = false;
   }
  

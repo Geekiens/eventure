@@ -53,6 +53,7 @@ public class GetEmailApiController implements GetEmailApi {
             //headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
             List<Email> alleEmails = (List<Email>) emailRepository.findAll();
+
             List<Email> aktiveEmails = new ArrayList<Email>();
             for (Email email : alleEmails){
                 if (email.getAktiv() && !email.getIstFolgemail()) {
@@ -60,6 +61,7 @@ public class GetEmailApiController implements GetEmailApi {
 
                 }
             }
+
             return ResponseEntity.ok()
                     .headers(headers)
                     .body((List<Email>) aktiveEmails);

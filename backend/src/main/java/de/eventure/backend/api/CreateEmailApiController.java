@@ -1,5 +1,6 @@
 package de.eventure.backend.api;
 
+import de.eventure.backend.model.Antwort;
 import de.eventure.backend.model.Email;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.eventure.backend.repositories.AntwortRepository;
@@ -54,6 +55,14 @@ public class CreateEmailApiController implements CreateEmailApi {
         String content = request.getHeader("Content-Type");
         if (accept != null && accept.contains("application/json") && content != null && content.contains("application/json")) {
             email.setAktiv(true);
+            for ( Antwort antwort : email.getAntworten() ) {
+                if (antwort.getFolgeMail() != null) {
+                    antwort.getFolgeMail().setAktiv(true);
+                }
+            }
+            if (email.getIstFolgemail() == null){
+                email.setIstFolgemail(false);
+            }
             email = emailRepository.save(email);
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");

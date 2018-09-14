@@ -1,6 +1,8 @@
 package de.eventure.backend.model;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import de.eventure.backend.model.Antwort;
@@ -20,6 +22,7 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-31T18:36:00.556Z")
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Email   {
   @JsonProperty("titel")
   private String titel = null;
@@ -32,7 +35,7 @@ public class Email   {
   private String absender = null;
 
   @JsonProperty("absendeDatum")
-  private int absendeDatum = 0;
+  private int absendeDatum;
 
   @JsonProperty("antwortenPunkte")
   @Valid
@@ -53,7 +56,7 @@ public class Email   {
   private int[] punkte;
 
   @JsonProperty("prioritaet")
-  private String prioritaet = null;
+  private String prioritaet;
 
   @JsonProperty("erscheintDirekt")
   private Boolean erscheintDirekt = null;

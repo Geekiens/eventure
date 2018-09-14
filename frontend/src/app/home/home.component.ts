@@ -74,9 +74,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.stream = stream;
     this.recordRTC = RecordRTC(stream, options);
     this.recordRTC.startRecording();
+    if (this.video.nativeElement) { // test
     let video: HTMLVideoElement = this.video.nativeElement;
     video.src = window.URL.createObjectURL(stream);
-
+  }
 
 
 
@@ -245,6 +246,7 @@ beendePruefung() {
       clickToClose: true
     });
   }
+  
 
   ngOnInit() {
     this.isLoading = true;
@@ -253,10 +255,11 @@ beendePruefung() {
       .subscribe((quote: string) => { this.quote = quote; });
 
 
-    this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
+     this.bewerberService.getBewerberByBenutzername(this.authenticationService.credentials.username).subscribe( b => {
       this.bewerber = b;
+      console.log(b);
       let pruefungen: Pruefung[] = [];
-      if (this.bewerber.pruefungen !== undefined ) {
+      if (b.pruefungen !== undefined ) {
         this.bewerber.pruefungen.forEach( p => {
           if (p.status === 'offen') {
             pruefungen.push(p);

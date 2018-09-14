@@ -112,7 +112,6 @@ export class AddEmailDialogComponent implements OnInit {
       treeString = treeString + this.generateChildren(this.antworten);
     }
     treeString = treeString + ']}]';
-    console.log(treeString);
     this.emailBaum = JSON.parse(treeString);
 
     return this.emailBaum;
@@ -123,18 +122,12 @@ export class AddEmailDialogComponent implements OnInit {
       this.buildEmail();
       this.rootEmail = this.email;
     } else {
-      console.log(this.parentAntwort);
       this.buildEmail();
       this.parentAntwort.folgeMail = this.email;
-      console.log(this.rootEmail);
-      console.log(this.parentAntwort);
     }
-    console.log(this.rootEmail);
     this.rootEmail.antworten.forEach(antwort => {
-      console.log(antwort);
       this.findAntwort(antwort, event);
     });
-    console.log(event.node);
   }
   
   setTitelFolgemail() {
@@ -157,7 +150,6 @@ export class AddEmailDialogComponent implements OnInit {
       this.maxPunkte = [0, 0, 0, 0, 0, 0];
       this.text = '';
       this.weiterleitenPunkte = [0, 0, 0, 0, 0, 0];
-      console.log('hit');
     } else if (antwort.folgeMail !== undefined && antwort.folgeMail.antworten !== undefined) {
       antwort.folgeMail.antworten.forEach(element => {
         this.findAntwort(element, event);
@@ -166,7 +158,6 @@ export class AddEmailDialogComponent implements OnInit {
   }
 
   optionClicked(option: Antwort) {
-    console.log(option);
     this.currentAntwort = option;
     this.punkte = option.punkte;
     this.editOption = true;
@@ -215,18 +206,17 @@ export class AddEmailDialogComponent implements OnInit {
     antwortOption.id = '0';
     if (this.hatFolgemail) {
       
-      const folgeMail: Email = {titel: this.titelFolgemail, istFolgemail: true };
+      const folgeMail: Email = {titel: this.titelFolgemail, istFolgemail: true, punkte: [0, 0, 0, 0, 0, 0, 0], antwortenPunkte: [0, 0, 0, 0, 0, 0, 0],  weiterleitenPunkte: [0, 0, 0, 0, 0, 0, 0], loeschenPunkte: [0, 0, 0, 0, 0, 0, 0], absendeDatum: 0, absender: this.absender  };
       antwortOption.folgeMail = folgeMail;
     }
 
     if (antwortOption.titel !== "" && antwortOption.titel !== undefined) {
       this.antworten.push(antwortOption);
-      console.log(this.antworten);
     }
     this.punkte = [0, 0, 0, 0, 0, 0, 0];
     this.currentAntwort = { id: '0', titel: '', text: '', punkte: this.punkte };
     this.hatFolgemail = false;
-    this.titelFolgemail = 'Aw: Aw: ' + this.titel;;
+    this.titelFolgemail = 'Aw: Aw: ' + this.titel;
     if (this.rootEmail !== undefined) {
       this.buildEmail();
       this.parentAntwort.folgeMail = this.email;
@@ -234,7 +224,6 @@ export class AddEmailDialogComponent implements OnInit {
     this.generateTree();
 
 
-    console.log(this.antworten);
   }
 
   ngOnInit() {
