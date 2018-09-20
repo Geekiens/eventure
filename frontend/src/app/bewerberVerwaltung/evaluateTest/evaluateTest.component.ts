@@ -75,8 +75,8 @@ export class EvaluateTestComponent implements OnInit {
             }
             if (reakt.reaktionsArt === 'option') {
               for (let index1 = 0; index1 <= 5; index1++) {
-                this.optionPunkte[index1] += reakt.email.antworten[Number(reakt.text)][index1];
-                this.autoPunkte[index1] += reakt.email.antworten[Number(reakt.text)][index1];
+                this.optionPunkte[index1] += reakt.email.antworten[Number(reakt.text)].punkte[index1];
+                this.autoPunkte[index1] += reakt.email.antworten[Number(reakt.text)].punkte[index1];
               }
             }
             if (reakt.reaktionsArt === 'weiterleiten') {
