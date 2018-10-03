@@ -346,7 +346,8 @@ mailLoeschen() {
         antwortenPunkte: this.selectedEmail.antworten[i].folgeMail.antwortenPunkte,
         weiterleitenPunkte: this.selectedEmail.antworten[i].folgeMail.weiterleitenPunkte,
         loeschenPunkte: this.selectedEmail.antworten[i].folgeMail.loeschenPunkte
-      }
+      };
+
       this.displayedMails.unshift(email);
       console.log(this.displayedMails);
     }

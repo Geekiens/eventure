@@ -134,24 +134,6 @@ export class EvaluateTestComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   nextMail() {
     for (let index = 0; index <= 5; index++) {
       this.punkteAntworten[index] += this.emailPunkte[index];

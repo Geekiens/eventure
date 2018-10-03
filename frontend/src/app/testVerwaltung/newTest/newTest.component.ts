@@ -52,7 +52,6 @@ export class NewTestComponent implements OnInit {
   constructor(private router: Router, private testService: TestService, private emailService: EmailService, private notificationsService: NotificationsService, public dialog: MatDialog, public editDialog: MatDialog) { }
 
   saveTest() {
-    console.log(this.selectedAnrufe);
     const test: Test = {
       titel: this.titel,
       zeit: this.zeit,
@@ -129,7 +128,6 @@ export class NewTestComponent implements OnInit {
       const index = this.emailSelection.indexOf(email);
       this.emailSelection.splice(index,  1);
     }
-    console.log(this.emailSelection);
 
   }
 
@@ -162,7 +160,6 @@ export class NewTestComponent implements OnInit {
 
   }
   containsEmail(email): boolean {
-    console.log(this.testEmails);
     for (let index = 0; index < this.testEmails.length; index++) {
       if (email.id === this.testEmails[index].id) {
         return true;
@@ -176,7 +173,6 @@ export class NewTestComponent implements OnInit {
     this.emails = [];
     emails.forEach(email => {
         if (this.containsEmail(email)) {
-          console.log('Test');
           test.push(email);
         } else {
           this.emails.push(email);

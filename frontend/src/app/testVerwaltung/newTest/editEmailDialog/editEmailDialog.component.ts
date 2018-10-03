@@ -82,7 +82,7 @@ export class EditEmailDialogComponent implements OnInit {
       this.absendeDatum = 0;
     }
   }
-  
+
   generateChildren(antworten: Antwort[]) {
     let first = true;
     let treeString: String = '';
@@ -194,7 +194,6 @@ export class EditEmailDialogComponent implements OnInit {
       this.rootEmail = this.email;
     }
     if (this.onlyEdit) {
-      console.log('hit');
       this.alteEmail.aktiv = false;
       this.emailService.updateEmail(this.alteEmail);
     }

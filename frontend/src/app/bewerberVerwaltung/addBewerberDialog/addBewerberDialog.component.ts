@@ -1,6 +1,5 @@
 import {OnInit, Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { NotificationsService } from "angular2-notifications";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { TestService, Test } from '@app/core/services/test.service';
 import { BewerberService, Bewerber } from '@app/core/services/bewerber.service';
@@ -28,7 +27,7 @@ export class AddBewerberDialogComponent implements OnInit{
 
 
 
-  constructor(public dialogRef: MatDialogRef<AddBewerberDialogComponent>, private pruefungService: PruefungService, private bewerberService: BewerberService, private testService: TestService, private _formBuilder: FormBuilder,  notificationsService: NotificationsService) {
+  constructor(public dialogRef: MatDialogRef<AddBewerberDialogComponent>, private pruefungService: PruefungService, private bewerberService: BewerberService, private testService: TestService, private _formBuilder: FormBuilder) {
 
     }
   saveBewerber() {

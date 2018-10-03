@@ -1,0 +1,129 @@
+[
+  {
+    "absendeDatum": "5",
+    "absender": "Marvin Mertens",
+    "aktiv": true,
+    "antworten": [
+      {
+        "titel": "Bestandsabfrage Lager Susanne Pfahl",
+        "text": "Guten Tag Frau Pfahl, \nich benötige die aktuellen Lagerbestände, könnten sie mir diese freundlicherweise übermitteln.\n\nMit freundlichen Grüßen, Hoffmann",
+        "punkte": [
+          "1",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1"
+        ],
+        "id": "0",
+        "folgeMail": {
+          "titel": "Aw: Aw: Auftragsbestätigung Umsets Susanne Pfahl Lagerbestand \t\tMotoren 3 \t\tCity Line Rahmen 79 \t\tMountain Line Rahmen 17 \t\tAnbauteile-Set City Line 75 \t\tAnbauteile-Set Mountain Line 21 \t\tCity Line E-Bikes 59 \t\tMountain Line E Bikes 13",
+          "istFolgemail": true,
+          "punkte": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "antwortenPunkte": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "weiterleitenPunkte": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "loeschenPunkte": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "absendeDatum": 0,
+          "absender": "Marvin Mertens"
+        }
+      },
+      {
+        "titel": "keine Reaktion ",
+        "text": "Den Bestell-Prozess auf sich beruhen lassen",
+        "punkte": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": "0"
+      }
+    ],
+    "antwortenPunkte": [
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "1"
+    ],
+    "erscheintDirekt": true,
+    "id": "0",
+    "loeschenPunkte": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "prioritaet": "string",
+    "punkte": [
+      "1",
+      "1",
+      "3",
+      "2",
+      "3",
+      "2"
+    ],
+    "text": "1.\tAuftragsbestätigung von Mertens \nHallo Gabriel,\nich habe soeben unserem Vertriebspartner Ulrich Umsets den Auftrag zur Lieferung von 100 City Line E-Bikes bestätigt. \nGruß Marvin\n",
+    "titel": "Auftragsbestätigung Umsets",
+    "weiterleitenPunkte": [
+      "1",
+      "0",
+      "1",
+      "2",
+      "1",
+      "0"
+    ]
+  },
+
+  {"absendeDatum":"4","absender":"Electron Bike","aktiv":true,"antworten":[{"titel":"Termin im Kalender zum lesen eintragen","text":"","punkte":["1",0,"1",0,"1",0],"id":"0"}],"antwortenPunkte":["1",0,"2","1","1",0],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,"1",0,0,0],"prioritaet":"string","punkte":["2",0,"2","1","1",0],"text":"Hallo Herr Hoffmann, \n\nwir bieten wieder unsere monatlichen Weiterbildungs-Tages-Seminare an. \nDie nächste Veranstaltung wird sich mit dem Thema Design und Innovation im Bereich E-Bikes beschäftigen. Dazu werden auch die neuesten Modelle der Branche vorgestellt. \nWir freuen uns auf ihre Rückmeldung.\n\nKeep ON your Dreams,\nihr ElectronBIKE Team.\n","titel":"Monatliche Ausgabe","weiterleitenPunkte":[0,0,0,0,0,0]},
+
+  {"absendeDatum":"4","absender":"Marvin Mertens","aktiv":true,"antworten":[{"titel":"nichts tun die Messe geht vor","text":"","punkte":[0,0,0,0,0,0],"id":"0"},{"titel":"Bestandsabfrage Lager Susanne Pfahl","text":"Guten Tag Frau Pfahl, \nich benötige die aktuellen Lagerbestände, können sie mir diese bitte zuschicken?","punkte":["1",0,"2","2","1","1",0],"id":"0","folgeMail":{"titel":"Aw: Aw: Bestellbestätigung Reinlich Susanne Pfahl Lagerbestand \t\tMotoren 3 \t\tCity Line Rahmen 79 \t\tMountain Line Rahmen 17 \t\tAnbauteile-Set City Line 75 \t\tAnbauteile-Set Mountain Line 21 \t\tCity Line E-Bikes 59 \t\tMountain Line E Bikes 13","istFolgemail":true,"punkte":[0,0,0,0,0,0,0],"antwortenPunkte":[0,0,0,0,0,0,0],"weiterleitenPunkte":[0,0,0,0,0,0,0],"loeschenPunkte":[0,0,0,0,0,0,0],"absendeDatum":0,"absender":"Marvin Mertens"}}],"antwortenPunkte":["2",0,"3","2","1","1"],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,0,0,0,0],"prioritaet":"string","punkte":["2","1","3","2","1","2"],"text":"Hallo Gabriel, \nIch habe unserem Kunden Ebert Reinlich soeben eine Bestellbestätigung für 20stk. Mountain Line E-Bikes und 30stk City Line E-Bikes geschickt und ihm eine schnelle Zustellung zugesichert. Solange die Beschaffung planmäßig erfolgt, sind die Teile für diese Bestellung ausreichend.\nGruß Marvin\n","titel":"Bestellbestätigung Reinlich","weiterleitenPunkte":["1","1","2","1","1","2"]},
+
+  {"absendeDatum":"2","absender":"Daniela Schwarz","aktiv":true,"antworten":[{"titel":"Sofort erledigen, Entscheidung an Max Bauer (Freitext)","text":"","punkte":["3",0,"3",0,"2","1"],"id":"0"}],"antwortenPunkte":["3",0,"3",0,"2","1"],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,0,0,0,0],"prioritaet":"string","punkte":["3","1","3","1","2","1"],"text":"Hallo Gabriel, \nanbei schicke ich dir die Entwürfe für den Aufbau des Messestands von Max Bauer.\nKönnen wir einen Termin vereinbaren? Damit ich die Anweisungen an die Öffentlichkeitsarbeit weiterleiten kann. \n","titel":"Entwurf für den Messestand","weiterleitenPunkte":["1","1","1","1",0,0]},
+
+  {"absendeDatum":"2","absender":"Sigrid Meuer","aktiv":true,"antworten":[{"titel":"Bestandsabfrage Lager Susanne Pfahl ","text":"Guten Tag Frau Pfahl, \nich benötige dringend die aktuellen Lagerbestände für eine Bestellung!\nGruß Hoffmann","punkte":["2",0,"2","2","1","1"],"id":"0","folgeMail":{"titel":"Aw: Aw: Lieferinformation Beschaffung Susanne Pfahl Lagerbestand \t\tMotoren 3 \t\tCity Line Rahmen 79 \t\tMountain Line Rahmen 17 \t\tAnbauteile-Set City Line 75 \t\tAnbauteile-Set Mountain Line 21 \t\tCity Line E-Bikes 59 \t\tMountain Line E Bikes 13","istFolgemail":true,"punkte":[0,0,0,0,0,0,0],"antwortenPunkte":[0,0,0,0,0,0,0],"weiterleitenPunkte":[0,0,0,0,0,0,0],"loeschenPunkte":[0,0,0,0,0,0,0],"absendeDatum":0,"absender":"Sigrid Meuer"}},{"titel":"Bestandsabfrage Fertigung","text":"Hallo Herr Haak, \nich benötige dringend die aktuellen Bestände aus der Fertigung","punkte":["1",0,"2","2","1","2",0],"id":"0","folgeMail":{"titel":"Aw: Aw: Lieferinformation Beschaffung RA Ulrich Haak \t\tCity Line E-Bikes 5 \t\tMountain Line E-Bikes 4","istFolgemail":true,"punkte":[0,0,0,0,0,0,0],"antwortenPunkte":[0,0,0,0,0,0,0],"weiterleitenPunkte":[0,0,0,0,0,0,0],"loeschenPunkte":[0,0,0,0,0,0,0],"absendeDatum":0,"absender":"Sigrid Meuer"}},{"titel":"nichts tun die Messe geht vor ","text":"","punkte":[0,0,0,0,0,0,0],"id":"0"}],"antwortenPunkte":["2",0,"3","3","2","2"],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,0,0,0,0],"prioritaet":"string","punkte":["2","2","3","3","2","2"],"text":"Hallo Herr Hoffmann, \nwir haben von unseren Zulieferern die Mitteilung bekommen, dass die nächste Lieferung von 100stk. E-Bike Motoren zum vereinbarten Termin nicht vollständig sein wird. Der Lieferant hat uns aber zugesichert, dass die Hälfte der Lieferung planmäßig bleibt.\n\nMit freundlichen Grüßen,\nSigrid Meuer\n","titel":"Lieferinformation Beschaffung","weiterleitenPunkte":["2","2","1",0,"1","1"]},
+
+  {"absendeDatum":"1","absender":"Peter Panne","aktiv":true,"antworten":[{"titel":"Die Besichtigung und den Transport selbst organisieren (Freitext)","text":"","punkte":["3",0,"2",0,"1",0],"id":"0"},{"titel":"Weiterleitung an Daniela Schwarz","text":"Hallo Daniela, \nder Prototyp ist fertig. Kannst du bitte den Transport zum Messegelände organisieren?\n","punkte":["1",0,"1",0,"2","",0],"id":"0"}],"antwortenPunkte":["3",0,"2",0,"2","1"],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,0,0,0,0],"prioritaet":"string","punkte":["3","1","2","1","2","2"],"text":"Hallo Herr Hoffmann, \nder Prototyp für das Messeprojekt ist fertig, nach anfänglichen Schwierigkeiten konnten wir nun die Vorstellungen aus der Marketingabteilung umsetzen. \nIch hoffe Sie können bald vorbeischauen. \n\nIch freue mich auf Ihren Besuch,\n Peter Panne\n","titel":"Prototyp Messe","weiterleitenPunkte":["1","1","1",0,"1",0]},
+
+  {"absendeDatum":"1","absender":"Electron","aktiv":true,"antworten":[],"antwortenPunkte":[0,0,0,0,0,0],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,0,0,0,0],"prioritaet":"string","punkte":["1",0,"1",0,"1",0],"text":"Diesen Monat in der Ausgabe:\nElectronBIKE, unser Magazin rund um E-Bikes und Pedelecs, liefert Ihnen die interessantesten und spannendsten Geschichten über das Radfahren mit Rückenwind. Zum Beispiel zum Thema Kaufentscheidung: Im großen Pedelec- und E-Bike-Test haben wir 15 aktuelle Pedelecs ausgiebig und praxisnah getestet.\nDarüber hinaus gibt es 14 zusätzliche Seiten mit einer Marktübersicht über die wichtigsten E-Bike- und Pedelec-Modelle der Saison 2017. Mit allen Infos und allen Bildern.\n…\n","titel":"Monatsausgabe","weiterleitenPunkte":[0,0,0,0,0,0]},
+
+  {"absendeDatum":"0","absender":"Tanja Wald","aktiv":true,"antworten":[{"titel":"Einen Anderen Termin Vorschlagen (Freitext)","text":"","punkte":["1",0,"2",0,"2",0],"id":"0"}],"antwortenPunkte":["1",0,"3",0,"2",0],"erscheintDirekt":true,"id":"0","loeschenPunkte":[0,0,0,0,0,0],"prioritaet":"string","punkte":["1",0,"3","2","2",0],"text":"Guten Tag Herr Hoffmann, \ndie Absatzzahlenanalyse des letzten Jahres liegt Herrn Orts nun vor. \nDiesbezüglich ergaben sich noch einige offenen Fragen die umgehend geklärt werden müssen. Ich möchte sie bitten, einen zeitigen Termin auszumachen und würde dafür Donnerstag um 14:00 nach dem Lunch vorschlagen. \n","titel":"Absatzanalyse des letzten Jahres","weiterleitenPunkte":[0,0,0,0,0,0]}
+]

@@ -42,7 +42,6 @@ export class TestVerwaltungComponent implements OnInit {
     showTest.show = true;
     this.selectedTest = showTest.test;
     this.emails = showTest.test.emails;
-    console.log(this.emails);
     this.showDetails = !this.showDetails;
 
   }
@@ -95,7 +94,6 @@ export class TestVerwaltungComponent implements OnInit {
       tests.forEach(test => {
         this.showTests.push({test: test, show: false});
       });
-      console.log(this.showTests);
     });
   }
 
